@@ -18,7 +18,19 @@ void setup(){
     // Serial.println("Connected!");
 }
 
+int lastCode = 1;
 void loop(){
     auto code = digitalRead(10);
-    digitalWrite(D2, code);
+
+    if(lastCode != code){
+        if (code == LOW){
+            digitalWrite(D2, HIGH);
+            tone(D6, 1000);
+        } else {
+            digitalWrite(D2, LOW);
+            noTone(D6);
+        }
+    }
+
+    lastCode = code;
 }

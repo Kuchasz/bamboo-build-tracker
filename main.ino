@@ -29,6 +29,7 @@ void loop(){
         } else {
             digitalWrite(D2, LOW);
             noTone(D6);
+            
         }
     }
 

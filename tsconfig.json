@@ -11,6 +11,12 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "es5",
+      "dom",
+      "es2015",
+      "es2015.promise"
+    ]
   }
 }

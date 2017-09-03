@@ -3,6 +3,8 @@ import VueRouter from 'vue-router';
 import { MainComponent } from "./components/main";
 import { ConfigComponent } from "./components/config";
 
+import "./style.scss";
+
 let router = new VueRouter({
   routes: [
     { path: '/', component: MainComponent },

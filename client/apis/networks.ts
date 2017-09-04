@@ -36,12 +36,14 @@ export const getNetworks = () => {
 export const getConnectedNetwork = () => connectedNetworkSSID;
 
 export const connectToNetwork = (ssid: string, password: string) => new Promise((res, rej)=>{
-    const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
-    if(networkCandidates.length !== 1) rej();
+    setTimeout(() => {
+        const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
+        if(networkCandidates.length !== 1) rej();
+        
+        const networkToConnect = networkCandidates[0];
+        if(networkToConnect.password && networkToConnect.password !== password) rej();
     
-    const networkToConnect = networkCandidates[0];
-    if(networkToConnect.password && networkToConnect.password !== password) rej();
-
-    connectedNetworkSSID = networkToConnect.ssid;
-    res();
+        connectedNetworkSSID = networkToConnect.ssid;
+        res();
+    }, 250);
 });

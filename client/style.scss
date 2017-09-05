@@ -1,3 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+$accent-color: #7374E4;
+$secondary-color: #864B9C;
+
 .connected {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0em;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  background: linear-gradient($accent-color, $secondary-color);
+}
+
+#app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  align-self: center;
+  font-weight: 600;
+  font-size: 1.5em;
+  margin: 2em;
+  cursor: pointer;
+  span {
+    margin-left: 1em;
+    font-weight: lighter;
+    font-size: 0.5em;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    text-transform: uppercase;
+    transition: all 0.25s;
+  }
+  &:hover{
+    span{
+      opacity: 1;
+    }
+  }
+
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background: white;
+  a {
+    color: $secondary-color;
+    i {
+      padding: 0.5em 1em;
+      &:hover {
+        background: $secondary-color;
+        color: white;
+      }
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+  }
+}
+
+section {
+  flex: 1;
+  align-self: center;
+}
+
+.networks-config-component{
+  .networks-list{
+    display: flex;
+    flex-direction: column;
+    .network-component{
+      display: flex;
+      align-items: center;
+      padding: 0.5em;
+      margin: 0.25em;
+      background: rgba(255,255,255,0.1);
+      span{
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
+
+.config-component{
+  > div{
+    > label{
+      text-transform: uppercase;
+      opacity: 0.75;
+      font-weight: 100;
+      letter-spacing: 0.1em;
+      font-size: 0.75em;
+      i {
+        font-size: 2em;
+      }
+    }
+  }
 }

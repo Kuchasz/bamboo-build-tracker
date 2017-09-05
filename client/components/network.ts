@@ -2,8 +2,8 @@ import Vue from 'vue';
 import Component from 'vue-class-component';
 
 const template: string = `
-<span @click="onSelect" :class="{ connected: isConnected }">
-    {{name}}<i v-if="isSecured">&#x1f512;</i>
+<span @click="onSelect" class="network-component" :class="{ connected: isConnected }">
+    <i class="material-icons">{{ isSecured===true ? 'signal_wifi_4_bar_lock' : 'signal_wifi_4_bar' }}</i><span>{{name}}</span>
 </span>`;
 
 @Component<NetworkComponent>({

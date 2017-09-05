@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <head>
-  <meta charset="utf-8" />
-  <title>bamboo-build-tracker</title>
+    <meta charset="utf-8"/>
+    <title>bamboo-build-tracker</title>
 </head>
 <body>
 <div id="app-root">
-    <router-view>loading...</router-view>
+    <header>Bamboo<span>build tracker</span></header>
+    <section>
+        <router-view></router-view>
+    </section>
+    <footer>
+        <router-link to="/"><i class="material-icons">home</i></router-link>
+        <router-link to="/config"><i class="material-icons">build</i></router-link>
+    </footer>
 </div>
 </body>
 </html>

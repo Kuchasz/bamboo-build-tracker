@@ -4,19 +4,17 @@ import { NetworksConfigComponent } from "./networks-config";
 import { BambooConfigComponent } from './bamboo-config';
 
 const template: string = `
-<div>
-    <router-link to="/">Home</router-link>
-    <br/>
-    <br/>
-    <div>
-        <label>Networks Config</label>
-        <networks-config-component/>
-    </div>
-    <br/>
+<div class="config-component">
     <div>
         <label>Bamboo Config</label>
         <bamboo-config-component/>
     </div>
+    <hr/>
+    <div>
+        <label>Networks Config</label>
+        <networks-config-component/>
+    </div>
+
 </div>`;
 
 @Component({

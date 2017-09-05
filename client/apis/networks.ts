@@ -17,6 +17,30 @@ const fixedNetworks: ServerSideNetwork[] = [{
     isSecured: true,
     password: '1234'
 },{
+    ssid: 'Squirle',
+    isSecured: true,
+    password: '1234'
+},{
+    ssid: 'Marcus figo',
+    isSecured: true,
+    password: '1234'
+},{
+    ssid: 'Tora tora',
+    isSecured: true,
+    password: '1234'
+},{
+    ssid: 'Szakawina',
+    isSecured: true,
+    password: '1234'
+},{
+    ssid: 'Merlin',
+    isSecured: true,
+    password: '1234'
+},{
+    ssid: 'Hellfire',
+    isSecured: true,
+    password: '1234'
+},{
     ssid: 'GoldeN',
     isSecured: true,
     password: '1234'

@@ -1,13 +1,13 @@
 import Vue from 'vue';
 import Component from 'vue-class-component';
-import { NetworkComponent } from "./network";
-import { Network, getNetworks, connectToNetwork } from "../apis/networks";
+import {NetworkComponent} from "./network";
+import {Network, getNetworks, connectToNetwork} from "../apis/networks";
 
 const template: string = `
-<div>
+<div class="networks-config-component">
     <button v-on:click="findNetworks">Find networks</button>
-    <div v-for="network in networks">
-        <network-component :isConnected="network.ssid === connectedNetwork" :on-select="() => selectNetwork(network)" :name="network.ssid" :isSecured="network.isSecured"/>
+    <div class="networks-list">
+        <network-component v-for="network in networks" :key="network.ssid" :isConnected="network.ssid === connectedNetwork" :on-select="() => selectNetwork(network)" :name="network.ssid" :isSecured="network.isSecured"/>
     </div>
     <div>
         <input v-model="password" placeholder="password"></input>
@@ -27,19 +27,20 @@ export class NetworksConfigComponent extends Vue {
     selectedNetwork: string = "";
     password: string = "";
 
-    findNetworks(){
+    findNetworks() {
         getNetworks().then(networks => this.networks = networks);
     }
 
-    selectNetwork(network: Network){
+    selectNetwork(network: Network) {
         this.selectedNetwork = network.ssid;
     }
 
-    connect(){
+    connect() {
         console.log('connect!');
-        connectToNetwork(this.selectedNetwork, this.password).then(()=>{
+        connectToNetwork(this.selectedNetwork, this.password).then(() => {
             this.connectedNetwork = this.selectedNetwork;
-        }).catch(()=>{});
+        }).catch(() => {
+        });
     }
 }
 

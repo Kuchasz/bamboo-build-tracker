@@ -9,7 +9,7 @@ const template: string = `
     <div class="networks-list">
         <network-component v-for="network in networks" :key="network.ssid" :isConnected="network.ssid === connectedNetwork" :on-select="() => selectNetwork(network)" :name="network.ssid" :isSecured="network.isSecured"/>
     </div>
-    <div>
+    <div class="complex-input">
         <input v-model="password" placeholder="password"></input>
         <button v-on:click="connect">Connect</button>
     </div>

@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06c514b9-3ed4-4e99-bed2-e64ea46a0fcc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/apis/networks.ts" afterPath="$PROJECT_DIR$/client/apis/networks.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/bamboo-config.ts" afterPath="$PROJECT_DIR$/client/components/bamboo-config.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/config.ts" afterPath="$PROJECT_DIR$/client/components/config.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/main.ts" afterPath="$PROJECT_DIR$/client/components/main.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/network.ts" afterPath="$PROJECT_DIR$/client/components/network.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/components/networks-config.ts" afterPath="$PROJECT_DIR$/client/components/networks-config.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.html" afterPath="$PROJECT_DIR$/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/index.ts" afterPath="$PROJECT_DIR$/client/index.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/style.scss" afterPath="$PROJECT_DIR$/client/style.scss" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -22,22 +19,22 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/index.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.scss" pinned="false" current-in-tab="false">
+      <file leaf-file-name="style.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/style.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="71" column="21" lean-forward="false" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
+            <state relative-caret-position="360">
+              <caret line="102" column="11" lean-forward="false" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -46,7 +43,7 @@
       <file leaf-file-name="status.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/status.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="34">
               <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
@@ -68,15 +65,15 @@
       <file leaf-file-name="bamboo-config.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/bamboo-config.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="35" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <marker date="1504640032718" expanded="true" signature="140:517" ph="..." />
-                <marker date="1504640032718" expanded="true" signature="150:248" ph="..." />
-                <marker date="1504640032718" expanded="true" signature="258:341" ph="..." />
-                <marker date="1504640032718" expanded="true" signature="351:437" ph="..." />
-                <marker date="1504640032718" expanded="true" signature="447:510" ph="..." />
+                <marker date="1504731077212" expanded="true" signature="172:615" ph="..." />
+                <marker date="1504731077212" expanded="true" signature="204:302" ph="..." />
+                <marker date="1504731077212" expanded="true" signature="334:417" ph="..." />
+                <marker date="1504731077212" expanded="true" signature="449:535" ph="..." />
+                <marker date="1504731077212" expanded="true" signature="545:608" ph="..." />
               </folding>
             </state>
           </provider>
@@ -85,13 +82,13 @@
       <file leaf-file-name="config.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/config.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <marker date="1504647043425" expanded="true" signature="243:451" ph="..." />
-                <marker date="1504647043425" expanded="true" signature="253:336" ph="..." />
-                <marker date="1504647043425" expanded="true" signature="356:443" ph="..." />
+                <marker date="1504727917820" expanded="true" signature="243:455" ph="..." />
+                <marker date="1504727917820" expanded="true" signature="253:338" ph="..." />
+                <marker date="1504727917820" expanded="true" signature="358:447" ph="..." />
               </folding>
             </state>
           </provider>
@@ -113,23 +110,23 @@
       <file leaf-file-name="networks-config.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/networks-config.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="37" />
+            <state relative-caret-position="187">
+              <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
-                <marker date="1504645718670" expanded="true" signature="251:723" ph="..." />
-                <marker date="1504645718670" expanded="true" signature="344:575" ph="..." />
-                <marker date="1504645718670" expanded="true" signature="585:716" ph="..." />
+                <marker date="1504729913747" expanded="true" signature="251:745" ph="..." />
+                <marker date="1504729913747" expanded="true" signature="344:575" ph="..." />
+                <marker date="1504729913747" expanded="true" signature="607:738" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="network.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="network.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/network.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="119" lean-forward="true" selection-start-line="5" selection-start-column="119" selection-end-line="5" selection-end-column="119" />
+            <state relative-caret-position="272">
+              <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
                 <marker date="1504645915103" expanded="true" signature="181:316" ph="..." />
@@ -150,6 +147,16 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>label</find>
+      <find>header</find>
+      <find>footer</find>
+      <find>networ</find>
+      <find>bamboo`</find>
+      <find>section</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -160,11 +167,12 @@
         <option value="$PROJECT_DIR$/client/index.ts" />
         <option value="$PROJECT_DIR$/client/components/status.ts" />
         <option value="$PROJECT_DIR$/client/index.html" />
-        <option value="$PROJECT_DIR$/client/components/networks-config.ts" />
         <option value="$PROJECT_DIR$/client/components/network.ts" />
-        <option value="$PROJECT_DIR$/client/components/config.ts" />
-        <option value="$PROJECT_DIR$/client/style.scss" />
         <option value="$PROJECT_DIR$/client/apis/networks.ts" />
+        <option value="$PROJECT_DIR$/client/components/config.ts" />
+        <option value="$PROJECT_DIR$/client/components/networks-config.ts" />
+        <option value="$PROJECT_DIR$/client/components/bamboo-config.ts" />
+        <option value="$PROJECT_DIR$/client/style.scss" />
       </list>
     </option>
   </component>
@@ -200,6 +208,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -228,7 +237,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -260,34 +268,35 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1504640068994</updated>
-      <workItem from="1504640072425" duration="7134000" />
+      <workItem from="1504640072425" duration="7317000" />
+      <workItem from="1504725707717" duration="4762000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7134000" />
+    <option name="totallyTimeSpent" value="12079000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18008785" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -302,36 +311,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/components/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <marker date="1504641803319" expanded="true" signature="100:147" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/bamboo-config.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-            <marker date="1504640032718" expanded="true" signature="140:517" ph="..." />
-            <marker date="1504640032718" expanded="true" signature="150:248" ph="..." />
-            <marker date="1504640032718" expanded="true" signature="258:341" ph="..." />
-            <marker date="1504640032718" expanded="true" signature="351:437" ph="..." />
-            <marker date="1504640032718" expanded="true" signature="447:510" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="71" column="21" lean-forward="false" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -354,36 +345,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/config.ts">
+    <entry file="file://$PROJECT_DIR$/client/components/bamboo-config.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
-            <marker date="1504647043425" expanded="true" signature="243:451" ph="..." />
-            <marker date="1504647043425" expanded="true" signature="253:336" ph="..." />
-            <marker date="1504647043425" expanded="true" signature="356:443" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="172:615" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="204:302" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="334:417" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="449:535" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="545:608" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/style.scss">
+    <entry file="file://$PROJECT_DIR$/client/components/config.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="71" column="21" lean-forward="false" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="136">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1504727917820" expanded="true" signature="243:455" ph="..." />
+            <marker date="1504727917820" expanded="true" signature="253:338" ph="..." />
+            <marker date="1504727917820" expanded="true" signature="358:447" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1504641803319" expanded="true" signature="100:147" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/networks-config.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
+        <state relative-caret-position="51">
           <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="37" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
-            <marker date="1504645718670" expanded="true" signature="251:723" ph="..." />
-            <marker date="1504645718670" expanded="true" signature="344:575" ph="..." />
-            <marker date="1504645718670" expanded="true" signature="585:716" ph="..." />
+            <marker date="1504729913747" expanded="true" signature="251:745" ph="..." />
+            <marker date="1504729913747" expanded="true" signature="344:575" ph="..." />
+            <marker date="1504729913747" expanded="true" signature="607:738" ph="..." />
           </folding>
         </state>
       </provider>
@@ -398,12 +407,117 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/network.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="119" lean-forward="true" selection-start-line="5" selection-start-column="119" selection-end-line="5" selection-end-column="119" />
+        <state relative-caret-position="340">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
             <marker date="1504645915103" expanded="true" signature="181:316" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/status.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="3" column="18" lean-forward="false" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/apis/networks.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/network.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="15" lean-forward="false" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1504645915103" expanded="true" signature="181:316" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/main.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="34" lean-forward="false" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1504641803319" expanded="true" signature="100:147" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1504727917820" expanded="true" signature="243:455" ph="..." />
+            <marker date="1504727917820" expanded="true" signature="253:338" ph="..." />
+            <marker date="1504727917820" expanded="true" signature="358:447" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/networks-config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1504729913747" expanded="true" signature="251:745" ph="..." />
+            <marker date="1504729913747" expanded="true" signature="344:575" ph="..." />
+            <marker date="1504729913747" expanded="true" signature="607:738" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/bamboo-config.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+            <marker date="1504731077212" expanded="true" signature="172:615" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="204:302" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="334:417" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="449:535" ph="..." />
+            <marker date="1504731077212" expanded="true" signature="545:608" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="102" column="11" lean-forward="false" selection-start-line="102" selection-start-column="11" selection-end-line="102" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

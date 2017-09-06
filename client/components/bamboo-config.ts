@@ -3,16 +3,16 @@ import Component from 'vue-class-component';
 import {connect} from '../apis/bamboo';
 
 const template: string = `
-<div>
-    <div>
+<div class="bamboo-config-component">
+    <div class="complex-input">
         <label>Bamboo project url</label>
         <input v-model="projectUrl"></input>
     </div>
-    <div>
+    <div class="complex-input">
         <label>Username</label>
         <input v-model="login"></input>
     </div>
-    <div>
+    <div class="complex-input">
         <label>Password</label>
         <input v-model="password"></input>
     </div>

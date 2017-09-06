@@ -6,12 +6,12 @@ import { BambooConfigComponent } from './bamboo-config';
 const template: string = `
 <div class="config-component">
     <div>
-        <label>Bamboo Config</label>
+        <label>Bamboo Settings</label>
         <bamboo-config-component/>
     </div>
     <hr/>
     <div>
-        <label>Networks Config</label>
+        <label>Networks Settings</label>
         <networks-config-component/>
     </div>
 

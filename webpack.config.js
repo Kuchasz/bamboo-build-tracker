@@ -1,6 +1,7 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const autoprefixer = require('autoprefixer');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var webpack = require('webpack');
 var path = require('path');
@@ -29,11 +30,17 @@ module.exports = {
         ]
     },
     plugins: [
+        autoprefixer,
+        // new webpack.optimize.UglifyJsPlugin({minimize: true}),
         new HtmlWebpackPlugin({
             inlineSource: '.(js|css)$',
             template: './client/index.html'
         }),
-        new HtmlWebpackInlineSourcePlugin()
+        new HtmlWebpackInlineSourcePlugin(),
+        // new BundleAnalyzerPlugin(),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': '"production"'
+        })
     ],
     resolve: {
         extensions: ['.ts', '.js', '.html'],

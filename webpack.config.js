@@ -7,7 +7,7 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    entry: "./client/index.ts",
+    entry: "./client/index.tsx",
     output: {
         path: path.resolve("dist"),
         filename: "index.js"
@@ -15,7 +15,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /\.ts|\.tsx/,
                 loader: 'ts-loader',
                 exclude: /node_modules/
             },
@@ -31,22 +31,17 @@ module.exports = {
     },
     plugins: [
         autoprefixer,
-        // new webpack.optimize.UglifyJsPlugin({minimize: true}),
         new HtmlWebpackPlugin({
             inlineSource: '.(js|css)$',
             template: './client/index.html'
         }),
         new HtmlWebpackInlineSourcePlugin(),
-        // new BundleAnalyzerPlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
         })
     ],
     resolve: {
-        extensions: ['.ts', '.js', '.html'],
-        alias: {
-            'vue$': 'vue/dist/vue.esm.js'
-        }
+        extensions: ['.ts', '.tsx', '.js', '.html']
     },
     devServer: {
         port: 8080,

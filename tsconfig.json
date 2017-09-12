@@ -12,6 +12,7 @@
     "noImplicitReturns": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
+    "jsx": "react",
     "lib": [
       "es5",
       "dom",

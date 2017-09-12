@@ -4,17 +4,5 @@
     <title>bamboo-build-tracker</title>
 </head>
 <body>
-<div id="app-root">
-    <header>Bamboo<span>build tracker</span></header>
-    <section>
-        <router-view></router-view>
-    </section>
-    <footer>
-        <router-link to="/"><i :class="{ active: $route.path === '/'}" class="menu-item material-icons">home</i></router-link>
-        <router-link to="/config/alarm"><i :class="{ active: $route.path === '/config/alarm'}" class="menu-item material-icons">alarm</i></router-link>
-        <router-link to="/config/networks"><i :class="{ active: $route.path === '/config/networks'}" class="menu-item material-icons">wifi_tethering</i></router-link>
-        <router-link to="/config/bamboo"><i :class="{ active: $route.path === '/config/bamboo'}" class="menu-item material-icons">build</i></router-link>
-    </footer>
-</div>
 </body>
 </html>

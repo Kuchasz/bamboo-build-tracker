@@ -11,13 +11,6 @@ const template: string = `
         <label>Sound effects</label>
         <i class="material-icons">volume_up</i>
     </div>
-    <div class="complex-input">
-        <label>Password</label>
-        <input></input>
-    </div>
-    <div>
-        <button>Login</button>
-    </div>
 </div>`;
 
 @Component({

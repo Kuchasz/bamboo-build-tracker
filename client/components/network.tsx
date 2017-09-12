@@ -5,7 +5,7 @@ interface Props {
     isSecured: boolean,
     isConnected: boolean,
     onSelect: () => void
-};
+}
 
 export const NetworkComponent = ({name, isSecured, isConnected, onSelect}: Props) => (
     <span onClick={onSelect} className={`network-component ${isConnected ? 'connected' : ''}`}>

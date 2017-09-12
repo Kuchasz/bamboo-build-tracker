@@ -38,7 +38,9 @@ module.exports = {
         new HtmlWebpackInlineSourcePlugin(),
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': '"production"'
-        })
+        }),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.optimize.AggressiveMergingPlugin()
     ],
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.html']

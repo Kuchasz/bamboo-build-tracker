@@ -13,6 +13,10 @@ export const MenuItems = {
     NetworkConfig: 'network-config'
 };
 
+interface Props{
+
+}
+
 interface State{
     selectedMenuItem: string;
 }
@@ -25,7 +29,7 @@ export const getComponentFromMenuItem = (menuItem: string) => {
     throw new Error(`${menuItem} has no component defined`);
 };
 
-export class MainComponent extends React.Component<any, State> {
+export class MainComponent extends React.Component<Props, State> {
     constructor(){
         super();
         this.state.selectedMenuItem = MenuItems.Dashboard;

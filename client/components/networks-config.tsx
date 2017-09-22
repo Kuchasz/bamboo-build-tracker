@@ -2,6 +2,10 @@ import React from 'preact';
 import {NetworkComponent} from "./network";
 import {Network, getNetworks, connectToNetwork} from "../apis/networks";
 
+interface Props{
+
+}
+
 interface State {
     networks: Network[];
     connectedNetwork: string;
@@ -9,7 +13,7 @@ interface State {
     password: string;
 }
 
-export class NetworksConfigComponent extends React.Component<any, State> {
+export class NetworksConfigComponent extends React.Component<Props, State> {
 
     constructor(){
         super();
@@ -52,7 +56,7 @@ export class NetworksConfigComponent extends React.Component<any, State> {
                         name={n.ssid}
                         isSecured={n.isSecured}/>))}
             </div>
-            <div class="complex-input">
+            <div class="input-group">
                 <input onChange={this.onTypePassword.bind(this)} placeholder="password"></input>
                 <button onClick={this.connectToNetwork.bind(this)}>Connect</button>
             </div>

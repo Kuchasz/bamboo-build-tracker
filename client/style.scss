@@ -81,7 +81,7 @@ footer {
   color: transparentize($secondary-color, 0.5);
 }
 
-.complex-input {
+.input-group {
   margin: 1em 0em;
   label {
     text-transform: uppercase;
@@ -150,19 +150,37 @@ button {
   cursor: pointer;
 }
 
-.config-component {
-  > div {
-    > label {
-      text-transform: uppercase;
-      opacity: 0.6;
-      font-weight: bold;
-      letter-spacing: 0.1em;
-      font-size: 0.75em;
-      margin-bottom: 1em;
-      display: block;
-      i {
-        font-size: 2em;
-      }
+.alarm-config-item-component {
+  display: flex;
+  padding: 1.5em;
+  align-items: center;
+  cursor: pointer;
+  > i {
+    font-size: 3em;
+    &.enabled {
+      opacity: 1;
+    }
+    &.disabled {
+      opacity: 0.6
     }
   }
+  > label {
+    cursor: pointer;
+    text-transform: uppercase;
+    opacity: 0.6;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: 0.75em;
+    display: block;
+    transition: opacity 0.25s;
+  }
+  &:hover {
+    > label {
+      opacity: 1;
+    }
+  }
+
+}
+
+.alarm-config-component {
 }

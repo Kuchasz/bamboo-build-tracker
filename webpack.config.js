@@ -1,13 +1,12 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
 const autoprefixer = require('autoprefixer');
-var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    entry: "./client/index.tsx",
+    entry: path.resolve("./client/index.tsx"),
     output: {
         path: path.resolve("dist"),
         filename: "index.js"
@@ -16,16 +15,16 @@ module.exports = {
         rules: [
             {
                 test: /\.ts|\.tsx/,
-                loader: 'ts-loader',
+                use: 'ts-loader',
                 exclude: /node_modules/
             },
             {
                 test: /\.html$/,
-                loader: 'html-loader'
+                use: 'html-loader'
             },
             {
                 test: /\.scss/,
-                loader: 'style-loader!css-loader!postcss-loader!sass-loader'
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             }
         ]
     },
@@ -53,7 +52,7 @@ module.exports = {
             aggregateTimeout: 300,
             poll: 1000
         },
-        contentBase: './dist',
+        contentBase: path.resolve('./dist'),
         open: true
     }
 };

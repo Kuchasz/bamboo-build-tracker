@@ -90,3 +90,7 @@ export const connectToNetwork = (ssid: string, password: string) => new Promise(
         res();
     }, 250);
 });
+
+export const disconnectFromNetwork = () => new Promise((res) => {
+    setTimeout(()=>res(), 250);
+});

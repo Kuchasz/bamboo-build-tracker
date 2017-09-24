@@ -4,10 +4,6 @@
 $accent-color: #7374E4;
 $secondary-color: #864B9C;
 
-.connected {
-  font-weight: bold;
-}
-
 html {
   height: 100%;
 }
@@ -120,13 +116,15 @@ hr {
     display: flex;
     flex-direction: column;
     .network-component {
-      display: flex;
-      align-items: center;
       padding: 0.5em;
-      margin: 0.25em;
-      background: rgba(255, 255, 255, 0.1);
-      span {
-        margin-left: 0.5em;
+      .network-info{
+        display: flex;
+        > div {
+          padding: 0em 0.5em;
+        }
+      }
+      .network-status{
+        opacity: .75;
       }
     }
   }
@@ -179,7 +177,6 @@ button {
       opacity: 1;
     }
   }
-
 }
 
 .alarm-config-component {

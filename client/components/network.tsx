@@ -4,11 +4,43 @@ interface Props {
     name: string,
     isSecured: boolean,
     isConnected: boolean,
-    onSelect: () => void
+    onDisconnect: () => void;
+    onConnect: (password: string) => void;
+    onSelect: () => void;
+    isExpanded: boolean;
 }
 
-export const NetworkComponent = ({name, isSecured, isConnected, onSelect}: Props) => (
-    <span onClick={onSelect} className={`network-component ${isConnected ? 'connected' : ''}`}>
-    <i class="material-icons">{isSecured ? 'signal_wifi_4_bar_lock' : 'signal_wifi_4_bar'}</i>
-    <span>{name}</span>
-</span>);
+interface State {
+    password: string;
+}
+
+export class NetworkComponent extends React.Component<Props, State> {
+
+    updatePassword(password: string) {
+        this.setState({password});
+    }
+
+    render() {
+        const {onSelect, name, isSecured, isConnected, isExpanded, onConnect, onDisconnect} = this.props;
+        return (<span onClick={onSelect} className='network-component'>
+    <div className="network-info">
+        <i className="material-icons">{isSecured ? 'signal_wifi_4_bar_lock' : 'signal_wifi_4_bar'}</i>
+        <div>
+            <div className="network-name">{name}</div>
+            <div className="network-status">{isConnected ? 'Connected, ' : null}{isSecured ? 'Secured' : 'Open'}</div>
+        </div>
+    </div>
+            {isExpanded ? <span className="network-actions">
+            {isConnected ? <div>
+                <button onClick={onDisconnect}>Disconnect</button>
+            </div> : <div>
+                {isSecured ? <div class="input-group">
+                    <label>Password</label>
+                    <input onKeyUp={(e: any) => this.updatePassword(e.target.value)}></input>
+                </div> : null}
+                <button onClick={() => onConnect(this.state.password)}>Connect</button>
+            </div>}
+        </span> : null}
+</span>)
+    }
+}

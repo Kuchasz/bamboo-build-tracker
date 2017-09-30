@@ -1,6 +1,6 @@
 {
     "configurations": [
-            {
+        {
             "name": "Linux",
             "includePath": [
                 "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/cores/arduino/",
@@ -64,5 +64,5 @@
             "intelliSenseMode": "msvc-x64"
         }
     ],
-    "version": 2
+    "version": 3
 }

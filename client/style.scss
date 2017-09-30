@@ -123,6 +123,13 @@ hr {
           padding: 0em 0.5em;
         }
       }
+      .network-actions{
+        > div{
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+      }
       .network-status{
         opacity: .75;
       }

@@ -34,11 +34,11 @@ export class NetworkComponent extends React.Component<Props, State> {
             {isConnected ? <div>
                 <button onClick={onDisconnect}>Disconnect</button>
             </div> : <div>
+                <button onClick={() => onConnect(this.state.password)}>Connect</button>
                 {isSecured ? <div class="input-group">
                     <label>Password</label>
                     <input onKeyUp={(e: any) => this.updatePassword(e.target.value)}></input>
                 </div> : null}
-                <button onClick={() => onConnect(this.state.password)}>Connect</button>
             </div>}
         </span> : null}
 </span>)

@@ -78,7 +78,6 @@ footer {
 }
 
 .input-group {
-  margin: 1em 0em;
   label {
     text-transform: uppercase;
     display: block;
@@ -116,7 +115,10 @@ hr {
     display: flex;
     flex-direction: column;
     .network-component {
-      padding: 0.5em;
+      padding: 1em;
+      min-width: 300px;
+      margin: 0.1em;
+      background: rgba(255, 255, 255, 0.25);
       .network-info{
         display: flex;
         > div {
@@ -125,9 +127,10 @@ hr {
       }
       .network-actions{
         > div{
+          margin-top: 0.5em;
           display: flex;
-          flex-direction: column;
-          align-items: flex-end;
+          align-items: center;
+          justify-content: space-between;
         }
       }
       .network-status{

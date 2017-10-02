@@ -12,6 +12,8 @@ export type NetworkConfig = {
     ssid: string;
     status: NetworkConnectionStatus;
     password: string;
+    ip: string;
+    mac: string;
 }
 
 type ServerSideNetwork = Network & { password?: string };
@@ -73,7 +75,9 @@ export const getNetworkConfig = () => new Promise<NetworkConfig>(res=>{
         res({
             ssid: 'Szakawina',
             password: Array.from(Array(4)).reduce(s => `${s}*`, ''),
-            status: NetworkConnectionStatus.Connected
+            status: NetworkConnectionStatus.Connected,
+            ip: '10.110.12.12',
+            mac: 'a4:17:31:4b:97:f1'
         });
     }, 250);
 });

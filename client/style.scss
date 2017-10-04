@@ -191,3 +191,17 @@ button {
 
 .alarm-config-component {
 }
+
+
+body select { 
+  display: block; 
+  width: 100%;
+  padding: 10px 70px 10px 13px !important; 
+  border: 1px solid #e3e3e3;
+  background: url("https://image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat; 
+  background-color: #fff; 
+  color: #444444; 
+  font-size: 0.75em; 
+  appearance: none; /* this is must */ 
+} 
+

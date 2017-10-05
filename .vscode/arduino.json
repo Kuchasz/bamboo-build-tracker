@@ -3,5 +3,5 @@
     "configuration": "CpuFrequency=80,UploadSpeed=115200,FlashSize=4M3M",
     "port": "/dev/ttyUSB0",
     "sketch": "server/main.ino",
-    "output": "build"
+    "output": "server/build"
 }

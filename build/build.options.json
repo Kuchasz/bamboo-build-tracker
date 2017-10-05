@@ -1,0 +1,10 @@
+{
+  "builtInLibrariesFolders": "/opt/arduino/libraries",
+  "customBuildProperties": "build.path=/media/rafau/Nowy/Projects/bamboo-build-tracker/build,build.warn_data_percentage=75,runtime.tools.mkspiffs.path=/home/rafau/.arduino15/packages/esp8266/tools/mkspiffs/0.1.2,runtime.tools.xtensa-lx106-elf-gcc.path=/home/rafau/.arduino15/packages/esp8266/tools/xtensa-lx106-elf-gcc/1.20.0-26-gb404fb9-2,runtime.tools.esptool.path=/home/rafau/.arduino15/packages/esp8266/tools/esptool/0.4.9",
+  "fqbn": "esp8266:esp8266:nodemcuv2:CpuFrequency=80,UploadSpeed=115200,FlashSize=4M3M",
+  "hardwareFolders": "/opt/arduino/hardware,/home/rafau/.arduino15/packages",
+  "otherLibrariesFolders": "/home/rafau/Arduino/libraries",
+  "runtime.ide.version": "10805",
+  "sketchLocation": "/media/rafau/Nowy/Projects/bamboo-build-tracker/server/main.ino",
+  "toolsFolders": "/opt/arduino/tools-builder,/opt/arduino/hardware/tools/avr,/home/rafau/.arduino15/packages"
+}

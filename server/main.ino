@@ -1,3 +1,16 @@
+#include <ArduinoJson.h>
+#include <Arduino.h>
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+
+const char* apSSID = "BambooBuildTracker";
+
+IPAddress apIP(192, 168, 1, 1);
+IPAddress apGateway(192, 168, 1, 1);
+IPAddress apSubmask(255, 255, 255, 0);
+
+ESP8266WebServer server(80);
+
 int getOneOrZero(){
     return rand()%2;
 }
@@ -20,7 +33,6 @@ void handleButtonState(){
     auto buttonState = digitalRead(10);
     if(buttonTriggerState != buttonState){
         if (buttonState == LOW){
-
             int* diodeStates = getDiodeToUse(new int[3]);
 
             Serial.println(diodeStates[0]);
@@ -43,13 +55,40 @@ void handleButtonState(){
 
 void setup(){
     Serial.begin(115200);
-    pinMode(10, INPUT);
-    pinMode(D0, OUTPUT);
-    pinMode(D6, OUTPUT);
-    pinMode(D7, OUTPUT);
-    pinMode(D8, OUTPUT);
+
+    WiFi.softAP(apSSID);
+    WiFi.softAPConfig(apIP, apGateway, apSubmask);
+
+    server.on("/networks", HTTP_GET, []() {
+		StaticJsonBuffer<200> jsonBuffer;
+		JsonArray& root = jsonBuffer.createArray();
+		
+        int n = WiFi.scanNetworks();
+		for(auto i = 0; i < n; i++){
+			JsonObject& network = jsonBuffer.createObject();
+			network["ssid"] = WiFi.SSID(i);
+			network["isSecured"] = WiFi.encryptionType(i) != ENC_TYPE_NONE;
+			root.add(network);
+		}
+
+		String networksString;
+		root.printTo(networksString);
+
+		server.send(200, "text/json", networksString);
+	});
+
+    server.begin();
+    
+    // pinMode(10, INPUT);
+    // pinMode(D0, OUTPUT);
+    // pinMode(D6, OUTPUT);
+    // pinMode(D7, OUTPUT);
+    // pinMode(D8, OUTPUT);
 }
 
 void loop(){
-    handleButtonState();
+
+    server.handleClient();
+    
+    // handleButtonState();
 }

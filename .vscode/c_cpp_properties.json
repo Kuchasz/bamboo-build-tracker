@@ -1,67 +1,87 @@
 {
     "configurations": [
         {
+            "name": "Mac",
+            "includePath": [
+                "/usr/include",
+                "/usr/local/include",
+                "${workspaceRoot}"
+            ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "/usr/include",
+                    "/usr/local/include",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ]
+        },
+        {
             "name": "Linux",
             "includePath": [
-                "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/cores/arduino/",
-                "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/EEPROM/",
-                "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/HID/",
-                "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/SPI/",
-                "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/SoftwareSerial/",
-                "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/Wire/",
-                "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/",
-                "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/avr/",
-                "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/compat/",
-                "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/util/",
-                "/home/rafau/Arduino/libraries/DallasTemperature",
-                "/home/rafau/Arduino/libraries/ArduinoJson",
-                "/home/rafau/Arduino/libraries/OneWire",
-                "/home/rafau/Arduino/libraries",
-                "/home/rafau/Downloads/arduino-ide/libraries",
-                "/home/rafau/Downloads/arduino-ide/libraries/WiFi/src",
+                "/usr/include/x86_64-linux-gnu/c++/6.3.0",
+                "/usr/include/c++/6.3.0",
+                "/usr/local/include",
+                "/usr/include/x86_64-linux-gnu",
+                "/usr/include",
+                "${workspaceRoot}",
+                "/opt/arduino/hardware/arduino/avr/cores/arduino",
+                "/usr/include/linux",
+                "/usr/include/c++/6/tr1",
+                "/opt/arduino/hardware/tools/avr/avr/include",
+                "/opt/arduino/hardware/arduino/avr/variants/standard",
                 "/home/rafau/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/libraries",
-                "/home/rafau/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/cores/esp8266"
+                "/home/rafau/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/cores/esp8266",
+                "/home/rafau/Arduino/libraries/ArduinoJson/src"
             ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
             "browse": {
-                "limitSymbolsToIncludedHeaders": false,
                 "path": [
-                    "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/cores/arduino/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/EEPROM/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/HID/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/SPI/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/SoftwareSerial/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/arduino/avr/libraries/Wire/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/avr/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/compat/",
-                    "/home/rafau/Downloads/arduino-ide/hardware/tools/avr/avr/include/util/",
-                    "/home/rafau/Arduino/libraries/DallasTemperature",
-                    "/home/rafau/Arduino/libraries/ArduinoJson",
-                    "/home/rafau/Arduino/libraries/OneWire",
-                    "/home/rafau/Arduino/libraries",
-                    "/home/rafau/Downloads/arduino-ide/libraries",
-                    "/home/rafau/Downloads/arduino-ide/libraries/WiFi/src",
+                    "/usr/include/x86_64-linux-gnu/c++/6.3.0",
+                    "/usr/include/c++/6.3.0",
+                    "/usr/local/include",
+                    "/usr/include/x86_64-linux-gnu",
+                    "/usr/include",
+                    "/usr/include/linux",
+                    "/usr/include/c++/6/tr1",
+                    "/opt/arduino/hardware/tools/avr/avr/include",
+                    "/opt/arduino/hardware/arduino/avr/variants/standard",
                     "/home/rafau/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/libraries",
-                    "/home/rafau/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/cores/esp8266"
-                ]
-            },
-            "intelliSenseMode": "clang-x64"
+                    "/home/rafau/.arduino15/packages/esp8266/hardware/esp8266/2.3.0/cores/esp8266",
+                    "${workspaceRoot}",
+                    "/home/rafau/Arduino/libraries/ArduinoJson/src"
+                ],
+                "limitSymbolsToIncludedHeaders": false,
+                "databaseFilename": ""
+            }
         },
         {
             "name": "Win32",
             "includePath": [
-                "C:\\Users\\jmord\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.3.0\\cores\\esp8266",
-                "C:\\Users\\jmord\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.3.0\\libraries"
+                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include",
+                "${workspaceRoot}"
             ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
             "browse": {
-                "limitSymbolsToIncludedHeaders": false,
                 "path": [
-                    "C:\\Users\\jmord\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.3.0\\cores\\esp8266",
-                    "C:\\Users\\jmord\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.3.0\\libraries",
+                    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
                     "${workspaceRoot}"
-                ]
-            },
-            "intelliSenseMode": "msvc-x64"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
         }
     ],
     "version": 3

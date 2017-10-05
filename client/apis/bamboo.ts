@@ -44,7 +44,7 @@ export const selectPlan = (plan: string) => new Promise<void>(res => {
 
 export const getBambooConfig = () => new Promise<BambooConfig>((res)=>{
     setTimeout(()=>{
-        res(fakeBambooProjectConfig);
+        res({...fakeBambooProjectConfig});
     }, 250);
 });
 

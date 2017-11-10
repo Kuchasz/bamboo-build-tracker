@@ -6,9 +6,9 @@ var webpack = require('webpack');
 var path = require('path');
 
 module.exports = {
-    entry: path.resolve("./client/index.tsx"),
+    entry: path.resolve("./src/index.tsx"),
     output: {
-        path: path.resolve("dist"),
+        path: path.resolve("../server/main/data"),
         filename: "index.js"
     },
     module: {
@@ -32,7 +32,7 @@ module.exports = {
         autoprefixer,
         new HtmlWebpackPlugin({
             inlineSource: '.(js|css)$',
-            template: './client/index.html'
+            template: './src/index.html'
         }),
         new HtmlWebpackInlineSourcePlugin(),
         new webpack.DefinePlugin({

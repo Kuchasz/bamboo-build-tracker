@@ -16,9 +16,9 @@ interface State {
 
 export class BambooConfigComponent extends React.Component<Props, State>{
 
-    bambooServerInput: HTMLInputElement;
-    usernameInput: HTMLInputElement;
-    passwordInput: HTMLInputElement;
+    bambooServerInput: Element | undefined;
+    usernameInput: Element | undefined;
+    passwordInput: Element | undefined;
 
     componentDidMount() {
 
@@ -36,9 +36,9 @@ export class BambooConfigComponent extends React.Component<Props, State>{
         getBambooConfig()
             .then(bambooConfig => {
                 this.setState({ bambooConfig });
-                this.bambooServerInput.value = bambooConfig.url;
-                this.usernameInput.value = bambooConfig.login;
-                this.passwordInput.value = bambooConfig.password;
+                (this.bambooServerInput as HTMLInputElement).value = bambooConfig.url;
+                (this.usernameInput as HTMLInputElement).value = bambooConfig.login;
+                (this.passwordInput as HTMLInputElement).value = bambooConfig.password;
 
                 (bambooConfig.connected) &&
                     getBambooProjects().then(projects => {
@@ -73,15 +73,15 @@ export class BambooConfigComponent extends React.Component<Props, State>{
 
                 <div className="input-group">
                     <label>Bamboo server url</label>
-                    <input ref={(el: HTMLInputElement) => this.bambooServerInput = el}></input>
+                    <input ref={el => {this.bambooServerInput = el;}}></input>
                 </div>
                 <div className="input-group">
                     <label>Username</label>
-                    <input ref={(el: HTMLInputElement) => this.usernameInput = el}></input>
+                    <input ref={el => {this.usernameInput = el;}}></input>
                 </div>
                 <div className="input-group">
                     <label>Password</label>
-                    <input ref={(el: HTMLInputElement) => this.passwordInput = el}></input>
+                    <input ref={el => {this.passwordInput = el;}}></input>
                 </div>
                 <div>
                     <button>Login</button>

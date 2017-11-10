@@ -120,9 +120,12 @@ export const connectToNetwork = (ssid: string, password: string) => new Promise(
 // });
 
 export const disconnectFromNetwork = () => new Promise((res, rej) => {
-    fetch('/network-disconnect', {method: "POST"})
+    fetch('/network-disconnect', {
+        method: "POST",
+        body: JSON.stringify({})
+    })
         .then(response => response.json()).then(response => {
-        if (response.result == 0)
+        if (response.result == 1)
             res();
         else
             rej();

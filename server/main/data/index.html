@@ -1229,9 +1229,12 @@ var connectToNetwork = function (ssid, password) { return new Promise(function (
 //     setTimeout(() => res(), 250);
 // });
 var disconnectFromNetwork = function () { return new Promise(function (res, rej) {
-    fetch('/network-disconnect', { method: "POST" })
+    fetch('/network-disconnect', {
+        method: "POST",
+        body: JSON.stringify({})
+    })
         .then(function (response) { return response.json(); }).then(function (response) {
-        if (response.result == 0)
+        if (response.result == 1)
             res();
         else
             rej();

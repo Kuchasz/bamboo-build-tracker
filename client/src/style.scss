@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
 $accent-color: #7374E4;
 $secondary-color: #864B9C;
 
@@ -56,18 +53,21 @@ footer {
   justify-content: center;
   background: white;
   filter: drop-shadow(0px 0px 5px black);
-  i {
-    padding: 0.5em 1em;
-    &:hover {
-      background: $secondary-color;
-      color: white;
-    }
-    transition: all 0.25s;
-    cursor: pointer;
-  }
 }
 
 .menu-item {
+  padding: 0.75em 1em;
+  transition: all 0.25s;
+  cursor: pointer;
+  svg{
+    fill: $secondary-color;
+  }
+  &:hover {
+    background: $secondary-color;
+    svg {
+      fill: white;
+    }
+  }
   &.active {
     color: $secondary-color;
     &:hover {
@@ -198,8 +198,7 @@ body select {
   width: 100%;
   padding: 10px 70px 10px 13px !important; 
   border: 1px solid #e3e3e3;
-  background: url("https://image.ibb.co/iMeAJv/selectbox_arrow.png") right center no-repeat; 
-  background-color: #fff; 
+  background-color: #fff;
   color: #444444; 
   font-size: 0.75em; 
   appearance: none; /* this is must */ 

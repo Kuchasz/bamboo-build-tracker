@@ -1,4 +1,4 @@
-#include <ArduinoJson.h>
+  #include <ArduinoJson.h>
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
@@ -7,8 +7,8 @@
 
 const char* apSSID = "BambooBuildTracker";
 
-IPAddress apIP(192, 168, 1, 1);
-IPAddress apGateway(192, 168, 1, 1);
+IPAddress apIP(10, 0, 0, 1);
+IPAddress apGateway(10, 0, 0, 1);
 IPAddress apSubmask(255, 255, 255, 0);
 
 ESP8266WebServer server(80);

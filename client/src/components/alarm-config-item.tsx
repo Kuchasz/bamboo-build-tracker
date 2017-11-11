@@ -1,4 +1,5 @@
 import React from 'preact';
+import {Icon} from "./icon";
 
 interface Props{
     icon: string;
@@ -11,5 +12,6 @@ const getClassName = (state: boolean) => `material-icons ${state ? 'enabled' : '
 
 export const AlarmConfigItemComponent = ({icon, label, state, onClick}: Props) => (<div onClick={onClick} className='alarm-config-item-component'>
     <i className={getClassName(state)}>{icon}</i>
+    <Icon icon={icon} className={getClassName(state)}></Icon>
     <label>{label}</label>
 </div>);

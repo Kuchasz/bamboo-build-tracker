@@ -23,8 +23,12 @@ module.exports = {
                 use: 'html-loader'
             },
             {
-                test: /\.scss/,
+                test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
+            },
+            {
+                test: /\.(svg)$/,
+                use: ['raw-loader']
             }
         ]
     },

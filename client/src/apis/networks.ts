@@ -16,94 +16,111 @@ export type NetworkConfig = {
     mac: string;
 }
 
-// type ServerSideNetwork = Network & { password?: string };
 
-// const fixedNetworks: ServerSideNetwork[] = [{
-//     ssid: 'Nania',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Marvel',
-//     isSecured: false
-// }, {
-//     ssid: 'DC Comics',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Squirle',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Marcus figo',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Tora tora',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Szakawina',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Merlin',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Hellfire',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'GoldeN',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Baoblir',
-//     isSecured: false
-// }];
 
-// let connectedNetworkSSID: string;
+type ServerSideNetwork = Network & { password?: string };
 
-// export const getNetworks = () => {
-//     return new Promise<Network[]>((res: ((value: Network[]) => void)) => {
-//         setTimeout(() => res(fixedNetworks), 250);
-//     });
-// };
+const fixedNetworks: ServerSideNetwork[] = [{
+    ssid: 'Nania',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Marvel',
+    isSecured: false
+}, {
+    ssid: 'DC Comics',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Squirle',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Marcus figo',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Tora tora',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Szakawina',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Merlin',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Hellfire',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'GoldeN',
+    isSecured: true,
+    password: '1234'
+}, {
+    ssid: 'Baoblir',
+    isSecured: false
+}];
 
-export const getNetworks = () => new Promise<Network[]>(result => {
+let connectedNetworkSSID: string;
+
+export const getNetworks = () => 
+    process.env.API_TYPE === 'FAKE' 
+    ? getFakeNetworks() 
+    : getRemoteNetworks();
+
+const getFakeNetworks = () => {
+    return new Promise<Network[]>((res: ((value: Network[]) => void)) => {
+        setTimeout(() => res(fixedNetworks), 250);
+    });
+};
+
+const getRemoteNetworks = () => new Promise<Network[]>(result => {
     fetch('/networks').then(res => result(res.json()));
 });
 
-// export const getNetworkConfig = () => new Promise<NetworkConfig>(res=>{
-//     setTimeout(()=>{
-//         res({
-//             ssid: 'Szakawina',
-//             password: Array.from(Array(4)).reduce(s => `${s}*`, ''),
-//             status: NetworkConnectionStatus.Connected,
-//             ip: '10.110.12.12',
-//             mac: 'a4:17:31:4b:97:f1'
-//         });
-//     }, 250);
-// });
+export const getNetworkConfig = () => 
+    process.env.API_TYPE === 'FAKE'
+    ? getFakeNetworkConfig()
+    : getRemoteNetworkConfig(); 
 
-export const getNetworkConfig = () => new Promise<NetworkConfig>(result => {
+const getFakeNetworkConfig = () => new Promise<NetworkConfig>(res=>{
+    setTimeout(()=>{
+        res({
+            ssid: 'Szakawina',
+            password: Array.from(Array(4)).reduce(s => `${s}*`, ''),
+            status: NetworkConnectionStatus.Connected,
+            ip: '10.110.12.12',
+            mac: 'a4:17:31:4b:97:f1'
+        });
+    }, 250);
+});
+
+const getRemoteNetworkConfig = () => new Promise<NetworkConfig>(result => {
     fetch('/network-config').then(res => result(res.json()))
 });
 
-// export const connectToNetwork = (ssid: string, password: string) => new Promise((res, rej) => {
-//     setTimeout(() => {
-//         const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
-//         if (networkCandidates.length !== 1) rej();
-//
-//         const networkToConnect = networkCandidates[0];
-//         if (networkToConnect.password && networkToConnect.password !== password) rej();
-//
-//         // connectedNetworkSSID = networkToConnect.ssid;
-//         res();
-//     }, 250);
-// });
+export const connectToNetwork = (ssid: string, password: string) =>
+    process.env.API_TYPE === 'FAKE'
+    ? fakeConnectToNetwork(ssid, password)
+    : remoteConnectToNetwork(ssid, password); 
 
-export const connectToNetwork = (ssid: string, password: string) => new Promise((res, rej) => {
+const fakeConnectToNetwork = (ssid: string, password: string) => new Promise((res, rej) => {
+    setTimeout(() => {
+        const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
+        if (networkCandidates.length !== 1) rej();
+
+        const networkToConnect = networkCandidates[0];
+        if (networkToConnect.password && networkToConnect.password !== password) rej();
+
+        connectedNetworkSSID = networkToConnect.ssid;
+        res();
+    }, 250);
+});
+
+const remoteConnectToNetwork = (ssid: string, password: string) => new Promise((res, rej) => {
     fetch('/network-connect', {
         method: "POST",
         body: JSON.stringify({ssid, password})
@@ -115,11 +132,19 @@ export const connectToNetwork = (ssid: string, password: string) => new Promise(
     })
 });
 
-// export const disconnectFromNetwork = () => new Promise((res) => {
-//     setTimeout(() => res(), 250);
-// });
+export const disconnectFromNetwork = () => 
+    process.env.API_TYPE === 'FAKE'
+    ? fakeDisconnectFromNetwork()
+    : remoteDisconnectFromNetwork(); 
 
-export const disconnectFromNetwork = () => new Promise((res, rej) => {
+const fakeDisconnectFromNetwork = () => new Promise((res) => {
+    setTimeout(() => {
+        connectedNetworkSSID = "";
+        res();
+    }, 250);
+});
+
+const remoteDisconnectFromNetwork = () => new Promise((res, rej) => {
     fetch('/network-disconnect', {
         method: "POST",
         body: JSON.stringify({})

@@ -59,7 +59,7 @@ footer {
   padding: 0.75em 1em;
   transition: all 0.25s;
   cursor: pointer;
-  svg{
+  svg {
     fill: $secondary-color;
   }
   &:hover {
@@ -164,6 +164,10 @@ button {
   align-items: center;
   cursor: pointer;
   > i {
+    display: flex;
+    svg{
+      fill: white;
+    }
     font-size: 3em;
     &.enabled {
       opacity: 1;

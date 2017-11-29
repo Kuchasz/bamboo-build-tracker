@@ -9,8 +9,8 @@ var path = require("path");
 const apiMode = (() => {
     console.log(process.env.NODE_ENV);
     switch(process.env.NODE_ENV){
-        case "production": return "REMOTE_DATA";
-        case "development": return "MOCK";
+        case "production": return "'REMOTE_DATA'";
+        case "development": return "'MOCK'";
         default: throw new Error("Not supported NODE_ENV is set")
     }
 })();

@@ -121,6 +121,9 @@ hr {
       background: rgba(255, 255, 255, 0.25);
       .network-info{
         display: flex;
+        svg{
+          fill: white;
+        }
         > div {
           padding: 0em 0.5em;
         }

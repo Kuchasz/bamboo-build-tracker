@@ -11,7 +11,7 @@ interface Props{
     selectedMenuItem: string;
 }
 
-const getMenuItemClass = (menuItem: string, selectedMenuItem: string) => `${menuItem === selectedMenuItem ? 'active' : ''} menu-item material-icons`;
+const getMenuItemClass = (menuItem: string, selectedMenuItem: string) => `${menuItem === selectedMenuItem ? 'active' : ''} menu-item`;
 
 export const FooterComponent = ({onMenuItemSelect, selectedMenuItem}: Props) => (<footer>
     <Icon size={18} icon={HomeIcon} className={getMenuItemClass(MenuItems.Dashboard, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.Dashboard)}></Icon>

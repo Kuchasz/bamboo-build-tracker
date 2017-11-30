@@ -59,7 +59,7 @@ footer {
   padding: 0.75em 1em;
   transition: all 0.25s;
   cursor: pointer;
-  svg{
+  svg {
     fill: $secondary-color;
   }
   &:hover {
@@ -121,6 +121,9 @@ hr {
       background: rgba(255, 255, 255, 0.25);
       .network-info{
         display: flex;
+        svg{
+          fill: white;
+        }
         > div {
           padding: 0em 0.5em;
         }
@@ -164,6 +167,10 @@ button {
   align-items: center;
   cursor: pointer;
   > i {
+    display: flex;
+    svg{
+      fill: white;
+    }
     font-size: 3em;
     &.enabled {
       opacity: 1;

@@ -1,158 +1,167 @@
 export type Network = {
-    ssid: string;
-    isSecured: boolean;
-}
+  ssid: string;
+  isSecured: boolean;
+};
 
 export enum NetworkConnectionStatus {
-    Disconnected,
-    Connected
+  Disconnected,
+  Connected
 }
 
 export type NetworkConfig = {
-    ssid: string;
-    status: NetworkConnectionStatus;
-    password: string;
-    ip: string;
-    mac: string;
-}
-
-
+  ssid: string;
+  status: NetworkConnectionStatus;
+  password: string;
+  ip: string;
+  mac: string;
+};
 
 type ServerSideNetwork = Network & { password?: string };
 
-const fixedNetworks: ServerSideNetwork[] = [{
-    ssid: 'Nania',
+const fixedNetworks: ServerSideNetwork[] = [
+  {
+    ssid: "Nania",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Marvel',
+    password: "1234"
+  },
+  {
+    ssid: "Marvel",
     isSecured: false
-}, {
-    ssid: 'DC Comics',
+  },
+  {
+    ssid: "DC Comics",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Squirle',
+    password: "1234"
+  },
+  {
+    ssid: "Squirle",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Marcus figo',
+    password: "1234"
+  },
+  {
+    ssid: "Marcus figo",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Tora tora',
+    password: "1234"
+  },
+  {
+    ssid: "Tora tora",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Szakawina',
+    password: "1234"
+  },
+  {
+    ssid: "Szakawina",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Merlin',
+    password: "1234"
+  },
+  {
+    ssid: "Merlin",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Hellfire',
+    password: "1234"
+  },
+  {
+    ssid: "Hellfire",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'GoldeN',
+    password: "1234"
+  },
+  {
+    ssid: "GoldeN",
     isSecured: true,
-    password: '1234'
-}, {
-    ssid: 'Baoblir',
+    password: "1234"
+  },
+  {
+    ssid: "Baoblir",
     isSecured: false
-}];
+  }
+];
 
-let connectedNetworkSSID: string;
-
-export const getNetworks = () => 
-    process.env.API_TYPE === 'FAKE' 
-    ? getFakeNetworks() 
-    : getRemoteNetworks();
+let connectedNetworkSSID: string = "";
 
 const getFakeNetworks = () => {
-    return new Promise<Network[]>((res: ((value: Network[]) => void)) => {
-        setTimeout(() => res(fixedNetworks), 250);
-    });
+  return new Promise<Network[]>((res: ((value: Network[]) => void)) => {
+    setTimeout(() => res(fixedNetworks), 250);
+  });
 };
 
-const getRemoteNetworks = () => new Promise<Network[]>(result => {
-    fetch('/networks').then(res => result(res.json()));
-});
+const getRemoteNetworks = () =>
+  new Promise<Network[]>(result => {
+    fetch("/networks").then(res => result(res.json()));
+  });
 
-export const getNetworkConfig = () => 
-    process.env.API_TYPE === 'FAKE'
-    ? getFakeNetworkConfig()
-    : getRemoteNetworkConfig(); 
+export const getNetworks =
+  API_TYPE === "MOCK" ? getFakeNetworks : getRemoteNetworks;
 
-const getFakeNetworkConfig = () => new Promise<NetworkConfig>(res=>{
-    setTimeout(()=>{
-        res({
-            ssid: 'Szakawina',
-            password: Array.from(Array(4)).reduce(s => `${s}*`, ''),
-            status: NetworkConnectionStatus.Connected,
-            ip: '10.110.12.12',
-            mac: 'a4:17:31:4b:97:f1'
-        });
-    }, 250);
-});
-
-const getRemoteNetworkConfig = () => new Promise<NetworkConfig>(result => {
-    fetch('/network-config').then(res => result(res.json()))
-});
-
-export const connectToNetwork = (ssid: string, password: string) =>
-    process.env.API_TYPE === 'FAKE'
-    ? fakeConnectToNetwork(ssid, password)
-    : remoteConnectToNetwork(ssid, password); 
-
-const fakeConnectToNetwork = (ssid: string, password: string) => new Promise((res, rej) => {
+const getFakeNetworkConfig = () =>
+  new Promise<NetworkConfig>(res => {
     setTimeout(() => {
-        const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
-        if (networkCandidates.length !== 1) rej();
-
-        const networkToConnect = networkCandidates[0];
-        if (networkToConnect.password && networkToConnect.password !== password) rej();
-
-        connectedNetworkSSID = networkToConnect.ssid;
-        res();
+      res({
+        ssid: connectedNetworkSSID,
+        password: Array.from(Array(4)).reduce(s => `${s}*`, ""),
+        status: NetworkConnectionStatus.Connected,
+        ip: "10.110.12.12",
+        mac: "a4:17:31:4b:97:f1"
+      });
     }, 250);
-});
+  });
 
-const remoteConnectToNetwork = (ssid: string, password: string) => new Promise((res, rej) => {
-    fetch('/network-connect', {
-        method: "POST",
-        body: JSON.stringify({ssid, password})
-    }).then(response => response.json()).then(response => {
-        if (response.result == 0)
-            res();
-        else
-            rej();
-    })
-});
+const getRemoteNetworkConfig = () =>
+  new Promise<NetworkConfig>(result => {
+    fetch("/network-config").then(res => result(res.json()));
+  });
 
-export const disconnectFromNetwork = () => 
-    process.env.API_TYPE === 'FAKE'
-    ? fakeDisconnectFromNetwork()
-    : remoteDisconnectFromNetwork(); 
+export const getNetworkConfig =
+  API_TYPE === "MOCK" ? getFakeNetworkConfig : getRemoteNetworkConfig;
 
-const fakeDisconnectFromNetwork = () => new Promise((res) => {
+const fakeConnectToNetwork = (ssid: string, password: string) =>
+  new Promise((res, rej) => {
     setTimeout(() => {
-        connectedNetworkSSID = "";
-        res();
-    }, 250);
-});
+      const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
+      if (networkCandidates.length !== 1) rej();
 
-const remoteDisconnectFromNetwork = () => new Promise((res, rej) => {
-    fetch('/network-disconnect', {
-        method: "POST",
-        body: JSON.stringify({})
+      const networkToConnect = networkCandidates[0];
+      if (networkToConnect.password && networkToConnect.password !== password)
+        rej();
+
+      connectedNetworkSSID = networkToConnect.ssid;
+      res();
+    }, 250);
+  });
+
+const remoteConnectToNetwork = (ssid: string, password: string) =>
+  new Promise((res, rej) => {
+    fetch("/network-connect", {
+      method: "POST",
+      body: JSON.stringify({ ssid, password })
     })
-        .then(response => response.json()).then(response => {
-        if (response.result == 1)
-            res();
-        else
-            rej();
+      .then(response => response.json())
+      .then(response => {
+        if (response.result == 0) res();
+        else rej();
+      });
+  });
+
+export const connectToNetwork =
+  API_TYPE === "MOCK" ? fakeConnectToNetwork : remoteConnectToNetwork;
+
+const fakeDisconnectFromNetwork = () =>
+  new Promise(res => {
+    setTimeout(() => {
+      connectedNetworkSSID = "";
+      res();
+    }, 250);
+  });
+
+const remoteDisconnectFromNetwork = () =>
+  new Promise((res, rej) => {
+    fetch("/network-disconnect", {
+      method: "POST",
+      body: JSON.stringify({})
     })
-});
+      .then(response => response.json())
+      .then(response => {
+        if (response.result == 1) res();
+        else rej();
+      });
+  });
+
+export const disconnectFromNetwork =
+  API_TYPE === "MOCK" ? fakeDisconnectFromNetwork : remoteDisconnectFromNetwork;

@@ -1143,6 +1143,7 @@ var NetworkConnectionStatus;
     NetworkConnectionStatus[NetworkConnectionStatus["Disconnected"] = 0] = "Disconnected";
     NetworkConnectionStatus[NetworkConnectionStatus["Connected"] = 1] = "Connected";
 })(NetworkConnectionStatus || (NetworkConnectionStatus = {}));
+<<<<<<< HEAD
 // type ServerSideNetwork = Network & { password?: string };
 // const fixedNetworks: ServerSideNetwork[] = [{
 //     ssid: 'Nania',
@@ -1248,6 +1249,148 @@ var disconnectFromNetwork = function () { return new Promise(function (res, rej)
             rej();
     });
 }); };
+=======
+var fixedNetworks = [
+    {
+        ssid: "Nania",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Marvel",
+        isSecured: false
+    },
+    {
+        ssid: "DC Comics",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Squirle",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Marcus figo",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Tora tora",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Szakawina",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Merlin",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Hellfire",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "GoldeN",
+        isSecured: true,
+        password: "1234"
+    },
+    {
+        ssid: "Baoblir",
+        isSecured: false
+    }
+];
+var connectedNetworkSSID = "";
+var getFakeNetworks = function () {
+    return new Promise(function (res) {
+        setTimeout(function () { return res(fixedNetworks); }, 250);
+    });
+};
+var getRemoteNetworks = function () {
+    return new Promise(function (result) {
+        fetch("/networks").then(function (res) { return result(res.json()); });
+    });
+};
+var getNetworks = REMOTE_DATA === "MOCK" ? getFakeNetworks : getRemoteNetworks;
+var getFakeNetworkConfig = function () {
+    return new Promise(function (res) {
+        setTimeout(function () {
+            res({
+                ssid: connectedNetworkSSID,
+                password: Array.from(Array(4)).reduce(function (s) { return s + "*"; }, ""),
+                status: NetworkConnectionStatus.Connected,
+                ip: "10.110.12.12",
+                mac: "a4:17:31:4b:97:f1"
+            });
+        }, 250);
+    });
+};
+var getRemoteNetworkConfig = function () {
+    return new Promise(function (result) {
+        fetch("/network-config").then(function (res) { return result(res.json()); });
+    });
+};
+var getNetworkConfig = REMOTE_DATA === "MOCK" ? getFakeNetworkConfig : getRemoteNetworkConfig;
+var fakeConnectToNetwork = function (ssid, password) {
+    return new Promise(function (res, rej) {
+        setTimeout(function () {
+            var networkCandidates = fixedNetworks.filter(function (n) { return n.ssid === ssid; });
+            if (networkCandidates.length !== 1)
+                rej();
+            var networkToConnect = networkCandidates[0];
+            if (networkToConnect.password && networkToConnect.password !== password)
+                rej();
+            connectedNetworkSSID = networkToConnect.ssid;
+            res();
+        }, 250);
+    });
+};
+var remoteConnectToNetwork = function (ssid, password) {
+    return new Promise(function (res, rej) {
+        fetch("/network-connect", {
+            method: "POST",
+            body: JSON.stringify({ ssid: ssid, password: password })
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (response) {
+            if (response.result == 0)
+                res();
+            else
+                rej();
+        });
+    });
+};
+var connectToNetwork = REMOTE_DATA === "MOCK" ? fakeConnectToNetwork : remoteConnectToNetwork;
+var fakeDisconnectFromNetwork = function () {
+    return new Promise(function (res) {
+        setTimeout(function () {
+            connectedNetworkSSID = "";
+            res();
+        }, 250);
+    });
+};
+var remoteDisconnectFromNetwork = function () {
+    return new Promise(function (res, rej) {
+        fetch("/network-disconnect", {
+            method: "POST",
+            body: JSON.stringify({})
+        })
+            .then(function (response) { return response.json(); })
+            .then(function (response) {
+            if (response.result == 1)
+                res();
+            else
+                rej();
+        });
+    });
+};
+var disconnectFromNetwork = REMOTE_DATA === "MOCK" ? fakeDisconnectFromNetwork : remoteDisconnectFromNetwork;
+>>>>>>> 674e0bd4d269ff095e9909b1cfbff1b41c8417a9
 
 
 /***/ }),

@@ -11,11 +11,11 @@ interface Props{
     selectedMenuItem: string;
 }
 
-const getMenuItemClass = (menuItem: string, selectedMenuItem: string) => `${menuItem === selectedMenuItem ? 'active' : ''} menu-item material-icons`;
+const getMenuItemClass = (menuItem: string, selectedMenuItem: string) => `${menuItem === selectedMenuItem ? 'active' : ''} menu-item`;
 
 export const FooterComponent = ({onMenuItemSelect, selectedMenuItem}: Props) => (<footer>
-    <Icon icon={HomeIcon} className={getMenuItemClass(MenuItems.Dashboard, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.Dashboard)}></Icon>
-    <Icon icon={AlarmIcon} className={getMenuItemClass(MenuItems.AlarmConfig, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.AlarmConfig)}></Icon>
-    <Icon icon={WifiIcon} className={getMenuItemClass(MenuItems.NetworkConfig, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.NetworkConfig)}></Icon>
-    <Icon icon={BuildIcon} className={getMenuItemClass(MenuItems.BambooConfig, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.BambooConfig)}></Icon>
+    <Icon size={18} icon={HomeIcon} className={getMenuItemClass(MenuItems.Dashboard, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.Dashboard)}></Icon>
+    <Icon size={18} icon={AlarmIcon} className={getMenuItemClass(MenuItems.AlarmConfig, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.AlarmConfig)}></Icon>
+    <Icon size={18} icon={WifiIcon} className={getMenuItemClass(MenuItems.NetworkConfig, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.NetworkConfig)}></Icon>
+    <Icon size={18} icon={BuildIcon} className={getMenuItemClass(MenuItems.BambooConfig, selectedMenuItem)} onClick={() => onMenuItemSelect(MenuItems.BambooConfig)}></Icon>
 </footer>);

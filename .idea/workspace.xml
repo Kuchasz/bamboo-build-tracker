@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f53edfac-15c2-45e6-9279-7a418e4c218b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/apis/alarm.ts" afterPath="$PROJECT_DIR$/client/src/apis/alarm.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/bamboo-config.tsx" afterPath="$PROJECT_DIR$/client/src/components/bamboo-config.tsx" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/apis/networks.ts" afterPath="$PROJECT_DIR$/client/src/apis/networks.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -49,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="networks.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="networks.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/apis/networks.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="896">
-              <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+            <state relative-caret-position="123">
+              <caret line="135" column="86" lean-forward="false" selection-start-line="135" selection-start-column="86" selection-end-line="135" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -79,7 +78,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bamboo-config.tsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bamboo-config.tsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/bamboo-config.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="358">
@@ -163,12 +162,12 @@
         <option value="$PROJECT_DIR$/client/src/components/icon.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/alarm-config.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/alarm-config-item.tsx" />
-        <option value="$PROJECT_DIR$/client/src/apis/networks.ts" />
         <option value="$PROJECT_DIR$/client/src/components/drop-down.tsx" />
         <option value="$PROJECT_DIR$/client/src/apis/common.ts" />
         <option value="$PROJECT_DIR$/client/src/apis/bamboo.ts" />
         <option value="$PROJECT_DIR$/client/src/apis/alarm.ts" />
         <option value="$PROJECT_DIR$/client/src/components/bamboo-config.tsx" />
+        <option value="$PROJECT_DIR$/client/src/apis/networks.ts" />
       </list>
     </option>
   </component>
@@ -290,12 +289,12 @@
       <updated>1510432833397</updated>
       <workItem from="1510432834536" duration="7467000" />
       <workItem from="1510510704335" duration="23000" />
-      <workItem from="1512071547124" duration="2428000" />
+      <workItem from="1512071547124" duration="3038000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9918000" />
+    <option name="totallyTimeSpent" value="10528000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -666,14 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/apis/networks.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/components/main.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -708,6 +699,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/bamboo-config.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/apis/bamboo.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="293">
@@ -716,13 +717,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/bamboo-config.tsx">
+    <entry file="file://$PROJECT_DIR$/client/src/apis/networks.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="123">
+          <caret line="135" column="86" lean-forward="false" selection-start-line="135" selection-start-column="86" selection-end-line="135" selection-end-column="86" />
+          <folding />
         </state>
       </provider>
     </entry>

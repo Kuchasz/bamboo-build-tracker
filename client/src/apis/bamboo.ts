@@ -1,4 +1,6 @@
-const fakeBambooProjectConfig = {
+import {delay} from "./common";
+
+let fakeBambooProjectConfig = {
     url: 'bamboo.sample.net',
     login: 'john.doe',
     password: '******',
@@ -8,9 +10,9 @@ const fakeBambooProjectConfig = {
 };
 
 const projects = ['Aspen', 'Medivio', 'Silvermedic', 'WCA', 'KGHM'];
-const plans = ['Innergy-dev', 'Innergy-test', 'Innergy-beta'];
+const plans = ['dev', 'test', 'beta'];
 
-export interface BambooConfig{
+export interface BambooConfig {
     url: string;
     login: string;
     password: string;
@@ -19,43 +21,21 @@ export interface BambooConfig{
     plan: string;
 }
 
-export const connect = (bambooProjectUrl: string, login: string, password: string) => new Promise<void>((res, rej)=>{
-    setTimeout(() => {
-        if (fakeBambooProjectConfig.url !== bambooProjectUrl) rej();
-        if (fakeBambooProjectConfig.login !== login) rej();
-        if (fakeBambooProjectConfig.password !== password) rej();
-        res();
-    }, 250);
+export const connect = (bambooProjectUrl: string, login: string, password: string) => delay().then(() => new Promise<void>((res, rej) => {
+    if (fakeBambooProjectConfig.url !== bambooProjectUrl) rej();
+    if (fakeBambooProjectConfig.login !== login) rej();
+    if (fakeBambooProjectConfig.password !== password) rej();
+    res();
+}));
+
+export const selectProject = (project: string) => delay().then(() => {
+    fakeBambooProjectConfig = {...fakeBambooProjectConfig, project, plan: ''};
 });
 
-export const selectProject = (project: string) => new Promise<void>(res => {
-    setTimeout(() => {
-        fakeBambooProjectConfig.project = project;
-        if (project===project) res();
-    }, 250);
-});
+export const selectPlan = (plan: string) => delay().then(() => fakeBambooProjectConfig = {...fakeBambooProjectConfig, plan});
 
-export const selectPlan = (plan: string) => new Promise<void>(res => {
-    setTimeout(()=>{
-        fakeBambooProjectConfig.plan = plan;
-        if (plan === plan) res();
-    }, 250);
-});
+export const getBambooConfig = () => delay().then(() => ({...fakeBambooProjectConfig}));
 
-export const getBambooConfig = () => new Promise<BambooConfig>((res)=>{
-    setTimeout(()=>{
-        res({...fakeBambooProjectConfig});
-    }, 250);
-});
+export const getBambooProjects = () => delay().then(() => projects);
 
-export const getBambooProjects = () => new Promise<string[]>((res) => {
-    setTimeout(()=>{
-        res(projects)
-    }, 250);
-});
-
-export const getBambooPlans = (project: string) => new Promise<string[]>((res)=>{
-    setTimeout(()=>{
-        res(plans.filter(()=>project===project));
-    }, 250);
-});
+export const getBambooPlans = (project: string) => delay().then(() => plans.map(p => `${project}-${p}`));

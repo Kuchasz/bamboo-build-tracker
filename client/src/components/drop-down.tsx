@@ -7,7 +7,7 @@ type DropDownProps = {
   onChange: (option: string) => void;
 }
 export const DropDown = ({ options, selected, label, onChange }: DropDownProps) =>
-  <select onChange={e => onChange((e.target as any).value)} placeholder="">
+  <select onChange={e => onChange((e.target as HTMLSelectElement).value)} placeholder="">
     <option value="">{label}</option>
     {options.map(option =>
       <option

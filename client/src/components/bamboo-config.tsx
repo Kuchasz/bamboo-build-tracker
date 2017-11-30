@@ -59,11 +59,11 @@ export class BambooConfigComponent extends React.Component<Props, State> {
     };
 
     onSelectProject(project: string) {
-        selectProject(project).then(() => this._getBambooConfig);
+        selectProject(project).then(() => this._getBambooConfig());
     }
 
     onSelectPlan(plan: string) {
-        selectPlan(plan).then(() => this._getBambooConfig);
+        selectPlan(plan).then(() => this._getBambooConfig());
     }
 
     render() {

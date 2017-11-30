@@ -1,4 +1,6 @@
-const fakeAlarmConfig = {
+import {delay} from "./common";
+
+let fakeAlarmConfig = {
     lightState: true,
     signalState: false
 };
@@ -8,22 +10,14 @@ export interface AlarmConfig {
     signalState: boolean;
 }
 
-export const toggleLight = () => new Promise<void>(res => {
-    setTimeout(() => {
-        fakeAlarmConfig.lightState = !fakeAlarmConfig.lightState;
-        res();
-    }, 250);
+export const toggleLight = () => delay().then(() => fakeAlarmConfig = {
+    ...fakeAlarmConfig,
+    lightState: !fakeAlarmConfig.lightState
 });
 
-export const toggleSignal = () => new Promise<void>(res => {
-    setTimeout(() => {
-        fakeAlarmConfig.signalState = !fakeAlarmConfig.signalState;
-        res();
-    }, 250);
+export const toggleSignal = () => delay().then(() => fakeAlarmConfig = {
+    ...fakeAlarmConfig,
+    signalState: !fakeAlarmConfig.signalState
 });
 
-export const getAlarmConfig = () => new Promise<AlarmConfig>(res => {
-    setTimeout(()=>{
-        res({...fakeAlarmConfig})
-    }, 250);
-});
+export const getAlarmConfig = () => delay().then(() => ({...fakeAlarmConfig}));

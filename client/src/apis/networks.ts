@@ -20,61 +20,13 @@ export type NetworkConfig = {
 
 type ServerSideNetwork = Network & { password?: string };
 
-const fixedNetworks: ServerSideNetwork[] = [
-    {
-        ssid: "Nania",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Marvel",
-        isSecured: false
-    },
-    {
-        ssid: "DC Comics",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Squirle",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Marcus figo",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Tora tora",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Szakawina",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Merlin",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Hellfire",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "GoldeN",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Baoblir",
-        isSecured: false
-    }
-];
+const ssids = ["Niania", "Forfang AP", "K00by'acky", "Merlin CCP", "LoToS", "BerkSterm Cycles", "GOLD", "Kotlyn", "Zalandoo Net", "XONE.PS4", "Saturn Ennergy", "LoosLey", "DM.Jyoan", "Jeronimo", "LeaDPro WIFI"];
+
+const fixedNetworks: ServerSideNetwork[] = ssids.map(ssid => ({
+    ssid,
+    password: '1234',
+    isSecured: Math.random() > 0.33
+}));
 
 let connectedNetworkSSID: string = "";
 
@@ -110,7 +62,7 @@ const fakeConnectToNetwork = (ssid: string, password: string) => delay().then(()
         if (networkCandidates.length !== 1) rej();
 
         const networkToConnect = networkCandidates[0];
-        if (networkToConnect.password && networkToConnect.password !== password)
+        if (networkToConnect.isSecured && networkToConnect.password !== password)
             rej();
 
         connectedNetworkSSID = networkToConnect.ssid;

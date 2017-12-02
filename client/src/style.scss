@@ -115,9 +115,14 @@ hr {
     display: flex;
     flex-direction: column;
     .network-component {
-      padding: 1em;
+      cursor: pointer;
+      padding: .75em;
       min-width: 300px;
-      margin: 0.1em;
+      margin: 0.25em;
+      &:hover{
+        background: rgba(255, 255, 255, 0.35);
+      }
+      transition: all .25s;
       background: rgba(255, 255, 255, 0.25);
       .network-info{
         display: flex;
@@ -137,7 +142,8 @@ hr {
         }
       }
       .network-status{
-        opacity: .75;
+        font-size: .75em;
+        opacity: .5;
       }
     }
   }

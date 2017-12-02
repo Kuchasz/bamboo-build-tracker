@@ -34,7 +34,7 @@ export class NetworkComponent extends React.Component<Props, State> {
       onDisconnect
     } = this.props;
     return (
-      <span onClick={onSelect} className="network-component">
+      <span onClick={onSelect}  onBlur={()=>console.log('bluR!!')} className="network-component">
         <div className="network-info">
           <Icon size={18} icon={isSecured ? SecurecIcon : OpenIcon} />
           <div>

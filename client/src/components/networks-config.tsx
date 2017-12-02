@@ -1,6 +1,7 @@
 import React from 'preact';
 import {NetworkComponent} from "./network";
 import {Network, getNetworks, connectToNetwork, getNetworkConfig, disconnectFromNetwork} from "../apis/networks";
+import {addClickOutside} from "./click-outside";
 
 interface Props {
 
@@ -17,6 +18,8 @@ export class NetworksConfigComponent extends React.Component<Props, State> {
     constructor() {
         super();
         this.state = {
+            connectedNetwork: undefined,
+            selectedNetwork: undefined,
             networks: []
         };
     }
@@ -34,6 +37,10 @@ export class NetworksConfigComponent extends React.Component<Props, State> {
         this.setState({selectedNetwork: network.ssid});
     }
 
+    unselectNetwork() {
+        this.setState({selectedNetwork: undefined});
+    }
+
     connectToNetwork(password: string) {
         this.state.selectedNetwork && connectToNetwork(this.state.selectedNetwork, password).then(() => this.setState({
             connectedNetwork: this.state.selectedNetwork,
@@ -49,10 +56,11 @@ export class NetworksConfigComponent extends React.Component<Props, State> {
     }
 
     render() {
+        const ExtendedNetworkComponent = addClickOutside(NetworkComponent);
         return (<div className="networks-config-component">
             <div className="networks-list">
                 {this.state.networks ? this.state.networks.map(n => (
-                    <NetworkComponent
+                    <ExtendedNetworkComponent
                         isExpanded={n.ssid === this.state.selectedNetwork}
                         onConnect={(password: string) => this.connectToNetwork(password)}
                         onDisconnect={() => this.disconnectFromNetwork()}

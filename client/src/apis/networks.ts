@@ -78,7 +78,7 @@ const fixedNetworks: ServerSideNetwork[] = [
 
 let connectedNetworkSSID: string = "";
 
-const getFakeNetworks = () => delay().then(() => fixedNetworks);
+const getFakeNetworks = () => delay().then(() => [...fixedNetworks]);
 
 const getRemoteNetworks = () =>
     new Promise<Network[]>(result => {
@@ -125,7 +125,7 @@ const remoteConnectToNetwork = (ssid: string, password: string) =>
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result == 0) res();
+                if (response.result === 0) res();
                 else rej();
             });
     });
@@ -143,7 +143,7 @@ const remoteDisconnectFromNetwork = () =>
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result == 1) res();
+                if (response.result === 1) res();
                 else rej();
             });
     });

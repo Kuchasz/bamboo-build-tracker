@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1046,16 +1046,44 @@ var preact = {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Icon; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
+
+var Icon = function (_a) {
+    var icon = _a.icon, className = _a.className, onClick = _a.onClick, size = _a.size;
+    return (__WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */]("i", { onClick: onClick, className: className },
+        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */]("svg", { fill: "#000000", height: size, width: size, viewBox: "0 0 24 24", dangerouslySetInnerHTML: { __html: icon }, xmlns: "http://www.w3.org/2000/svg" })));
+};
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return delay; });
+var delay = function () { return new Promise(function (res) {
+    setTimeout(function () {
+        res();
+    }, 250);
+}); };
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MenuItems; });
 /* unused harmony export getComponentFromMenuItem */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MainComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__header_component__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__footer_component__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alarm_config__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__bamboo_config__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__networks_config__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__header_component__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__footer_component__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alarm_config__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__bamboo_config__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__networks_config__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard__ = __webpack_require__(30);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1115,21 +1143,7 @@ var MainComponent = /** @class */ (function (_super) {
 
 
 /***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Icon; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-
-var Icon = function (_a) {
-    var icon = _a.icon, className = _a.className, onClick = _a.onClick;
-    return (__WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */]("i", { onClick: onClick, className: className, dangerouslySetInnerHTML: { __html: icon } }));
-};
-
-
-/***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1138,218 +1152,52 @@ var Icon = function (_a) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getNetworkConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return connectToNetwork; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return disconnectFromNetwork; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(2);
+
 var NetworkConnectionStatus;
 (function (NetworkConnectionStatus) {
     NetworkConnectionStatus[NetworkConnectionStatus["Disconnected"] = 0] = "Disconnected";
     NetworkConnectionStatus[NetworkConnectionStatus["Connected"] = 1] = "Connected";
 })(NetworkConnectionStatus || (NetworkConnectionStatus = {}));
-<<<<<<< HEAD
-// type ServerSideNetwork = Network & { password?: string };
-// const fixedNetworks: ServerSideNetwork[] = [{
-//     ssid: 'Nania',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Marvel',
-//     isSecured: false
-// }, {
-//     ssid: 'DC Comics',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Squirle',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Marcus figo',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Tora tora',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Szakawina',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Merlin',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Hellfire',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'GoldeN',
-//     isSecured: true,
-//     password: '1234'
-// }, {
-//     ssid: 'Baoblir',
-//     isSecured: false
-// }];
-// let connectedNetworkSSID: string;
-// export const getNetworks = () => {
-//     return new Promise<Network[]>((res: ((value: Network[]) => void)) => {
-//         setTimeout(() => res(fixedNetworks), 250);
-//     });
-// };
-var getNetworks = function () { return new Promise(function (result) {
-    fetch('/networks').then(function (res) { return result(res.json()); });
-}); };
-// export const getNetworkConfig = () => new Promise<NetworkConfig>(res=>{
-//     setTimeout(()=>{
-//         res({
-//             ssid: 'Szakawina',
-//             password: Array.from(Array(4)).reduce(s => `${s}*`, ''),
-//             status: NetworkConnectionStatus.Connected,
-//             ip: '10.110.12.12',
-//             mac: 'a4:17:31:4b:97:f1'
-//         });
-//     }, 250);
-// });
-var getNetworkConfig = function () { return new Promise(function (result) {
-    fetch('/network-config').then(function (res) { return result(res.json()); });
-}); };
-// export const connectToNetwork = (ssid: string, password: string) => new Promise((res, rej) => {
-//     setTimeout(() => {
-//         const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
-//         if (networkCandidates.length !== 1) rej();
-//
-//         const networkToConnect = networkCandidates[0];
-//         if (networkToConnect.password && networkToConnect.password !== password) rej();
-//
-//         // connectedNetworkSSID = networkToConnect.ssid;
-//         res();
-//     }, 250);
-// });
-var connectToNetwork = function (ssid, password) { return new Promise(function (res, rej) {
-    fetch('/network-connect', {
-        method: "POST",
-        body: JSON.stringify({ ssid: ssid, password: password })
-    }).then(function (response) { return response.json(); }).then(function (response) {
-        if (response.result == 0)
-            res();
-        else
-            rej();
-    });
-}); };
-// export const disconnectFromNetwork = () => new Promise((res) => {
-//     setTimeout(() => res(), 250);
-// });
-var disconnectFromNetwork = function () { return new Promise(function (res, rej) {
-    fetch('/network-disconnect', {
-        method: "POST",
-        body: JSON.stringify({})
-    })
-        .then(function (response) { return response.json(); }).then(function (response) {
-        if (response.result == 1)
-            res();
-        else
-            rej();
-    });
-}); };
-=======
-var fixedNetworks = [
-    {
-        ssid: "Nania",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Marvel",
-        isSecured: false
-    },
-    {
-        ssid: "DC Comics",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Squirle",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Marcus figo",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Tora tora",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Szakawina",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Merlin",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Hellfire",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "GoldeN",
-        isSecured: true,
-        password: "1234"
-    },
-    {
-        ssid: "Baoblir",
-        isSecured: false
-    }
-];
+var ssids = ["Niania", "Forfang AP", "K00by'acky", "Merlin CCP", "LoToS", "BerkSterm Cycles", "GOLD", "Kotlyn", "Zalandoo Net", "XONE.PS4", "Saturn Ennergy", "LoosLey", "DM.Jyoan", "Jeronimo", "LeaDPro WIFI"];
+var fixedNetworks = ssids.map(function (ssid) { return ({
+    ssid: ssid,
+    password: '1234',
+    isSecured: Math.random() > 0.33
+}); });
 var connectedNetworkSSID = "";
-var getFakeNetworks = function () {
-    return new Promise(function (res) {
-        setTimeout(function () { return res(fixedNetworks); }, 250);
-    });
-};
+var getFakeNetworks = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return fixedNetworks.slice(); }); };
 var getRemoteNetworks = function () {
     return new Promise(function (result) {
         fetch("/networks").then(function (res) { return result(res.json()); });
     });
 };
-var getNetworks = REMOTE_DATA === "MOCK" ? getFakeNetworks : getRemoteNetworks;
-var getFakeNetworkConfig = function () {
-    return new Promise(function (res) {
-        setTimeout(function () {
-            res({
-                ssid: connectedNetworkSSID,
-                password: Array.from(Array(4)).reduce(function (s) { return s + "*"; }, ""),
-                status: NetworkConnectionStatus.Connected,
-                ip: "10.110.12.12",
-                mac: "a4:17:31:4b:97:f1"
-            });
-        }, 250);
-    });
-};
+var getNetworks =  false ? getFakeNetworks : getRemoteNetworks;
+var getFakeNetworkConfig = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return ({
+    ssid: connectedNetworkSSID,
+    password: Array.from(Array(4)).reduce(function (s) { return s + "*"; }, ""),
+    status: NetworkConnectionStatus.Connected,
+    ip: "10.110.12.12",
+    mac: "a4:17:31:4b:97:f1"
+}); }); };
 var getRemoteNetworkConfig = function () {
     return new Promise(function (result) {
         fetch("/network-config").then(function (res) { return result(res.json()); });
     });
 };
-var getNetworkConfig = REMOTE_DATA === "MOCK" ? getFakeNetworkConfig : getRemoteNetworkConfig;
-var fakeConnectToNetwork = function (ssid, password) {
+var getNetworkConfig =  false ? getFakeNetworkConfig : getRemoteNetworkConfig;
+var fakeConnectToNetwork = function (ssid, password) { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () {
     return new Promise(function (res, rej) {
-        setTimeout(function () {
-            var networkCandidates = fixedNetworks.filter(function (n) { return n.ssid === ssid; });
-            if (networkCandidates.length !== 1)
-                rej();
-            var networkToConnect = networkCandidates[0];
-            if (networkToConnect.password && networkToConnect.password !== password)
-                rej();
-            connectedNetworkSSID = networkToConnect.ssid;
-            res();
-        }, 250);
+        var networkCandidates = fixedNetworks.filter(function (n) { return n.ssid === ssid; });
+        if (networkCandidates.length !== 1)
+            rej();
+        var networkToConnect = networkCandidates[0];
+        if (networkToConnect.isSecured && networkToConnect.password !== password)
+            rej();
+        connectedNetworkSSID = networkToConnect.ssid;
+        res();
     });
-};
+}); };
 var remoteConnectToNetwork = function (ssid, password) {
     return new Promise(function (res, rej) {
         fetch("/network-connect", {
@@ -1358,22 +1206,15 @@ var remoteConnectToNetwork = function (ssid, password) {
         })
             .then(function (response) { return response.json(); })
             .then(function (response) {
-            if (response.result == 0)
+            if (response.result === 0)
                 res();
             else
                 rej();
         });
     });
 };
-var connectToNetwork = REMOTE_DATA === "MOCK" ? fakeConnectToNetwork : remoteConnectToNetwork;
-var fakeDisconnectFromNetwork = function () {
-    return new Promise(function (res) {
-        setTimeout(function () {
-            connectedNetworkSSID = "";
-            res();
-        }, 250);
-    });
-};
+var connectToNetwork =  false ? fakeConnectToNetwork : remoteConnectToNetwork;
+var fakeDisconnectFromNetwork = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return connectedNetworkSSID = ""; }); };
 var remoteDisconnectFromNetwork = function () {
     return new Promise(function (res, rej) {
         fetch("/network-disconnect", {
@@ -1382,27 +1223,26 @@ var remoteDisconnectFromNetwork = function () {
         })
             .then(function (response) { return response.json(); })
             .then(function (response) {
-            if (response.result == 1)
+            if (response.result === 1)
                 res();
             else
                 rej();
         });
     });
 };
-var disconnectFromNetwork = REMOTE_DATA === "MOCK" ? fakeDisconnectFromNetwork : remoteDisconnectFromNetwork;
->>>>>>> 674e0bd4d269ff095e9909b1cfbff1b41c8417a9
+var disconnectFromNetwork =  false ? fakeDisconnectFromNetwork : remoteDisconnectFromNetwork;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__style_scss__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__style_scss__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__style_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_main__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_main__ = __webpack_require__(3);
 
 
 
@@ -1411,13 +1251,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0_preact__["c" /* render */])(__WEBPACK_IMPORTE
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(6);
+var content = __webpack_require__(7);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -1425,7 +1265,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(8)(content, options);
+var update = __webpack_require__(9)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -1442,21 +1282,21 @@ if(false) {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(undefined);
+exports = module.exports = __webpack_require__(8)(undefined);
 // imports
 
 
 // module
-exports.push([module.i, "html {\n  height: 100%; }\n\nbody {\n  height: 100%;\n  margin: 0em;\n  color: white;\n  background: -webkit-gradient(linear, left top, left bottom, from(#7374E4), to(#864B9C));\n  background: linear-gradient(#7374E4, #864B9C);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow-y: hidden;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  height: 100%; }\n  body * {\n    font-family: 'Roboto', sans-serif; }\n\nheader {\n  -ms-flex-item-align: center;\n      align-self: center;\n  font-weight: 600;\n  font-size: 1.5em;\n  margin: 1em;\n  cursor: pointer; }\n  header span {\n    margin-left: 1em;\n    font-weight: lighter;\n    font-size: 0.5em;\n    letter-spacing: 0.2em;\n    opacity: 0.5;\n    text-transform: uppercase;\n    -webkit-transition: all 0.25s;\n    transition: all 0.25s; }\n  header:hover span {\n    opacity: 1; }\n\n.main-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1; }\n\nfooter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  background: white;\n  -webkit-filter: drop-shadow(0px 0px 5px black);\n          filter: drop-shadow(0px 0px 5px black); }\n\n.menu-item {\n  padding: 0.75em 1em;\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer;\n  color: rgba(134, 75, 156, 0.5); }\n  .menu-item svg {\n    fill: #864B9C; }\n  .menu-item:hover {\n    background: #864B9C; }\n    .menu-item:hover svg {\n      fill: white; }\n  .menu-item.active {\n    color: #864B9C; }\n    .menu-item.active:hover {\n      color: white; }\n\n.input-group label {\n  text-transform: uppercase;\n  display: block;\n  font-size: 0.65em;\n  font-weight: 500;\n  opacity: 0.5; }\n\n.input-group input {\n  background: transparent;\n  border-width: 0px 0px 1px 0px;\n  color: white;\n  border-color: rgba(255, 255, 255, 0.5);\n  -webkit-transition: border-color 0.25s;\n  transition: border-color 0.25s; }\n  .input-group input:focus {\n    border-color: white;\n    outline-color: transparent; }\n\nsection {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-item-align: stretch;\n      align-self: stretch;\n  overflow: auto; }\n\nhr {\n  margin: 3em 0em; }\n\n.networks-config-component .networks-list {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .networks-config-component .networks-list .network-component {\n    padding: 1em;\n    min-width: 300px;\n    margin: 0.1em;\n    background: rgba(255, 255, 255, 0.25); }\n    .networks-config-component .networks-list .network-component .network-info {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .networks-config-component .networks-list .network-component .network-info > div {\n        padding: 0em 0.5em; }\n    .networks-config-component .networks-list .network-component .network-actions > div {\n      margin-top: 0.5em;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n    .networks-config-component .networks-list .network-component .network-status {\n      opacity: .75; }\n\nbutton {\n  padding: 0.6em 0.75em;\n  border: none;\n  background: white;\n  text-transform: uppercase;\n  font-weight: bold;\n  -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n          filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer; }\n  button:hover {\n    -webkit-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75));\n            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75)); }\n\n.alarm-config-item-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 1.5em;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  cursor: pointer; }\n  .alarm-config-item-component > i {\n    font-size: 3em; }\n    .alarm-config-item-component > i.enabled {\n      opacity: 1; }\n    .alarm-config-item-component > i.disabled {\n      opacity: 0.6; }\n  .alarm-config-item-component > label {\n    cursor: pointer;\n    text-transform: uppercase;\n    opacity: 0.6;\n    font-weight: bold;\n    letter-spacing: 0.1em;\n    font-size: 0.75em;\n    display: block;\n    -webkit-transition: opacity 0.25s;\n    transition: opacity 0.25s; }\n  .alarm-config-item-component:hover > label {\n    opacity: 1; }\n\nbody select {\n  display: block;\n  width: 100%;\n  padding: 10px 70px 10px 13px !important;\n  border: 1px solid #e3e3e3;\n  background-color: #fff;\n  color: #444444;\n  font-size: 0.75em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  /* this is must */ }\n", ""]);
+exports.push([module.i, "html {\n  height: 100%; }\n\nbody {\n  height: 100%;\n  margin: 0em;\n  color: white;\n  background: -webkit-gradient(linear, left top, left bottom, from(#7374E4), to(#864B9C));\n  background: linear-gradient(#7374E4, #864B9C);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow-y: hidden;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  height: 100%; }\n  body * {\n    font-family: 'Roboto', sans-serif; }\n\nheader {\n  -ms-flex-item-align: center;\n      align-self: center;\n  font-weight: 600;\n  font-size: 1.5em;\n  margin: 1em;\n  cursor: pointer; }\n  header span {\n    margin-left: 1em;\n    font-weight: lighter;\n    font-size: 0.5em;\n    letter-spacing: 0.2em;\n    opacity: 0.5;\n    text-transform: uppercase;\n    -webkit-transition: all 0.25s;\n    transition: all 0.25s; }\n  header:hover span {\n    opacity: 1; }\n\n.main-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1; }\n\nfooter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  background: white;\n  -webkit-filter: drop-shadow(0px 0px 5px black);\n          filter: drop-shadow(0px 0px 5px black); }\n\n.menu-item {\n  padding: 0.75em 1em;\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer;\n  color: rgba(134, 75, 156, 0.5); }\n  .menu-item svg {\n    fill: #864B9C; }\n  .menu-item:hover {\n    background: #864B9C; }\n    .menu-item:hover svg {\n      fill: white; }\n  .menu-item.active {\n    color: #864B9C; }\n    .menu-item.active:hover {\n      color: white; }\n\n.input-group label {\n  text-transform: uppercase;\n  display: block;\n  font-size: 0.65em;\n  font-weight: 500;\n  opacity: 0.5; }\n\n.input-group input {\n  background: transparent;\n  border-width: 0px 0px 1px 0px;\n  color: white;\n  border-color: rgba(255, 255, 255, 0.5);\n  -webkit-transition: border-color 0.25s;\n  transition: border-color 0.25s; }\n  .input-group input:focus {\n    border-color: white;\n    outline-color: transparent; }\n\nsection {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-item-align: stretch;\n      align-self: stretch;\n  overflow: auto; }\n\nhr {\n  margin: 3em 0em; }\n\n.networks-config-component .networks-list {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .networks-config-component .networks-list .network-component {\n    cursor: pointer;\n    padding: .75em;\n    min-width: 300px;\n    margin: 0.25em;\n    -webkit-transition: all .25s;\n    transition: all .25s;\n    background: rgba(255, 255, 255, 0.25); }\n    .networks-config-component .networks-list .network-component:hover {\n      background: rgba(255, 255, 255, 0.35); }\n    .networks-config-component .networks-list .network-component .network-info {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .networks-config-component .networks-list .network-component .network-info svg {\n        fill: white; }\n      .networks-config-component .networks-list .network-component .network-info > div {\n        padding: 0em 0.5em; }\n    .networks-config-component .networks-list .network-component .network-actions > div {\n      margin-top: 0.5em;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n    .networks-config-component .networks-list .network-component .network-status {\n      font-size: .75em;\n      opacity: .5; }\n\nbutton {\n  padding: 0.6em 0.75em;\n  border: none;\n  background: white;\n  text-transform: uppercase;\n  font-weight: bold;\n  -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n          filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer; }\n  button:hover {\n    -webkit-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75));\n            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75)); }\n\n.alarm-config-item-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 1.5em;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  cursor: pointer; }\n  .alarm-config-item-component > i {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    font-size: 3em; }\n    .alarm-config-item-component > i svg {\n      fill: white; }\n    .alarm-config-item-component > i.enabled {\n      opacity: 1; }\n    .alarm-config-item-component > i.disabled {\n      opacity: 0.6; }\n  .alarm-config-item-component > label {\n    cursor: pointer;\n    text-transform: uppercase;\n    opacity: 0.6;\n    font-weight: bold;\n    letter-spacing: 0.1em;\n    font-size: 0.75em;\n    display: block;\n    -webkit-transition: opacity 0.25s;\n    transition: opacity 0.25s; }\n  .alarm-config-item-component:hover > label {\n    opacity: 1; }\n\nbody select {\n  display: block;\n  width: 100%;\n  padding: 10px 70px 10px 13px !important;\n  border: 1px solid #e3e3e3;\n  background-color: #fff;\n  color: #444444;\n  font-size: 0.75em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  /* this is must */ }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 /*
@@ -1538,7 +1378,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -1584,7 +1424,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(9);
+var	fixUrls = __webpack_require__(10);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -1897,7 +1737,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 
@@ -1992,7 +1832,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2005,65 +1845,65 @@ var HeaderComponent = function () { return (__WEBPACK_IMPORTED_MODULE_0_preact__
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FooterComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icon__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__icon__ = __webpack_require__(1);
 
 
 
-var AlarmIcon = __webpack_require__(12);
-var BuildIcon = __webpack_require__(13);
-var HomeIcon = __webpack_require__(14);
-var WifiIcon = __webpack_require__(15);
-var getMenuItemClass = function (menuItem, selectedMenuItem) { return (menuItem === selectedMenuItem ? 'active' : '') + " menu-item material-icons"; };
+var AlarmIcon = __webpack_require__(13);
+var BuildIcon = __webpack_require__(14);
+var HomeIcon = __webpack_require__(15);
+var WifiIcon = __webpack_require__(16);
+var getMenuItemClass = function (menuItem, selectedMenuItem) { return (menuItem === selectedMenuItem ? 'active' : '') + " menu-item"; };
 var FooterComponent = function (_a) {
     var onMenuItemSelect = _a.onMenuItemSelect, selectedMenuItem = _a.selectedMenuItem;
     return (__WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */]("footer", null,
-        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { icon: HomeIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].Dashboard, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].Dashboard); } }),
-        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { icon: AlarmIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].AlarmConfig, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].AlarmConfig); } }),
-        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { icon: WifiIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].NetworkConfig, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].NetworkConfig); } }),
-        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { icon: BuildIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].BambooConfig, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].BambooConfig); } })));
+        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { size: 18, icon: HomeIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].Dashboard, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].Dashboard); } }),
+        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { size: 18, icon: AlarmIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].AlarmConfig, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].AlarmConfig); } }),
+        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { size: 18, icon: WifiIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].NetworkConfig, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].NetworkConfig); } }),
+        __WEBPACK_IMPORTED_MODULE_0_preact__["a" /* createElement */](__WEBPACK_IMPORTED_MODULE_2__icon__["a" /* Icon */], { size: 18, icon: BuildIcon, className: getMenuItemClass(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].BambooConfig, selectedMenuItem), onClick: function () { return onMenuItemSelect(__WEBPACK_IMPORTED_MODULE_1__main__["b" /* MenuItems */].BambooConfig); } })));
 };
 
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports) {
-
-module.exports = "<svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n    <path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/>\n</svg>"
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = "<svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path clip-rule=\"evenodd\" d=\"M0 0h24v24H0z\" fill=\"none\"/>\n    <path d=\"M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z\"/>\n</svg>"
+module.exports = "    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\r\n    <path d=\"M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z\"/>"
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = "<svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\"/>\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n</svg>"
+module.exports = "\r\n    <path clip-rule=\"evenodd\" d=\"M0 0h24v24H0z\" fill=\"none\"/>\r\n    <path d=\"M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z\"/>\r\n"
 
 /***/ }),
 /* 15 */
 /***/ (function(module, exports) {
 
-module.exports = "<svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n    <path d=\"M12 11c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 2c0-3.31-2.69-6-6-6s-6 2.69-6 6c0 2.22 1.21 4.15 3 5.19l1-1.74c-1.19-.7-2-1.97-2-3.45 0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.48-.81 2.75-2 3.45l1 1.74c1.79-1.04 3-2.97 3-5.19zM12 3C6.48 3 2 7.48 2 13c0 3.7 2.01 6.92 4.99 8.65l1-1.73C5.61 18.53 4 15.96 4 13c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.96-1.61 5.53-4 6.92l1 1.73c2.99-1.73 5-4.95 5-8.65 0-5.52-4.48-10-10-10z\"/>\n</svg>"
+module.exports = "\r\n    <path d=\"M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z\"/>\r\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\r\n"
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\r\n    <path d=\"M12 11c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 2c0-3.31-2.69-6-6-6s-6 2.69-6 6c0 2.22 1.21 4.15 3 5.19l1-1.74c-1.19-.7-2-1.97-2-3.45 0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.48-.81 2.75-2 3.45l1 1.74c1.79-1.04 3-2.97 3-5.19zM12 3C6.48 3 2 7.48 2 13c0 3.7 2.01 6.92 4.99 8.65l1-1.73C5.61 18.53 4 15.96 4 13c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.96-1.61 5.53-4 6.92l1 1.73c2.99-1.73 5-4.95 5-8.65 0-5.52-4.48-10-10-10z\"/>\r\n"
+
+/***/ }),
+/* 17 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlarmConfigComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__alarm_config_item__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__apis_alarm__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__alarm_config_item__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__apis_alarm__ = __webpack_require__(19);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2085,8 +1925,8 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
 
 
 
-var LightBulb = __webpack_require__(19);
-var VolumeUp = __webpack_require__(20);
+var LightBulb = __webpack_require__(20);
+var VolumeUp = __webpack_require__(21);
 var AlarmConfigComponent = /** @class */ (function (_super) {
     __extends(AlarmConfigComponent, _super);
     function AlarmConfigComponent() {
@@ -2120,33 +1960,33 @@ var AlarmConfigComponent = /** @class */ (function (_super) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlarmConfigItemComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon__ = __webpack_require__(1);
 
 
 var getClassName = function (state) { return "material-icons " + (state ? 'enabled' : 'disabled'); };
 var AlarmConfigItemComponent = function (_a) {
     var icon = _a.icon, label = _a.label, state = _a.state, onClick = _a.onClick;
     return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { onClick: onClick, className: 'alarm-config-item-component' },
-        __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("i", { className: getClassName(state) }, icon),
-        __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_1__icon__["a" /* Icon */], { icon: icon, className: getClassName(state) }),
+        __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_1__icon__["a" /* Icon */], { size: 24, icon: icon, className: getClassName(state) }),
         __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("label", null, label)));
 };
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return toggleLight; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return toggleSignal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getAlarmConfig; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(2);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -2155,51 +1995,38 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 var fakeAlarmConfig = {
     lightState: true,
     signalState: false
 };
-var toggleLight = function () { return new Promise(function (res) {
-    setTimeout(function () {
-        fakeAlarmConfig.lightState = !fakeAlarmConfig.lightState;
-        res();
-    }, 250);
-}); };
-var toggleSignal = function () { return new Promise(function (res) {
-    setTimeout(function () {
-        fakeAlarmConfig.signalState = !fakeAlarmConfig.signalState;
-        res();
-    }, 250);
-}); };
-var getAlarmConfig = function () { return new Promise(function (res) {
-    setTimeout(function () {
-        res(__assign({}, fakeAlarmConfig));
-    }, 250);
-}); };
+var toggleLight = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return fakeAlarmConfig = __assign({}, fakeAlarmConfig, { lightState: !fakeAlarmConfig.lightState }); }); };
+var toggleSignal = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return fakeAlarmConfig = __assign({}, fakeAlarmConfig, { signalState: !fakeAlarmConfig.signalState }); }); };
+var getAlarmConfig = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return (__assign({}, fakeAlarmConfig)); }); };
 
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports) {
-
-module.exports = "<svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\">\n    <defs>\n        <path d=\"M0 0h24v24H0V0z\" id=\"a\"/>\n    </defs>\n    <clipPath id=\"b\">\n        <use overflow=\"visible\" xlink:href=\"#a\"/>\n    </clipPath>\n    <path clip-path=\"url(#b)\" d=\"M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z\"/>\n</svg>"
 
 /***/ }),
 /* 20 */
 /***/ (function(module, exports) {
 
-module.exports = "<svg fill=\"#000000\" height=\"18\" viewBox=\"0 0 24 24\" width=\"18\" xmlns=\"http://www.w3.org/2000/svg\">\n    <path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/>\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\n</svg>"
+module.exports = "    <defs>\r\n        <path d=\"M0 0h24v24H0V0z\" id=\"a\"/>\r\n    </defs>\r\n    <clipPath id=\"b\">\r\n        <use overflow=\"visible\" xlink:href=\"#a\"/>\r\n    </clipPath>\r\n    <path clip-path=\"url(#b)\" d=\"M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6C7.8 12.16 7 10.63 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z\"/>\r\n"
 
 /***/ }),
 /* 21 */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n    <path d=\"M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z\"/>\r\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>\r\n"
+
+/***/ }),
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BambooConfigComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__apis_networks__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__apis_bamboo__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__drop_down__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__apis_networks__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__apis_bamboo__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__drop_down__ = __webpack_require__(24);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2217,32 +2044,7 @@ var __extends = (this && this.__extends) || (function () {
 var BambooConfigComponent = /** @class */ (function (_super) {
     __extends(BambooConfigComponent, _super);
     function BambooConfigComponent() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this._getBambooConfig = function () {
-            Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["a" /* getBambooConfig */])()
-                .then(function (bambooConfig) {
-                _this.setState({ bambooConfig: bambooConfig });
-                _this.bambooServerInput.value = bambooConfig.url;
-                _this.usernameInput.value = bambooConfig.login;
-                _this.passwordInput.value = bambooConfig.password;
-                (bambooConfig.connected) &&
-                    Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["c" /* getBambooProjects */])().then(function (projects) {
-                        _this.setState({ projects: projects });
-                    });
-                (bambooConfig.connected && bambooConfig.project) &&
-                    Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["b" /* getBambooPlans */])(bambooConfig.project).then(function (plans) {
-                        _this.setState({ plans: plans });
-                    });
-            });
-        };
-        _this.onSelectProject = function (project) {
-            Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["e" /* selectProject */])(project);
-            _this._getBambooConfig();
-        };
-        _this.onSelectPlan = function (plan) {
-            Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["d" /* selectPlan */])(plan);
-        };
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     BambooConfigComponent.prototype.componentDidMount = function () {
         var _this = this;
@@ -2252,7 +2054,34 @@ var BambooConfigComponent = /** @class */ (function (_super) {
             return (networkConfig.status !== __WEBPACK_IMPORTED_MODULE_1__apis_networks__["a" /* NetworkConnectionStatus */].Connected)
                 ? Promise.reject(undefined)
                 : Promise.resolve();
-        }).then(this._getBambooConfig);
+        }).then(function () { return _this._getBambooConfig(); });
+    };
+    BambooConfigComponent.prototype._getBambooConfig = function () {
+        var _this = this;
+        Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["a" /* getBambooConfig */])()
+            .then(function (bambooConfig) {
+            _this.setState({ bambooConfig: bambooConfig });
+            _this.bambooServerInput.value = bambooConfig.url;
+            _this.usernameInput.value = bambooConfig.login;
+            _this.passwordInput.value = bambooConfig.password;
+            (bambooConfig.connected) &&
+                Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["c" /* getBambooProjects */])().then(function (projects) {
+                    _this.setState({ projects: projects });
+                });
+            (bambooConfig.connected && bambooConfig.project) &&
+                Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["b" /* getBambooPlans */])(bambooConfig.project).then(function (plans) {
+                    _this.setState({ plans: plans });
+                });
+        });
+    };
+    ;
+    BambooConfigComponent.prototype.onSelectProject = function (project) {
+        var _this = this;
+        Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["e" /* selectProject */])(project).then(function () { return _this._getBambooConfig(); });
+    };
+    BambooConfigComponent.prototype.onSelectPlan = function (plan) {
+        var _this = this;
+        Object(__WEBPACK_IMPORTED_MODULE_2__apis_bamboo__["d" /* selectPlan */])(plan).then(function () { return _this._getBambooConfig(); });
     };
     BambooConfigComponent.prototype.render = function () {
         var _this = this;
@@ -2269,21 +2098,27 @@ var BambooConfigComponent = /** @class */ (function (_super) {
                 : null,
             __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "input-group" },
                 __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("label", null, "Bamboo server url"),
-                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { ref: function (el) { _this.bambooServerInput = el; } })),
+                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { ref: function (el) {
+                        _this.bambooServerInput = el;
+                    } })),
             __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "input-group" },
                 __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("label", null, "Username"),
-                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { ref: function (el) { _this.usernameInput = el; } })),
+                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { ref: function (el) {
+                        _this.usernameInput = el;
+                    } })),
             __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "input-group" },
                 __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("label", null, "Password"),
-                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { ref: function (el) { _this.passwordInput = el; } })),
+                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { ref: function (el) {
+                        _this.passwordInput = el;
+                    } })),
             __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null,
                 __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("button", null, "Login")),
             bambooConfig &&
                 __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null,
                     projects &&
-                        __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_3__drop_down__["a" /* DropDown */], { label: "Select project", options: projects, selected: bambooConfig.project, onChange: this.onSelectProject }),
+                        __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_3__drop_down__["a" /* DropDown */], { label: "Select project", options: projects, selected: bambooConfig.project, onChange: function (project) { return _this.onSelectProject(project); } }),
                     plans && bambooConfig.project &&
-                        __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_3__drop_down__["a" /* DropDown */], { onChange: this.onSelectPlan, label: "Select plan", options: plans, selected: bambooConfig.plan }))));
+                        __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_3__drop_down__["a" /* DropDown */], { onChange: function (plan) { return _this.onSelectPlan(plan); }, label: "Select plan", options: plans, selected: bambooConfig.plan }))));
     };
     return BambooConfigComponent;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].Component));
@@ -2291,7 +2126,7 @@ var BambooConfigComponent = /** @class */ (function (_super) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2301,6 +2136,7 @@ var BambooConfigComponent = /** @class */ (function (_super) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getBambooConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getBambooProjects; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getBambooPlans; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(2);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -2309,6 +2145,7 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     }
     return t;
 };
+
 var fakeBambooProjectConfig = {
     url: 'bamboo.sample.net',
     login: 'john.doe',
@@ -2318,51 +2155,27 @@ var fakeBambooProjectConfig = {
     plan: ''
 };
 var projects = ['Aspen', 'Medivio', 'Silvermedic', 'WCA', 'KGHM'];
-var plans = ['Innergy-dev', 'Innergy-test', 'Innergy-beta'];
-var connect = function (bambooProjectUrl, login, password) { return new Promise(function (res, rej) {
-    setTimeout(function () {
-        if (fakeBambooProjectConfig.url !== bambooProjectUrl)
-            rej();
-        if (fakeBambooProjectConfig.login !== login)
-            rej();
-        if (fakeBambooProjectConfig.password !== password)
-            rej();
-        res();
-    }, 250);
+var plans = ['dev', 'test', 'beta'];
+var connect = function (bambooProjectUrl, login, password) { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return new Promise(function (res, rej) {
+    if (fakeBambooProjectConfig.url !== bambooProjectUrl)
+        rej();
+    if (fakeBambooProjectConfig.login !== login)
+        rej();
+    if (fakeBambooProjectConfig.password !== password)
+        rej();
+    res();
+}); }); };
+var selectProject = function (project) { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () {
+    fakeBambooProjectConfig = __assign({}, fakeBambooProjectConfig, { project: project, plan: '' });
 }); };
-var selectProject = function (project) { return new Promise(function (res) {
-    setTimeout(function () {
-        fakeBambooProjectConfig.project = project;
-        if (project === project)
-            res();
-    }, 250);
-}); };
-var selectPlan = function (plan) { return new Promise(function (res) {
-    setTimeout(function () {
-        fakeBambooProjectConfig.plan = plan;
-        if (plan === plan)
-            res();
-    }, 250);
-}); };
-var getBambooConfig = function () { return new Promise(function (res) {
-    setTimeout(function () {
-        res(__assign({}, fakeBambooProjectConfig));
-    }, 250);
-}); };
-var getBambooProjects = function () { return new Promise(function (res) {
-    setTimeout(function () {
-        res(projects);
-    }, 250);
-}); };
-var getBambooPlans = function (project) { return new Promise(function (res) {
-    setTimeout(function () {
-        res(plans.filter(function () { return project === project; }));
-    }, 250);
-}); };
+var selectPlan = function (plan) { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return fakeBambooProjectConfig = __assign({}, fakeBambooProjectConfig, { plan: plan }); }); };
+var getBambooConfig = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return (__assign({}, fakeBambooProjectConfig)); }); };
+var getBambooProjects = function () { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return projects; }); };
+var getBambooPlans = function (project) { return Object(__WEBPACK_IMPORTED_MODULE_0__common__["a" /* delay */])().then(function () { return plans.map(function (p) { return project + "-" + p; }); }); };
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2380,14 +2193,15 @@ var DropDown = function (_a) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetworksConfigComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__network__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__apis_networks__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__network__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__apis_networks__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__click_outside__ = __webpack_require__(29);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2401,11 +2215,14 @@ var __extends = (this && this.__extends) || (function () {
 
 
 
+
 var NetworksConfigComponent = /** @class */ (function (_super) {
     __extends(NetworksConfigComponent, _super);
     function NetworksConfigComponent() {
         var _this = _super.call(this) || this;
         _this.state = {
+            connectedNetwork: undefined,
+            selectedNetwork: undefined,
             networks: []
         };
         return _this;
@@ -2421,6 +2238,9 @@ var NetworksConfigComponent = /** @class */ (function (_super) {
     };
     NetworksConfigComponent.prototype.selectNetwork = function (network) {
         this.setState({ selectedNetwork: network.ssid });
+    };
+    NetworksConfigComponent.prototype.unselectNetwork = function () {
+        this.setState({ selectedNetwork: undefined });
     };
     NetworksConfigComponent.prototype.connectToNetwork = function (password) {
         var _this = this;
@@ -2438,8 +2258,9 @@ var NetworksConfigComponent = /** @class */ (function (_super) {
     };
     NetworksConfigComponent.prototype.render = function () {
         var _this = this;
+        var ExtendedNetworkComponent = Object(__WEBPACK_IMPORTED_MODULE_3__click_outside__["a" /* addClickOutside */])(__WEBPACK_IMPORTED_MODULE_1__network__["a" /* NetworkComponent */]);
         return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "networks-config-component" },
-            __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "networks-list" }, this.state.networks ? this.state.networks.map(function (n) { return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_1__network__["a" /* NetworkComponent */], { isExpanded: n.ssid === _this.state.selectedNetwork, onConnect: function (password) { return _this.connectToNetwork(password); }, onDisconnect: function () { return _this.disconnectFromNetwork(); }, isConnected: n.ssid === _this.state.connectedNetwork, onSelect: function () { return _this.selectNetwork(n); }, name: n.ssid, isSecured: n.isSecured })); }) : null)));
+            __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "networks-list" }, this.state.networks ? this.state.networks.map(function (n) { return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(ExtendedNetworkComponent, { isExpanded: n.ssid === _this.state.selectedNetwork, onConnect: function (password) { return _this.connectToNetwork(password); }, onDisconnect: function () { return _this.disconnectFromNetwork(); }, isConnected: n.ssid === _this.state.connectedNetwork, onSelect: function () { return _this.selectNetwork(n); }, name: n.ssid, isSecured: n.isSecured })); }) : null)));
     };
     return NetworksConfigComponent;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].Component));
@@ -2447,12 +2268,13 @@ var NetworksConfigComponent = /** @class */ (function (_super) {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NetworkComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon__ = __webpack_require__(1);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2464,6 +2286,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 
+
+var SecurecIcon = __webpack_require__(27);
+var OpenIcon = __webpack_require__(28);
 var NetworkComponent = /** @class */ (function (_super) {
     __extends(NetworkComponent, _super);
     function NetworkComponent() {
@@ -2475,20 +2300,20 @@ var NetworkComponent = /** @class */ (function (_super) {
     NetworkComponent.prototype.render = function () {
         var _this = this;
         var _a = this.props, onSelect = _a.onSelect, name = _a.name, isSecured = _a.isSecured, isConnected = _a.isConnected, isExpanded = _a.isExpanded, onConnect = _a.onConnect, onDisconnect = _a.onDisconnect;
-        return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("span", { onClick: onSelect, className: 'network-component' },
+        return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("span", { onClick: onSelect, onBlur: function () { return console.log('bluR!!'); }, className: "network-component" },
             __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "network-info" },
-                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("i", { className: "material-icons" }, isSecured ? 'signal_wifi_4_bar_lock' : 'signal_wifi_4_bar'),
+                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_1__icon__["a" /* Icon */], { size: 18, icon: isSecured ? SecurecIcon : OpenIcon }),
                 __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null,
                     __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "network-name" }, name),
                     __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "network-status" },
-                        isConnected ? 'Connected, ' : null,
-                        isSecured ? 'Secured' : 'Open'))),
-            isExpanded ? __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("span", { className: "network-actions" }, isConnected ? __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null,
-                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("button", { onClick: onDisconnect }, "Disconnect")) : __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null,
+                        isConnected ? "Connected, " : null,
+                        isSecured ? "Secured" : "Open"))),
+            isExpanded ? (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("span", { className: "network-actions" }, isConnected ? (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null,
+                __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("button", { onClick: onDisconnect }, "Disconnect"))) : (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null,
                 __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("button", { onClick: function () { return onConnect(_this.state.password); } }, "Connect"),
-                isSecured ? __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { class: "input-group" },
+                isSecured ? (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { class: "input-group" },
                     __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("label", null, "Password"),
-                    __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { onKeyUp: function (e) { return _this.updatePassword(e.target.value); } })) : null)) : null));
+                    __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("input", { onKeyUp: function (e) { return _this.updatePassword(e.target.value); } }))) : null)))) : null));
     };
     return NetworkComponent;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].Component));
@@ -2496,7 +2321,121 @@ var NetworkComponent = /** @class */ (function (_super) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
+/***/ (function(module, exports) {
+
+module.exports = "    <path d=\"M12.01 21.49L23.64 7c-.45-.34-4.93-4-11.64-4C5.28 3 .81 6.66.36 7l11.63 14.49.01.01.01-.01z\"/>\r\n    <path d=\"M0 0h24v24H0z\" fill=\"none\"/>"
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+module.exports = "    <path d=\"M0 0h24v24H0V0z\" fill=\"none\"/>\r\n    <path d=\"M23 16v-1.5c0-1.4-1.1-2.5-2.5-2.5S18 13.1 18 14.5V16c-.5 0-1 .5-1 1v4c0 .5.5 1 1 1h5c.5 0 1-.5 1-1v-4c0-.5-.5-1-1-1zm-1 0h-3v-1.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5V16zm-6.5-1.5c0-2.8 2.2-5 5-5 .4 0 .7 0 1 .1L23.6 7c-.4-.3-4.9-4-11.6-4C5.3 3 .8 6.7.4 7L12 21.5l3.5-4.4v-2.6z\"/>"
+
+/***/ }),
+/* 29 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addClickOutside; });
+var addClickOutside = function (component) { return component; };
+// interface ComponentConstructor<Props> {
+//     new (props: Props, context: any): React.Component<props, any>;
+// }
+// interface Props {
+//     rootElement: () => HTMLElement;
+// }
+// type Diff<T extends string, U extends string> = (
+//     & { [P in T]: P }
+//     & { [P in U]: never }
+//     & { [x: string]: never }
+//     )[T];
+//
+//
+// export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
+//
+// export const addClickOutside = function<P1, P2 extends P1, S>(Comp: React.ComponentConstructor<P2, S>){
+//     return class extends React.Component<Omit<P2, keyof P1>, S> {
+//         render() {
+//             return <Comp {...this.props}/>;
+//         }
+//     };
+// };
+//
+// const Foo = ({ name }: { name: string }) => <div>{name}</div>;
+// export const addClickOutside = <S, P>(_wrappedComponent: new () => React.Component<S, P>) => {
+//
+//     return _wrappedComponent;
+// interface IProps extends React.ComponentProps<P>{
+//     onClick: (e: MouseEvent) => void;
+// }
+//
+// interface IState {
+//
+// }
+//
+// class ClickOutside extends React.Component<IProps, IState> {
+//
+//     private container: Element | undefined;
+//
+//     componentDidMount() {
+//         document.addEventListener('click', e => this.handleClickOutside(e), true)
+//     }
+//
+//     componentWillUnmount() {
+//         document.removeEventListener('click', e => this.handleClickOutside(e), true)
+//     }
+//
+//     handleClickOutside(e: MouseEvent) {
+//         const {onClick} = this.props;
+//         const el = this.container;
+//         if (el && !el.contains(e.target as Node)) onClick(e);
+//     }
+//
+//     render() {
+//         const {onClick: _onClick, ...props} = this.props;
+//         return <_wrappedComponent {...props}></_wrappedComponent>
+//     }
+// }
+//
+// return ClickOutside;
+// };
+// interface Props {
+//     onClick: (e: MouseEvent) => void;
+//     children?: any;
+// }
+//
+// interface State{
+//
+// }
+//
+// export class ClickOutside extends React.Component<Props, State> {
+//
+//     private container: Element | undefined;
+//
+//     render() {
+//         const { children, onClick: _onClick, ...props } = this.props;
+//         return (<div {...props} ref={el => this.container = el}>{children}</div>);
+//     }
+//
+//     componentDidMount() {
+//         document.addEventListener('click', e => this.handleClickOutside(e), true)
+//     }
+//
+//     componentWillUnmount() {
+//         document.removeEventListener('click', e => this.handleClickOutside(e), true)
+//     }
+//
+//     handleClickOutside(e: MouseEvent) {
+//         const { onClick } = this.props;
+//         const el = this.container;
+//         if (el && !el.contains(e.target as Node)) onClick(e);
+//     }
+// } 
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

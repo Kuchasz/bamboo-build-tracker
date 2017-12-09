@@ -1,11 +1,10 @@
-  #include <ArduinoJson.h>
+#include <ArduinoJson.h>
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <FS.h>
 
-
-const char* apSSID = "BambooBuildTracker";
+const char *apSSID = "BambooBuildTracker";
 
 IPAddress apIP(10, 0, 0, 1);
 IPAddress apGateway(10, 0, 0, 1);
@@ -55,7 +54,8 @@ ESP8266WebServer server(80);
 //  buttonTriggerState = buttonState;
 //}
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   pinMode(D1, OUTPUT);
   SPIFFS.begin();
@@ -69,7 +69,8 @@ void setup() {
     Serial.println("Opened File");
     Serial.println(rootHtml.size());
 
-    if (server.streamFile(rootHtml, "text/html") != rootHtml.size()) {
+    if (server.streamFile(rootHtml, "text/html") != rootHtml.size())
+    {
       Serial.println("Sent less data than expected!");
     }
 
@@ -80,12 +81,13 @@ void setup() {
   server.on("/networks", HTTP_GET, []() {
     digitalWrite(D1, HIGH);
     StaticJsonBuffer<200> jsonBuffer;
-    JsonArray& response = jsonBuffer.createArray();
+    JsonArray &response = jsonBuffer.createArray();
 
     int numberOfNetworks = WiFi.scanNetworks();
 
-    for (auto i = 0; i < numberOfNetworks; i++) {
-      JsonObject& network = jsonBuffer.createObject();
+    for (auto i = 0; i < numberOfNetworks; i++)
+    {
+      JsonObject &network = jsonBuffer.createObject();
       network["ssid"] = WiFi.SSID(i);
       network["isSecured"] = WiFi.encryptionType(i) != ENC_TYPE_NONE;
       response.add(network);
@@ -94,6 +96,7 @@ void setup() {
     String responseString;
     response.printTo(responseString);
 
+    server.sendHeader("Access-Control-Allow-Origin", "*");   
     server.send(200, "text/json", responseString);
     digitalWrite(D1, LOW);
   });
@@ -101,7 +104,7 @@ void setup() {
   server.on("/network-config", HTTP_GET, []() {
     digitalWrite(D1, HIGH);
     StaticJsonBuffer<200> jsonBuffer;
-    JsonObject& response = jsonBuffer.createObject();
+    JsonObject &response = jsonBuffer.createObject();
 
     response["ssid"] = WiFi.SSID();
     response["password"] = "****";
@@ -113,6 +116,7 @@ void setup() {
     String responseString;
     response.printTo(responseString);
 
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
     digitalWrite(D1, LOW);
   });
@@ -121,20 +125,21 @@ void setup() {
     digitalWrite(D1, HIGH);
 
     StaticJsonBuffer<200> jsonBuffer;
-    JsonObject& request = jsonBuffer.parseObject(server.arg("plain"));
+    JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
 
-    const char* ssid = request["ssid"];
-    const char* password = request["password"];
+    const char *ssid = request["ssid"];
+    const char *password = request["password"];
 
     WiFi.begin(ssid, password);
 
     int tries = 0;
-    while (WiFi.status() != WL_CONNECTED || tries == 3) {
+    while (WiFi.status() != WL_CONNECTED || tries == 3)
+    {
       delay(500);
       tries++;
     }
 
-    JsonObject& response = jsonBuffer.createObject();
+    JsonObject &response = jsonBuffer.createObject();
     if (WiFi.status() == WL_CONNECTED)
       response["result"] = 1;
     else
@@ -143,6 +148,7 @@ void setup() {
     String responseString;
     response.printTo(responseString);
 
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
     digitalWrite(D1, LOW);
   });
@@ -151,7 +157,7 @@ void setup() {
     digitalWrite(D1, HIGH);
 
     StaticJsonBuffer<200> jsonBuffer;
-    JsonObject& response = jsonBuffer.createObject();
+    JsonObject &response = jsonBuffer.createObject();
 
     WiFi.disconnect();
     response["result"] = 1;
@@ -159,6 +165,7 @@ void setup() {
     String responseString;
     response.printTo(responseString);
 
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
     digitalWrite(D1, LOW);
   });
@@ -167,6 +174,7 @@ void setup() {
   Serial.println("server-started");
 }
 
-void loop() {
+void loop()
+{
   server.handleClient();
 }

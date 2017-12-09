@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "C:/Users/Stacjonarny/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/2.3.0/cores/esp8266",
+                "C:/Program Files (x86)/Arduino/hardware",
+                "C:/Program Files (x86)/Arduino/libraries",
+                "C:/Users/Stacjonarny/Documents/Arduino/libraries/",
+                "C:/Users/Stacjonarny/Documents/Arduino/hardware/",
+                "C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries",
+                "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino"
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": false,
+                "path": [
+                    "C:/Users/Stacjonarny/AppData/Local/Arduino15/packages/esp8266/hardware/esp8266/2.3.0/cores/esp8266",
+                    "C:/Program Files (x86)/Arduino/hardware",
+                    "C:/Program Files (x86)/Arduino/libraries",
+                    "C:/Users/Stacjonarny/Documents/Arduino/libraries/",
+                    "C:/Users/Stacjonarny/Documents/Arduino/hardware/",
+                    "C:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries",
+                    "C:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino"
+                ]
+            },
+            "intelliSenseMode": "msvc-x64"
+        }
+    ],
+    "version": 3
+}

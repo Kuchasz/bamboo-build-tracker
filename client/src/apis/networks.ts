@@ -77,8 +77,10 @@ const remoteConnectToNetwork = (ssid: string, password: string) =>
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result === 0) res();
-                else rej();
+                if (response.result === 0) 
+                    res();
+                else 
+                    rej();
             });
     });
 
@@ -95,8 +97,10 @@ const remoteDisconnectFromNetwork = () =>
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result === 1) res();
-                else rej();
+                if (response.result === 1) 
+                    res();
+                else 
+                    rej();
             });
     });
 

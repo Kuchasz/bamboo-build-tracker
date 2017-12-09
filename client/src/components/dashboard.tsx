@@ -1,2 +1,2 @@
 import React from 'preact';
-export const DashboardComponent = () => (<div>Dashboared here</div>);
+export const DashboardComponent = () => (<div>Dashboard</div>);

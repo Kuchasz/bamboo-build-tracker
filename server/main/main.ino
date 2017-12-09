@@ -57,14 +57,13 @@ ESP8266WebServer server(80);
 void setup()
 {
   Serial.begin(115200);
-  pinMode(D1, OUTPUT);
   SPIFFS.begin();
 
   WiFi.softAP(apSSID);
   WiFi.softAPConfig(apIP, apGateway, apSubmask);
 
   server.on("/", HTTP_GET, []() {
-    digitalWrite(D1, HIGH);
+    Serial.println(server.uri());
     File rootHtml = SPIFFS.open("/index.html", "r");
     Serial.println("Opened File");
     Serial.println(rootHtml.size());
@@ -75,11 +74,10 @@ void setup()
     }
 
     Serial.println("File sent");
-    digitalWrite(D1, LOW);
   });
 
   server.on("/networks", HTTP_GET, []() {
-    digitalWrite(D1, HIGH);
+    Serial.println(server.uri());
     StaticJsonBuffer<200> jsonBuffer;
     JsonArray &response = jsonBuffer.createArray();
 
@@ -96,13 +94,12 @@ void setup()
     String responseString;
     response.printTo(responseString);
 
-    server.sendHeader("Access-Control-Allow-Origin", "*");   
+    // server.sendHeader("Access-Control-Allow-Origin", "*");   
     server.send(200, "text/json", responseString);
-    digitalWrite(D1, LOW);
   });
 
   server.on("/network-config", HTTP_GET, []() {
-    digitalWrite(D1, HIGH);
+    Serial.println(server.uri());
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &response = jsonBuffer.createObject();
 
@@ -118,11 +115,10 @@ void setup()
 
     server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
-    digitalWrite(D1, LOW);
   });
 
   server.on("/network-connect", HTTP_POST, []() {
-    digitalWrite(D1, HIGH);
+    Serial.println(server.uri());
 
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
@@ -150,11 +146,10 @@ void setup()
 
     server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
-    digitalWrite(D1, LOW);
   });
 
   server.on("/network-disconnect", HTTP_POST, []() {
-    digitalWrite(D1, HIGH);
+    Serial.println(server.uri());
 
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &response = jsonBuffer.createObject();
@@ -167,7 +162,6 @@ void setup()
 
     server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
-    digitalWrite(D1, LOW);
   });
 
   server.begin();

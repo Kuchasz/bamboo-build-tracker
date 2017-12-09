@@ -1089,7 +1089,7 @@ var delay = function () { return new Promise(function (res) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alarm_config__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__bamboo_config__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__networks_config__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dashboard__ = __webpack_require__(29);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -1296,7 +1296,7 @@ exports = module.exports = __webpack_require__(8)(undefined);
 
 
 // module
-exports.push([module.i, "html {\n  height: 100%; }\n\nbody {\n  height: 100%;\n  margin: 0em;\n  color: white;\n  background: -webkit-gradient(linear, left top, left bottom, from(#7374E4), to(#864B9C));\n  background: linear-gradient(#7374E4, #864B9C);\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow-y: hidden;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  height: 100%; }\n  body * {\n    font-family: 'Roboto', sans-serif; }\n\nheader {\n  -ms-flex-item-align: center;\n      align-self: center;\n  font-weight: 600;\n  font-size: 1.5em;\n  margin: 1em;\n  cursor: pointer; }\n  header span {\n    margin-left: 1em;\n    font-weight: lighter;\n    font-size: 0.5em;\n    letter-spacing: 0.2em;\n    opacity: 0.5;\n    text-transform: uppercase;\n    -webkit-transition: all 0.25s;\n    transition: all 0.25s; }\n  header:hover span {\n    opacity: 1; }\n\n.main-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1; }\n\nfooter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  background: white;\n  -webkit-filter: drop-shadow(0px 0px 5px black);\n          filter: drop-shadow(0px 0px 5px black); }\n\n.menu-item {\n  padding: 0.75em 1em;\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer;\n  color: rgba(134, 75, 156, 0.5); }\n  .menu-item svg {\n    fill: #864B9C; }\n  .menu-item:hover {\n    background: #864B9C; }\n    .menu-item:hover svg {\n      fill: white; }\n  .menu-item.active {\n    color: #864B9C; }\n    .menu-item.active:hover {\n      color: white; }\n\n.input-group label {\n  text-transform: uppercase;\n  display: block;\n  font-size: 0.65em;\n  font-weight: 500;\n  opacity: 0.5; }\n\n.input-group input {\n  background: transparent;\n  border-width: 0px 0px 1px 0px;\n  color: white;\n  border-color: rgba(255, 255, 255, 0.5);\n  -webkit-transition: border-color 0.25s;\n  transition: border-color 0.25s; }\n  .input-group input:focus {\n    border-color: white;\n    outline-color: transparent; }\n\nsection {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-item-align: stretch;\n      align-self: stretch;\n  overflow: auto; }\n\nhr {\n  margin: 3em 0em; }\n\n.networks-config-component .networks-list {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .networks-config-component .networks-list .network-component {\n    cursor: pointer;\n    padding: .75em;\n    min-width: 300px;\n    margin: 0.25em;\n    -webkit-transition: all .25s;\n    transition: all .25s;\n    background: rgba(255, 255, 255, 0.25); }\n    .networks-config-component .networks-list .network-component:hover {\n      background: rgba(255, 255, 255, 0.35); }\n    .networks-config-component .networks-list .network-component .network-info {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .networks-config-component .networks-list .network-component .network-info svg {\n        fill: white; }\n      .networks-config-component .networks-list .network-component .network-info > div {\n        padding: 0em 0.5em; }\n    .networks-config-component .networks-list .network-component .network-actions > div {\n      margin-top: 0.5em;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n    .networks-config-component .networks-list .network-component .network-status {\n      font-size: .75em;\n      opacity: .5; }\n\nbutton {\n  padding: 0.6em 0.75em;\n  border: none;\n  background: white;\n  text-transform: uppercase;\n  font-weight: bold;\n  -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n          filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer; }\n  button:hover {\n    -webkit-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75));\n            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75)); }\n\n.alarm-config-item-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 1.5em;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  cursor: pointer; }\n  .alarm-config-item-component > i {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    font-size: 3em; }\n    .alarm-config-item-component > i svg {\n      fill: white; }\n    .alarm-config-item-component > i.enabled {\n      opacity: 1; }\n    .alarm-config-item-component > i.disabled {\n      opacity: 0.6; }\n  .alarm-config-item-component > label {\n    cursor: pointer;\n    text-transform: uppercase;\n    opacity: 0.6;\n    font-weight: bold;\n    letter-spacing: 0.1em;\n    font-size: 0.75em;\n    display: block;\n    -webkit-transition: opacity 0.25s;\n    transition: opacity 0.25s; }\n  .alarm-config-item-component:hover > label {\n    opacity: 1; }\n\nbody select {\n  display: block;\n  width: 100%;\n  padding: 10px 70px 10px 13px !important;\n  border: 1px solid #e3e3e3;\n  background-color: #fff;\n  color: #444444;\n  font-size: 0.75em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  /* this is must */ }\n", ""]);
+exports.push([module.i, "html {\n  height: 100%; }\n\nbody {\n  height: 100%;\n  margin: 0em;\n  color: white;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  overflow-y: hidden;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  height: 100%; }\n  body * {\n    font-family: 'Roboto', sans-serif; }\n\nheader {\n  -ms-flex-item-align: center;\n      align-self: center;\n  font-weight: 600;\n  font-size: 1.5em;\n  margin: 1em;\n  cursor: pointer; }\n  header span {\n    margin-left: 1em;\n    font-weight: lighter;\n    font-size: 0.5em;\n    letter-spacing: 0.2em;\n    opacity: 0.5;\n    text-transform: uppercase;\n    -webkit-transition: all 0.25s;\n    transition: all 0.25s; }\n  header:hover span {\n    opacity: 1; }\n\n.main-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  background: -webkit-gradient(linear, left top, left bottom, from(#7374E4), to(#864B9C));\n  background: linear-gradient(#7374E4, #864B9C); }\n\nfooter {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  background: white;\n  -webkit-filter: drop-shadow(0px 0px 5px black);\n          filter: drop-shadow(0px 0px 5px black); }\n\n.menu-item {\n  padding: 0.75em 1em;\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer;\n  color: rgba(134, 75, 156, 0.5); }\n  .menu-item svg {\n    fill: #864B9C; }\n  .menu-item:hover {\n    background: #864B9C; }\n    .menu-item:hover svg {\n      fill: white; }\n  .menu-item.active {\n    color: #864B9C; }\n    .menu-item.active:hover {\n      color: white; }\n\n.input-group label {\n  text-transform: uppercase;\n  display: block;\n  font-size: 0.65em;\n  font-weight: 500;\n  opacity: 0.5; }\n\n.input-group input {\n  background: transparent;\n  border-width: 0px 0px 1px 0px;\n  color: white;\n  border-color: rgba(255, 255, 255, 0.5);\n  -webkit-transition: border-color 0.25s;\n  transition: border-color 0.25s; }\n  .input-group input:focus {\n    border-color: white;\n    outline-color: transparent; }\n\nsection {\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-item-align: stretch;\n      align-self: stretch;\n  overflow: auto; }\n\nhr {\n  margin: 3em 0em; }\n\n.networks-config-component .networks-list {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n  .networks-config-component .networks-list .network-component {\n    cursor: pointer;\n    padding: .75em;\n    min-width: 300px;\n    margin: 0.25em;\n    -webkit-transition: all .25s;\n    transition: all .25s;\n    background: rgba(255, 255, 255, 0.25); }\n    .networks-config-component .networks-list .network-component:hover {\n      background: rgba(255, 255, 255, 0.35); }\n    .networks-config-component .networks-list .network-component .network-info {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex; }\n      .networks-config-component .networks-list .network-component .network-info svg {\n        fill: white; }\n      .networks-config-component .networks-list .network-component .network-info > div {\n        padding: 0em 0.5em; }\n    .networks-config-component .networks-list .network-component .network-actions > div {\n      margin-top: 0.5em;\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between; }\n    .networks-config-component .networks-list .network-component .network-status {\n      font-size: .75em;\n      opacity: .5; }\n\nbutton {\n  padding: 0.6em 0.75em;\n  border: none;\n  background: white;\n  text-transform: uppercase;\n  font-weight: bold;\n  -webkit-filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n          filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));\n  -webkit-transition: all 0.25s;\n  transition: all 0.25s;\n  cursor: pointer; }\n  button:hover {\n    -webkit-filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75));\n            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.75)); }\n\n.alarm-config-item-component {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding: 1.5em;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  cursor: pointer; }\n  .alarm-config-item-component > i {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    font-size: 3em; }\n    .alarm-config-item-component > i svg {\n      fill: white; }\n    .alarm-config-item-component > i.enabled {\n      opacity: 1; }\n    .alarm-config-item-component > i.disabled {\n      opacity: 0.6; }\n  .alarm-config-item-component > label {\n    cursor: pointer;\n    text-transform: uppercase;\n    opacity: 0.6;\n    font-weight: bold;\n    letter-spacing: 0.1em;\n    font-size: 0.75em;\n    display: block;\n    -webkit-transition: opacity 0.25s;\n    transition: opacity 0.25s; }\n  .alarm-config-item-component:hover > label {\n    opacity: 1; }\n\nbody select {\n  display: block;\n  width: 100%;\n  padding: 10px 70px 10px 13px !important;\n  border: 1px solid #e3e3e3;\n  background-color: #fff;\n  color: #444444;\n  font-size: 0.75em;\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  /* this is must */ }\n", ""]);
 
 // exports
 
@@ -2207,7 +2207,6 @@ var DropDown = function (_a) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__network__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__apis_networks__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__click_outside__ = __webpack_require__(29);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -2218,7 +2217,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-
 
 
 
@@ -2235,12 +2233,22 @@ var NetworksConfigComponent = /** @class */ (function (_super) {
     }
     NetworksConfigComponent.prototype.componentDidMount = function () {
         var _this = this;
+        document.addEventListener('click', function (e) { return _this.handleClickOutside(e); }, true);
         Object(__WEBPACK_IMPORTED_MODULE_2__apis_networks__["e" /* getNetworks */])().then(function (networks) { return _this.setState({ networks: networks }); });
         Object(__WEBPACK_IMPORTED_MODULE_2__apis_networks__["d" /* getNetworkConfig */])().then(function (config) {
             _this.setState({
                 connectedNetwork: config.ssid
             });
         });
+    };
+    NetworksConfigComponent.prototype.componentWillUnmount = function () {
+        var _this = this;
+        document.removeEventListener('click', function (e) { return _this.handleClickOutside(e); }, true);
+    };
+    NetworksConfigComponent.prototype.handleClickOutside = function (e) {
+        var el = this.container;
+        if (el && !el.contains(e.target))
+            this.unselectNetwork();
     };
     NetworksConfigComponent.prototype.selectNetwork = function (network) {
         this.setState({ selectedNetwork: network.ssid });
@@ -2253,8 +2261,13 @@ var NetworksConfigComponent = /** @class */ (function (_super) {
         this.state.selectedNetwork && Object(__WEBPACK_IMPORTED_MODULE_2__apis_networks__["b" /* connectToNetwork */])(this.state.selectedNetwork, password).then(function () { return _this.setState({
             connectedNetwork: _this.state.selectedNetwork,
             selectedNetwork: undefined
-        }); });
+        }); }, function () {
+            _this.setState({
+                connectedNetwork: undefined
+            });
+        });
     };
+    ;
     NetworksConfigComponent.prototype.disconnectFromNetwork = function () {
         var _this = this;
         Object(__WEBPACK_IMPORTED_MODULE_2__apis_networks__["c" /* disconnectFromNetwork */])().then(function () { return _this.setState({
@@ -2264,9 +2277,8 @@ var NetworksConfigComponent = /** @class */ (function (_super) {
     };
     NetworksConfigComponent.prototype.render = function () {
         var _this = this;
-        var ExtendedNetworkComponent = Object(__WEBPACK_IMPORTED_MODULE_3__click_outside__["a" /* addClickOutside */])(__WEBPACK_IMPORTED_MODULE_1__network__["a" /* NetworkComponent */]);
         return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "networks-config-component" },
-            __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "networks-list" }, this.state.networks ? this.state.networks.map(function (n) { return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(ExtendedNetworkComponent, { isExpanded: n.ssid === _this.state.selectedNetwork, onConnect: function (password) { return _this.connectToNetwork(password); }, onDisconnect: function () { return _this.disconnectFromNetwork(); }, isConnected: n.ssid === _this.state.connectedNetwork, onSelect: function () { return _this.selectNetwork(n); }, name: n.ssid, isSecured: n.isSecured })); }) : null)));
+            __WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", { className: "networks-list", ref: function (el) { return _this.container = el; } }, this.state.networks ? this.state.networks.map(function (n) { return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement(__WEBPACK_IMPORTED_MODULE_1__network__["a" /* NetworkComponent */], { isExpanded: n.ssid === _this.state.selectedNetwork, onConnect: function (password) { return _this.connectToNetwork(password); }, onDisconnect: function () { return _this.disconnectFromNetwork(); }, isConnected: n.ssid === _this.state.connectedNetwork, onSelect: function () { return _this.selectNetwork(n); }, name: n.ssid, isSecured: n.isSecured })); }) : null)));
     };
     return NetworksConfigComponent;
 }(__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].Component));
@@ -2343,112 +2355,10 @@ module.exports = "    <path d=\"M0 0h24v24H0V0z\" fill=\"none\"/>\r\n    <path d
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addClickOutside; });
-var addClickOutside = function (component) { return component; };
-// interface ComponentConstructor<Props> {
-//     new (props: Props, context: any): React.Component<props, any>;
-// }
-// interface Props {
-//     rootElement: () => HTMLElement;
-// }
-// type Diff<T extends string, U extends string> = (
-//     & { [P in T]: P }
-//     & { [P in U]: never }
-//     & { [x: string]: never }
-//     )[T];
-//
-//
-// export type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
-//
-// export const addClickOutside = function<P1, P2 extends P1, S>(Comp: React.ComponentConstructor<P2, S>){
-//     return class extends React.Component<Omit<P2, keyof P1>, S> {
-//         render() {
-//             return <Comp {...this.props}/>;
-//         }
-//     };
-// };
-//
-// const Foo = ({ name }: { name: string }) => <div>{name}</div>;
-// export const addClickOutside = <S, P>(_wrappedComponent: new () => React.Component<S, P>) => {
-//
-//     return _wrappedComponent;
-// interface IProps extends React.ComponentProps<P>{
-//     onClick: (e: MouseEvent) => void;
-// }
-//
-// interface IState {
-//
-// }
-//
-// class ClickOutside extends React.Component<IProps, IState> {
-//
-//     private container: Element | undefined;
-//
-//     componentDidMount() {
-//         document.addEventListener('click', e => this.handleClickOutside(e), true)
-//     }
-//
-//     componentWillUnmount() {
-//         document.removeEventListener('click', e => this.handleClickOutside(e), true)
-//     }
-//
-//     handleClickOutside(e: MouseEvent) {
-//         const {onClick} = this.props;
-//         const el = this.container;
-//         if (el && !el.contains(e.target as Node)) onClick(e);
-//     }
-//
-//     render() {
-//         const {onClick: _onClick, ...props} = this.props;
-//         return <_wrappedComponent {...props}></_wrappedComponent>
-//     }
-// }
-//
-// return ClickOutside;
-// };
-// interface Props {
-//     onClick: (e: MouseEvent) => void;
-//     children?: any;
-// }
-//
-// interface State{
-//
-// }
-//
-// export class ClickOutside extends React.Component<Props, State> {
-//
-//     private container: Element | undefined;
-//
-//     render() {
-//         const { children, onClick: _onClick, ...props } = this.props;
-//         return (<div {...props} ref={el => this.container = el}>{children}</div>);
-//     }
-//
-//     componentDidMount() {
-//         document.addEventListener('click', e => this.handleClickOutside(e), true)
-//     }
-//
-//     componentWillUnmount() {
-//         document.removeEventListener('click', e => this.handleClickOutside(e), true)
-//     }
-//
-//     handleClickOutside(e: MouseEvent) {
-//         const { onClick } = this.props;
-//         const el = this.container;
-//         if (el && !el.contains(e.target as Node)) onClick(e);
-//     }
-// } 
-
-
-/***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_preact__ = __webpack_require__(0);
 
-var DashboardComponent = function () { return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null, "Dashboared here")); };
+var DashboardComponent = function () { return (__WEBPACK_IMPORTED_MODULE_0_preact__["b" /* default */].createElement("div", null, "Dashboard")); };
 
 
 /***/ })

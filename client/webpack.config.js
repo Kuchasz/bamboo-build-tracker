@@ -15,6 +15,10 @@ const apiMode = (() => {
     }
 })();
 
+const apiHost = (()=>{
+  return `'http://${process.env.API_HOST}'` || '';
+})();
+
 module.exports = {
   entry: path.resolve("./src/index.tsx"),
   output: {
@@ -51,7 +55,8 @@ module.exports = {
     new HtmlWebpackInlineSourcePlugin(),
     new webpack.DefinePlugin({
     //   "process.env.NODE_ENV": '"production"',
-      API_TYPE: apiMode
+      API_TYPE: apiMode,
+      API_HOST: apiHost
     }),
     // new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()

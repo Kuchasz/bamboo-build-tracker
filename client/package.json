@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "set NODE_ENV=development&& webpack-dev-server --hot --inline",
+    "remote": "set NODE_ENV=production&& set API_HOST=10.0.0.1&& webpack-dev-server --hot --inline",
     "build": "set NODE_ENV=production&& webpack",
     "watch": "set NODE_ENV=development&& webpack --color --watch"
   },

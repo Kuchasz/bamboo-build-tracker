@@ -34,7 +34,7 @@ const getFakeNetworks = () => delay().then(() => [...fixedNetworks]);
 
 const getRemoteNetworks = () =>
     new Promise<Network[]>(result => {
-        fetch("/networks").then(res => result(res.json()));
+        fetch(`${API_HOST}/networks`).then(res => result(res.json()));
     });
 
 export const getNetworks =
@@ -50,7 +50,7 @@ const getFakeNetworkConfig = () => delay().then(() => ({
 
 const getRemoteNetworkConfig = () =>
     new Promise<NetworkConfig>(result => {
-        fetch("/network-config").then(res => result(res.json()));
+        fetch(`${API_HOST}/network-config`).then(res => result(res.json()));
     });
 
 export const getNetworkConfig =
@@ -71,7 +71,7 @@ const fakeConnectToNetwork = (ssid: string, password: string) => delay().then(()
 
 const remoteConnectToNetwork = (ssid: string, password: string) =>
     new Promise((res, rej) => {
-        fetch("/network-connect", {
+        fetch(`${API_HOST}/network-connect`, {
             method: "POST",
             body: JSON.stringify({ssid, password})
         })
@@ -91,7 +91,7 @@ const fakeDisconnectFromNetwork = () => delay().then(() => connectedNetworkSSID 
 
 const remoteDisconnectFromNetwork = () =>
     new Promise((res, rej) => {
-        fetch("/network-disconnect", {
+        fetch(`${API_HOST}/network-disconnect`, {
             method: "POST",
             body: JSON.stringify({})
         })

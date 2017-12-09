@@ -77,7 +77,7 @@ const remoteConnectToNetwork = (ssid: string, password: string) =>
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result === 0) 
+                if (response.result === 1) 
                     res();
                 else 
                     rej();

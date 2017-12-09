@@ -113,7 +113,7 @@ void setup()
     String responseString;
     response.printTo(responseString);
 
-    server.sendHeader("Access-Control-Allow-Origin", "*");
+    // server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
   });
 
@@ -144,7 +144,7 @@ void setup()
     String responseString;
     response.printTo(responseString);
 
-    server.sendHeader("Access-Control-Allow-Origin", "*");
+    // server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
   });
 
@@ -160,7 +160,7 @@ void setup()
     String responseString;
     response.printTo(responseString);
 
-    server.sendHeader("Access-Control-Allow-Origin", "*");
+    // server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
   });
 

@@ -12,7 +12,6 @@ body {
     font-family: 'Roboto', sans-serif;
   }
   color: white;
-  background: linear-gradient($accent-color, $secondary-color);
   display: flex;
   overflow-y: hidden;
   flex-direction: column;
@@ -46,6 +45,7 @@ header {
   display: flex;
   flex-direction: column;
   flex: 1;
+  background: linear-gradient($accent-color, $secondary-color);
 }
 
 footer {

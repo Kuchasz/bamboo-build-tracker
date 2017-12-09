@@ -57,8 +57,12 @@ export class NetworksConfigComponent extends React.Component<Props, State> {
         this.state.selectedNetwork && connectToNetwork(this.state.selectedNetwork, password).then(() => this.setState({
             connectedNetwork: this.state.selectedNetwork,
             selectedNetwork: undefined
-        }));
-    }
+        }), () => {
+            this.setState({
+                connectedNetwork: undefined
+            });
+        });
+    };
 
     disconnectFromNetwork() {
         disconnectFromNetwork().then(() => this.setState({

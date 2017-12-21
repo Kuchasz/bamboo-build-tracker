@@ -60,7 +60,7 @@ export class NetworkComponent extends React.Component<Props, State> {
                   <div class="input-group">
                     <label>Password</label>
                     <input
-                      onKeyUp={(e: any) => this.updatePassword(e.target.value)}
+                      onKeyUp={e => this.updatePassword((e.target as HTMLInputElement).value)}
                     />
                   </div>
                 ) : null}

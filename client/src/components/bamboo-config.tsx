@@ -6,7 +6,7 @@ import {
     getBambooProjects,
     getBambooPlans,
     selectProject,
-    selectPlan
+    selectPlan, connect
 } from '../apis/bamboo';
 import {DropDown} from './drop-down';
 
@@ -47,14 +47,15 @@ export class BambooConfigComponent extends React.Component<Props, State> {
                 (this.usernameInput as HTMLInputElement).value = bambooConfig.login;
                 (this.passwordInput as HTMLInputElement).value = bambooConfig.password;
 
-                (bambooConfig.connected) &&
-                getBambooProjects().then(projects => {
-                    this.setState({projects})
-                });
-                (bambooConfig.connected && bambooConfig.project) &&
-                getBambooPlans(bambooConfig.project).then(plans => {
-                    this.setState({plans});
-                });
+                if (bambooConfig.connected)
+                    getBambooProjects().then(projects => {
+                        this.setState({projects})
+                    });
+
+                if (bambooConfig.connected && bambooConfig.project)
+                    getBambooPlans(bambooConfig.project).then(plans => {
+                        this.setState({plans});
+                    });
             });
     };
 
@@ -64,6 +65,38 @@ export class BambooConfigComponent extends React.Component<Props, State> {
 
     onSelectPlan(plan: string) {
         selectPlan(plan).then(() => this._getBambooConfig());
+    }
+
+    updateUrl(url: string) {
+        this.setState({
+            bambooConfig: {
+                ...this.state.bambooConfig,
+                url
+            }
+        })
+    }
+
+    updateUsername(login: string) {
+        this.setState({
+            bambooConfig: {
+                ...this.state.bambooConfig,
+                login
+            }
+        })
+    }
+
+    updatePassword(password: string) {
+        this.setState({
+            bambooConfig: {
+                ...this.state.bambooConfig,
+                password
+            }
+        })
+    }
+
+    login() {
+        const {url, password, login} = this.state.bambooConfig;
+        connect(url, login, password).then(() => this._getBambooConfig(), ()=>console.log('wrong-login', url, login, password));
     }
 
     render() {
@@ -79,24 +112,27 @@ export class BambooConfigComponent extends React.Component<Props, State> {
 
                 <div className="input-group">
                     <label>Bamboo server url</label>
-                    <input ref={el => {
-                        this.bambooServerInput = el;
-                    }}></input>
+                    <input onKeyUp={e => this.updateUrl((e.target as HTMLInputElement).value)}
+                           ref={el => {
+                               this.bambooServerInput = el;
+                           }}></input>
                 </div>
                 <div className="input-group">
                     <label>Username</label>
-                    <input ref={el => {
-                        this.usernameInput = el;
-                    }}></input>
+                    <input onKeyUp={e => this.updateUsername((e.target as HTMLInputElement).value)}
+                           ref={el => {
+                               this.usernameInput = el;
+                           }}></input>
                 </div>
                 <div className="input-group">
                     <label>Password</label>
-                    <input ref={el => {
-                        this.passwordInput = el;
-                    }}></input>
+                    <input onKeyUp={e => this.updatePassword((e.target as HTMLInputElement).value)}
+                           ref={el => {
+                               this.passwordInput = el;
+                           }}></input>
                 </div>
                 <div>
-                    <button>Login</button>
+                    <button onClick={() => this.login()}>Login</button>
                 </div>
                 {bambooConfig &&
                 <div>

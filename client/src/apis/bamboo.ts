@@ -1,14 +1,3 @@
-import { delay } from "./common";
-
-let fakeBambooProjectConfig = {
-    url: "",
-    login: "",
-    password: "",
-    connected: false,
-    project: "",
-    plan: ""
-};
-
 export interface BambooConfig {
     url: string;
     login: string;
@@ -18,90 +7,76 @@ export interface BambooConfig {
     plan: string;
 }
 
-const fakeConnect = (
+export const urls = {
+    bambooConnect: "/bamboo-connect",
+    bambooSelectProject: "/bamboo-select-project",
+    bambooSelectPlan: "/bamboo-select-plan",
+    bambooConfig: "/bamboo-config",
+    bambooProjects: "/bamboo-projects",
+    bambooPlans: "/bamboo-plans"
+};
+
+export const connect = (
     bambooProjectUrl: string,
     login: string,
     password: string
 ) =>
-    delay().then(
-        () => {
-            console.log(bambooProjectUrl, login, password);
-        }
-        // new Promise<void>((res, rej) => {
-        //     if (fakeBambooServer.url !== bambooProjectUrl) rej();
-        //     if (fakeBambooServer.login !== login) rej();
-        //     if (fakeBambooServer.password !== password) rej();
-
-        //     fakeBambooProjectConfig = {
-        //         ...fakeBambooProjectConfig,
-        //         ...fakeBambooServer,
-        //         connected: true
-        //     };
-        //     res();
-        // })
-    );
-
-const remoteConnect = (
-    bambooProjectUrl: string,
-    login: string,
-    password: string
-) => {
-    console.log(bambooProjectUrl, login, password);
-};
-
-export const connect = API_TYPE === "MOCK" ? fakeConnect : remoteConnect;
-
-const fakeSelectProject = (project: string) =>
-    delay().then(() => {
-        fakeBambooProjectConfig = {
-            ...fakeBambooProjectConfig,
-            project,
-            plan: ""
-        };
+    new Promise((res, rej) => {
+        fetch(`${API_HOST}${urls.bambooConnect}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ bambooProjectUrl, login, password })
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.result === 1) res();
+                else rej();
+            });
     });
 
-const remoteSelectProject = (project: string) => {
-    console.log(project);
-};
+export const selectProject = (project: string) =>
+    new Promise((res, rej) => {
+        fetch(`${API_HOST}${urls.bambooSelectProject}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ project })
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.result === 1) res();
+                else rej();
+            });
+    });
 
-export const selectProject =
-    API_TYPE === "MOCK" ? fakeSelectProject : remoteSelectProject;
+export const selectPlan = (plan: string) =>
+    new Promise((res, rej) => {
+        fetch(`${API_HOST}${urls.bambooSelectPlan}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ plan })
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response.result === 1) res();
+                else rej();
+            });
+    });
 
-const fakeSelectPlan = (plan: string) =>
-    delay().then(
-        () =>
-            (fakeBambooProjectConfig = {
-                ...fakeBambooProjectConfig,
-                plan
-            })
-    );
+export const getBambooConfig = () =>
+    new Promise<BambooConfig>(result => {
+        fetch(`${API_HOST}${urls.bambooConfig}`).then(res =>
+            result(res.json())
+        );
+    });
 
-const remoteSelectPlan = (plan: string) => {
-    console.log(plan);
-};
+export const getBambooProjects = () =>
+    new Promise<string[]>(result => {
+        fetch(`${API_HOST}${urls.bambooProjects}`).then(res =>
+            result(res.json())
+        );
+    });
 
-export const selectPlan =
-    API_TYPE === "MOCK" ? fakeSelectPlan : remoteSelectPlan;
-
-const fakeGetBambooConfig = () =>
-    delay().then(() => ({ ...fakeBambooProjectConfig }));
-
-const remoteGetBambooConfig = () => ({});
-
-export const getBambooConfig =
-    API_TYPE === "MOCK" ? fakeGetBambooConfig : remoteGetBambooConfig;
-
-const fakeGetBambooProjects = () => delay().then(() => ({}));
-
-const remoteGetBambooProjects = () => ({});
-
-export const getBambooProjects =
-    API_TYPE === "MOCK" ? fakeGetBambooProjects : remoteGetBambooProjects;
-
-const fakeGetBambooPlans = (project: string) =>
-    delay().then(() => ({ project }));
-
-const remoteGetBambooPlans = (project: string) => ({ project });
-
-export const getBambooPlans =
-    API_TYPE === "MOCK" ? fakeGetBambooPlans : remoteGetBambooPlans;
+export const getBambooPlans = () =>
+    new Promise<string[]>(result => {
+        fetch(`${API_HOST}${urls.bambooPlans}`).then(res => result(res.json()));
+    });

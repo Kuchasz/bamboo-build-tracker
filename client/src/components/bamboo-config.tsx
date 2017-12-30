@@ -56,7 +56,7 @@ export class BambooConfigComponent extends React.Component<Props, State> {
                 });
 
             if (bambooConfig.connected && bambooConfig.project)
-                getBambooPlans(bambooConfig.project).then(plans => {
+                getBambooPlans().then(plans => {
                     this.setState({ plans });
                 });
         });

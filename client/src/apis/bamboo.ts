@@ -1,22 +1,31 @@
-import {delay} from "./common";
+import { delay } from "./common";
 
 const fakeBambooServer = {
     url: "bamboo.company.com",
-    login: 'admin@company.com',
-    password: 'admin'
+    login: "admin@company.com",
+    password: "admin"
 };
 
 let fakeBambooProjectConfig = {
-    url: '',
-    login: '',
-    password: '',
+    url: "",
+    login: "",
+    password: "",
     connected: false,
-    project: '',
-    plan: ''
+    project: "",
+    plan: ""
 };
 
-const projects = ['Ascesulfam', 'Terbinafina', 'Ziaja', 'Dell', 'Verbatim', 'Energizer', 'BH', 'PLANET-X'];
-const plans = ['dev', 'test', 'beta'];
+const projects = [
+    "Ascesulfam",
+    "Terbinafina",
+    "Ziaja",
+    "Dell",
+    "Verbatim",
+    "Energizer",
+    "BH",
+    "PLANET-X"
+];
+const plans = ["dev", "test", "beta"];
 
 export interface BambooConfig {
     url: string;
@@ -27,38 +36,59 @@ export interface BambooConfig {
     plan: string;
 }
 
-export const connect = (bambooProjectUrl: string, login: string, password: string) =>
-    delay()
-        .then(() => new Promise<void>((res, rej) => {
-            if (fakeBambooServer.url !== bambooProjectUrl) rej();
-            if (fakeBambooServer.login !== login) rej();
-            if (fakeBambooServer.password !== password) rej();
+const fakeConnect = (
+    bambooProjectUrl: string,
+    login: string,
+    password: string
+) =>
+    delay().then(
+        () =>
+            new Promise<void>((res, rej) => {
+                if (fakeBambooServer.url !== bambooProjectUrl) rej();
+                if (fakeBambooServer.login !== login) rej();
+                if (fakeBambooServer.password !== password) rej();
 
-            fakeBambooProjectConfig = {...fakeBambooProjectConfig, ...fakeBambooServer, connected: true};
-            res();
-        }));
+                fakeBambooProjectConfig = {
+                    ...fakeBambooProjectConfig,
+                    ...fakeBambooServer,
+                    connected: true
+                };
+                res();
+            })
+    );
+
+const remoteConnect = (
+    bambooProjectUrl: string,
+    login: string,
+    password: string
+) => {
+    console.log(bambooProjectUrl, login, password);
+};
+
+export const connect = API_TYPE === "MOCK" ? fakeConnect : remoteConnect;
 
 export const selectProject = (project: string) =>
-    delay()
-        .then(() => {
-            fakeBambooProjectConfig = {...fakeBambooProjectConfig, project, plan: ''};
-        });
+    delay().then(() => {
+        fakeBambooProjectConfig = {
+            ...fakeBambooProjectConfig,
+            project,
+            plan: ""
+        };
+    });
 
 export const selectPlan = (plan: string) =>
-    delay()
-        .then(() => fakeBambooProjectConfig = {
-            ...fakeBambooProjectConfig,
-            plan
-        });
+    delay().then(
+        () =>
+            (fakeBambooProjectConfig = {
+                ...fakeBambooProjectConfig,
+                plan
+            })
+    );
 
 export const getBambooConfig = () =>
-    delay()
-        .then(() => ({...fakeBambooProjectConfig}));
+    delay().then(() => ({ ...fakeBambooProjectConfig }));
 
-export const getBambooProjects = () =>
-    delay()
-        .then(() => projects);
+export const getBambooProjects = () => delay().then(() => projects);
 
 export const getBambooPlans = (project: string) =>
-    delay()
-        .then(() => plans.map(p => `${project}-${p}`));
+    delay().then(() => plans.map(p => `${project}-${p}`));

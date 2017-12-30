@@ -1,4 +1,4 @@
-import {delay} from "./common";
+import { delay } from "./common";
 
 export type Network = {
     ssid: string;
@@ -20,11 +20,27 @@ export type NetworkConfig = {
 
 type ServerSideNetwork = Network & { password?: string };
 
-const ssids = ["Niania", "Forfang AP", "K00by'acky", "Merlin CCP", "LoToS", "BerkSterm Cycles", "GOLD", "Kotlyn", "Zalandoo Net", "XONE.PS4", "Saturn Ennergy", "LoosLey", "DM.Jyoan", "Jeronimo", "LeaDPro WIFI"];
+const ssids = [
+    "Niania",
+    "Forfang AP",
+    "K00by'acky",
+    "Merlin CCP",
+    "LoToS",
+    "BerkSterm Cycles",
+    "GOLD",
+    "Kotlyn",
+    "Zalandoo Net",
+    "XONE.PS4",
+    "Saturn Ennergy",
+    "LoosLey",
+    "DM.Jyoan",
+    "Jeronimo",
+    "LeaDPro WIFI"
+];
 
 const fixedNetworks: ServerSideNetwork[] = ssids.map(ssid => ({
     ssid,
-    password: '1234',
+    password: "1234",
     isSecured: Math.random() > 0.33
 }));
 
@@ -40,13 +56,14 @@ const getRemoteNetworks = () =>
 export const getNetworks =
     API_TYPE === "MOCK" ? getFakeNetworks : getRemoteNetworks;
 
-const getFakeNetworkConfig = () => delay().then(() => ({
-    ssid: connectedNetworkSSID,
-    password: Array.from(Array(4)).reduce(s => `${s}*`, ""),
-    status: NetworkConnectionStatus.Connected,
-    ip: "10.110.12.12",
-    mac: "a4:17:31:4b:97:f1"
-}));
+const getFakeNetworkConfig = () =>
+    delay().then(() => ({
+        ssid: connectedNetworkSSID,
+        password: Array.from(Array(4)).reduce(s => `${s}*`, ""),
+        status: NetworkConnectionStatus.Connected,
+        ip: "10.110.12.12",
+        mac: "a4:17:31:4b:97:f1"
+    }));
 
 const getRemoteNetworkConfig = () =>
     new Promise<NetworkConfig>(result => {
@@ -56,38 +73,45 @@ const getRemoteNetworkConfig = () =>
 export const getNetworkConfig =
     API_TYPE === "MOCK" ? getFakeNetworkConfig : getRemoteNetworkConfig;
 
-const fakeConnectToNetwork = (ssid: string, password: string) => delay().then(() =>
-    new Promise((res, rej) => {
-        const networkCandidates = fixedNetworks.filter(n => n.ssid === ssid);
-        if (networkCandidates.length !== 1) rej();
+const fakeConnectToNetwork = (ssid: string, password: string) =>
+    delay().then(
+        () =>
+            new Promise((res, rej) => {
+                const networkCandidates = fixedNetworks.filter(
+                    n => n.ssid === ssid
+                );
+                if (networkCandidates.length !== 1) rej();
 
-        const networkToConnect = networkCandidates[0];
-        if (networkToConnect.isSecured && networkToConnect.password !== password)
-            rej();
+                const networkToConnect = networkCandidates[0];
+                if (
+                    networkToConnect.isSecured &&
+                    networkToConnect.password !== password
+                )
+                    rej();
 
-        connectedNetworkSSID = networkToConnect.ssid;
-        res();
-    }));
+                connectedNetworkSSID = networkToConnect.ssid;
+                res();
+            })
+    );
 
 const remoteConnectToNetwork = (ssid: string, password: string) =>
     new Promise((res, rej) => {
         fetch(`${API_HOST}/network-connect`, {
             method: "POST",
-            body: JSON.stringify({ssid, password})
+            body: JSON.stringify({ ssid, password })
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result === 1) 
-                    res();
-                else 
-                    rej();
+                if (response.result === 1) res();
+                else rej();
             });
     });
 
 export const connectToNetwork =
     API_TYPE === "MOCK" ? fakeConnectToNetwork : remoteConnectToNetwork;
 
-const fakeDisconnectFromNetwork = () => delay().then(() => connectedNetworkSSID = "");
+const fakeDisconnectFromNetwork = () =>
+    delay().then(() => (connectedNetworkSSID = ""));
 
 const remoteDisconnectFromNetwork = () =>
     new Promise((res, rej) => {
@@ -97,12 +121,12 @@ const remoteDisconnectFromNetwork = () =>
         })
             .then(response => response.json())
             .then(response => {
-                if (response.result === 1) 
-                    res();
-                else 
-                    rej();
+                if (response.result === 1) res();
+                else rej();
             });
     });
 
 export const disconnectFromNetwork =
-    API_TYPE === "MOCK" ? fakeDisconnectFromNetwork : remoteDisconnectFromNetwork;
+    API_TYPE === "MOCK"
+        ? fakeDisconnectFromNetwork
+        : remoteDisconnectFromNetwork;

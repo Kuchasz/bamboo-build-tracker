@@ -1,4 +1,4 @@
-import {delay} from "./common";
+import { delay } from "./common";
 
 let fakeAlarmConfig = {
     lightState: true,
@@ -10,14 +10,23 @@ export interface AlarmConfig {
     signalState: boolean;
 }
 
-export const toggleLight = () => delay().then(() => fakeAlarmConfig = {
-    ...fakeAlarmConfig,
-    lightState: !fakeAlarmConfig.lightState
-});
+export const toggleLight = () =>
+    delay().then(
+        () =>
+            (fakeAlarmConfig = {
+                ...fakeAlarmConfig,
+                lightState: !fakeAlarmConfig.lightState
+            })
+    );
 
-export const toggleSignal = () => delay().then(() => fakeAlarmConfig = {
-    ...fakeAlarmConfig,
-    signalState: !fakeAlarmConfig.signalState
-});
+export const toggleSignal = () =>
+    delay().then(
+        () =>
+            (fakeAlarmConfig = {
+                ...fakeAlarmConfig,
+                signalState: !fakeAlarmConfig.signalState
+            })
+    );
 
-export const getAlarmConfig = () => delay().then(() => ({...fakeAlarmConfig}));
+export const getAlarmConfig = () =>
+    delay().then(() => ({ ...fakeAlarmConfig }));

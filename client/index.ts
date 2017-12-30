@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as request from "request";
 import {
     urls as networkUrls,
     Network,
@@ -106,18 +107,15 @@ app.post(networkUrls.networkDisconnect, (_req, res) => {
 app.post(bambooUrls.bambooConnect, (req, res) => {
     const { bambooProjectUrl, login, password } = req.body;
 
-    if ("server" !== bambooProjectUrl) {
-        res.send(JSON.stringify({ result: 0 }));
-        return;
-    }
-    if ("admin" !== login) {
-        res.send(JSON.stringify({ result: 0 }));
-        return;
-    }
-    if ("admin" !== password) {
-        res.send(JSON.stringify({ result: 0 }));
-        return;
-    }
+    const auth = new Buffer(`${login}:${password}`).toString("base64");
+    console.log(auth);
+
+    request({
+        url: `${bambooProjectUrl}/rest/api/latest/currentUser.json?os_authType=basic`,
+        headers: { Authorization: `Basic ${auth}` }
+    }).on("response", resp => {
+        console.log(resp.statusCode);
+    });
 
     fakeBambooProjectConfig = {
         ...fakeBambooProjectConfig,

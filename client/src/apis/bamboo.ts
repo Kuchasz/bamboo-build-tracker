@@ -1,11 +1,5 @@
 import { delay } from "./common";
 
-const fakeBambooServer = {
-    url: "bamboo.company.com",
-    login: "admin@company.com",
-    password: "admin"
-};
-
 let fakeBambooProjectConfig = {
     url: "",
     login: "",
@@ -14,18 +8,6 @@ let fakeBambooProjectConfig = {
     project: "",
     plan: ""
 };
-
-const projects = [
-    "Ascesulfam",
-    "Terbinafina",
-    "Ziaja",
-    "Dell",
-    "Verbatim",
-    "Energizer",
-    "BH",
-    "PLANET-X"
-];
-const plans = ["dev", "test", "beta"];
 
 export interface BambooConfig {
     url: string;
@@ -42,19 +24,21 @@ const fakeConnect = (
     password: string
 ) =>
     delay().then(
-        () =>
-            new Promise<void>((res, rej) => {
-                if (fakeBambooServer.url !== bambooProjectUrl) rej();
-                if (fakeBambooServer.login !== login) rej();
-                if (fakeBambooServer.password !== password) rej();
+        () => {
+            console.log(bambooProjectUrl, login, password);
+        }
+        // new Promise<void>((res, rej) => {
+        //     if (fakeBambooServer.url !== bambooProjectUrl) rej();
+        //     if (fakeBambooServer.login !== login) rej();
+        //     if (fakeBambooServer.password !== password) rej();
 
-                fakeBambooProjectConfig = {
-                    ...fakeBambooProjectConfig,
-                    ...fakeBambooServer,
-                    connected: true
-                };
-                res();
-            })
+        //     fakeBambooProjectConfig = {
+        //         ...fakeBambooProjectConfig,
+        //         ...fakeBambooServer,
+        //         connected: true
+        //     };
+        //     res();
+        // })
     );
 
 const remoteConnect = (
@@ -67,7 +51,7 @@ const remoteConnect = (
 
 export const connect = API_TYPE === "MOCK" ? fakeConnect : remoteConnect;
 
-export const selectProject = (project: string) =>
+const fakeSelectProject = (project: string) =>
     delay().then(() => {
         fakeBambooProjectConfig = {
             ...fakeBambooProjectConfig,
@@ -76,7 +60,14 @@ export const selectProject = (project: string) =>
         };
     });
 
-export const selectPlan = (plan: string) =>
+const remoteSelectProject = (project: string) => {
+    console.log(project);
+};
+
+export const selectProject =
+    API_TYPE === "MOCK" ? fakeSelectProject : remoteSelectProject;
+
+const fakeSelectPlan = (plan: string) =>
     delay().then(
         () =>
             (fakeBambooProjectConfig = {
@@ -85,10 +76,32 @@ export const selectPlan = (plan: string) =>
             })
     );
 
-export const getBambooConfig = () =>
+const remoteSelectPlan = (plan: string) => {
+    console.log(plan);
+};
+
+export const selectPlan =
+    API_TYPE === "MOCK" ? fakeSelectPlan : remoteSelectPlan;
+
+const fakeGetBambooConfig = () =>
     delay().then(() => ({ ...fakeBambooProjectConfig }));
 
-export const getBambooProjects = () => delay().then(() => projects);
+const remoteGetBambooConfig = () => ({});
 
-export const getBambooPlans = (project: string) =>
-    delay().then(() => plans.map(p => `${project}-${p}`));
+export const getBambooConfig =
+    API_TYPE === "MOCK" ? fakeGetBambooConfig : remoteGetBambooConfig;
+
+const fakeGetBambooProjects = () => delay().then(() => ({}));
+
+const remoteGetBambooProjects = () => ({});
+
+export const getBambooProjects =
+    API_TYPE === "MOCK" ? fakeGetBambooProjects : remoteGetBambooProjects;
+
+const fakeGetBambooPlans = (project: string) =>
+    delay().then(() => ({ project }));
+
+const remoteGetBambooPlans = (project: string) => ({ project });
+
+export const getBambooPlans =
+    API_TYPE === "MOCK" ? fakeGetBambooPlans : remoteGetBambooPlans;

@@ -46,17 +46,17 @@ const fixedNetworks: ServerSideNetwork[] = ssids.map(ssid => ({
 
 let connectedNetworkSSID: string = "";
 
-const getFakeNetworks = () => delay().then(() => [...fixedNetworks]);
+const fakeGetNetworks = () => delay().then(() => [...fixedNetworks]);
 
-const getRemoteNetworks = () =>
+const remoteGetNetworks = () =>
     new Promise<Network[]>(result => {
         fetch(`${API_HOST}/networks`).then(res => result(res.json()));
     });
 
 export const getNetworks =
-    API_TYPE === "MOCK" ? getFakeNetworks : getRemoteNetworks;
+    API_TYPE === "MOCK" ? fakeGetNetworks : remoteGetNetworks;
 
-const getFakeNetworkConfig = () =>
+const fakeGetNetworkConfig = () =>
     delay().then(() => ({
         ssid: connectedNetworkSSID,
         password: Array.from(Array(4)).reduce(s => `${s}*`, ""),
@@ -65,13 +65,13 @@ const getFakeNetworkConfig = () =>
         mac: "a4:17:31:4b:97:f1"
     }));
 
-const getRemoteNetworkConfig = () =>
+const remoteGetNetworkConfig = () =>
     new Promise<NetworkConfig>(result => {
         fetch(`${API_HOST}/network-config`).then(res => result(res.json()));
     });
 
 export const getNetworkConfig =
-    API_TYPE === "MOCK" ? getFakeNetworkConfig : getRemoteNetworkConfig;
+    API_TYPE === "MOCK" ? fakeGetNetworkConfig : remoteGetNetworkConfig;
 
 const fakeConnectToNetwork = (ssid: string, password: string) =>
     delay().then(

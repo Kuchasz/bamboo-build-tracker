@@ -2066,13 +2066,13 @@ var BambooConfigComponent = /** @class */ (function (_super) {
                 });
         });
     };
-    BambooConfigComponent.prototype.onSelectProject = function (project) {
+    BambooConfigComponent.prototype.onSelectProject = function (projectKey) {
         var _this = this;
-        bamboo_1.selectProject(project).then(function () { return _this._getBambooConfig(); });
+        bamboo_1.selectProject(projectKey).then(function () { return _this._getBambooConfig(); });
     };
-    BambooConfigComponent.prototype.onSelectPlan = function (plan) {
+    BambooConfigComponent.prototype.onSelectPlan = function (planKey) {
         var _this = this;
-        bamboo_1.selectPlan(plan).then(function () { return _this._getBambooConfig(); });
+        bamboo_1.selectPlan(planKey).then(function () { return _this._getBambooConfig(); });
     };
     BambooConfigComponent.prototype.updateUrl = function (url) {
         this.setState({
@@ -2121,7 +2121,7 @@ var BambooConfigComponent = /** @class */ (function (_super) {
                     } })),
             preact_1.default.createElement("div", { className: "input-group" },
                 preact_1.default.createElement("label", null, "Password"),
-                preact_1.default.createElement("input", { onKeyUp: function (e) {
+                preact_1.default.createElement("input", { type: "password", onKeyUp: function (e) {
                         return _this.updatePassword(e.target.value);
                     }, ref: function (el) {
                         _this.passwordInput = el;
@@ -2129,11 +2129,17 @@ var BambooConfigComponent = /** @class */ (function (_super) {
             preact_1.default.createElement("div", null,
                 preact_1.default.createElement("button", { onClick: function () { return _this.login(); } }, "Login")),
             bambooConfig && (preact_1.default.createElement("div", null,
-                projects && (preact_1.default.createElement(drop_down_1.DropDown, { label: "Select project", options: projects, selected: bambooConfig.project, onChange: function (project) {
+                projects && (preact_1.default.createElement(drop_down_1.DropDown, { label: "Select project", options: projects.map(function (x) { return ({
+                        value: x.key,
+                        name: x.name
+                    }); }), selected: bambooConfig.project, onChange: function (project) {
                         return _this.onSelectProject(project);
                     } })),
                 plans &&
-                    bambooConfig.project && (preact_1.default.createElement(drop_down_1.DropDown, { onChange: function (plan) { return _this.onSelectPlan(plan); }, label: "Select plan", options: plans, selected: bambooConfig.plan }))))));
+                    bambooConfig.project && (preact_1.default.createElement(drop_down_1.DropDown, { onChange: function (plan) { return _this.onSelectPlan(plan); }, label: "Select plan", options: plans.map(function (x) { return ({
+                        value: x.key,
+                        name: x.name
+                    }); }), selected: bambooConfig.plan }))))));
     };
     return BambooConfigComponent;
 }(preact_1.default.Component));
@@ -2155,12 +2161,12 @@ exports.urls = {
     bambooProjects: "/bamboo-projects",
     bambooPlans: "/bamboo-plans"
 };
-exports.connect = function (bambooProjectUrl, login, password) {
+exports.connect = function (url, login, password) {
     return new Promise(function (res, rej) {
         fetch("" + '' + exports.urls.bambooConnect, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ bambooProjectUrl: bambooProjectUrl, login: login, password: password })
+            body: JSON.stringify({ url: url, login: login, password: password })
         })
             .then(function (response) { return response.json(); })
             .then(function (response) {
@@ -2236,7 +2242,7 @@ exports.DropDown = function (_a) {
     var options = _a.options, selected = _a.selected, label = _a.label, onChange = _a.onChange;
     return (preact_1.default.createElement("select", { onChange: function (e) { return onChange(e.target.value); }, placeholder: "" },
         preact_1.default.createElement("option", { value: "" }, label),
-        options.map(function (option) { return (preact_1.default.createElement("option", { value: option, selected: option === selected }, option)); })));
+        options.map(function (option) { return (preact_1.default.createElement("option", { value: option.value, selected: option.value === selected }, option.name)); })));
 };
 
 

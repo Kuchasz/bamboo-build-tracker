@@ -10,7 +10,7 @@ import { urls as bambooUrls } from "./src/apis/bamboo";
 
 type ServerSideNetwork = Network & { password?: string };
 
-const ssids = [
+const fixedSSIDs = [
     "Niania",
     "Forfang AP",
     "K00by'acky",
@@ -28,20 +28,7 @@ const ssids = [
     "LeaDPro WIFI"
 ];
 
-const projects = [
-    "Ascesulfam",
-    "Terbinafina",
-    "Ziaja",
-    "Dell",
-    "Verbatim",
-    "Energizer",
-    "BH",
-    "PLANET-X"
-];
-
-const plans = ["dev", "test", "beta"];
-
-let fakeBambooProjectConfig = {
+let bambooConfig = {
     url: "",
     login: "",
     password: "",
@@ -50,7 +37,7 @@ let fakeBambooProjectConfig = {
     plan: ""
 };
 
-const fixedNetworks: ServerSideNetwork[] = ssids.map(ssid => ({
+const fixedNetworks: ServerSideNetwork[] = fixedSSIDs.map(ssid => ({
     ssid,
     password: "1234",
     isSecured: Math.random() > 0.33
@@ -105,54 +92,94 @@ app.post(networkUrls.networkDisconnect, (_req, res) => {
 });
 
 app.post(bambooUrls.bambooConnect, (req, res) => {
-    const { bambooProjectUrl, login, password } = req.body;
+    const { url, login, password } = req.body;
 
     const auth = new Buffer(`${login}:${password}`).toString("base64");
-    console.log(auth);
 
     request({
-        url: `${bambooProjectUrl}/rest/api/latest/currentUser.json?os_authType=basic`,
+        url: `${url}/rest/api/latest/currentUser.json?os_authType=basic`,
         headers: { Authorization: `Basic ${auth}` }
     }).on("response", resp => {
-        console.log(resp.statusCode);
+        if (resp.statusCode === 200) {
+            bambooConfig = {
+                ...bambooConfig,
+                ...{
+                    login,
+                    password,
+                    url: url
+                },
+                connected: true
+            };
+            res.send(JSON.stringify({ result: 1 }));
+        } else {
+            res.send(JSON.stringify({ result: 0 }));
+        }
     });
-
-    fakeBambooProjectConfig = {
-        ...fakeBambooProjectConfig,
-        ...{
-            login: "admin",
-            password: "admin",
-            url: "server"
-        },
-        connected: true
-    };
-
-    res.send(JSON.stringify({ result: 1 }));
 });
 
 app.post(bambooUrls.bambooSelectProject, (req, res) => {
     const { project } = req.body;
-    fakeBambooProjectConfig = { ...fakeBambooProjectConfig, ...{ project } };
+    bambooConfig = { ...bambooConfig, ...{ project } };
     res.send(JSON.stringify({ result: 1 }));
 });
 
 app.post(bambooUrls.bambooSelectPlan, (req, res) => {
     const { plan } = req.body;
-    fakeBambooProjectConfig = { ...fakeBambooProjectConfig, ...{ plan } };
+    bambooConfig = { ...bambooConfig, ...{ plan } };
     res.send(JSON.stringify({ result: 1 }));
 });
 
 app.get(bambooUrls.bambooConfig, (_req, res) => {
-    res.send(JSON.stringify(fakeBambooProjectConfig));
+    res.send(JSON.stringify(bambooConfig));
 });
 
 app.get(bambooUrls.bambooProjects, (_req, res) => {
-    res.send(JSON.stringify(projects));
+    const auth = new Buffer(
+        `${bambooConfig.login}:${bambooConfig.password}`
+    ).toString("base64");
+
+    request(
+        {
+            url: `${
+                bambooConfig.url
+            }/rest/api/latest/project.json?os_authType=basic&max-result=1000`,
+            headers: { Authorization: `Basic ${auth}` }
+        },
+        (_err, resp, body) => {
+            if (resp.statusCode === 200) {
+                const projects = JSON.parse(body).projects.project.map(
+                    ({ name, key }: any) => ({ name, key })
+                );
+                res.send(JSON.stringify(projects));
+            } else {
+            }
+        }
+    );
 });
 
 app.get(bambooUrls.bambooPlans, (_req, res) => {
-    const { project } = fakeBambooProjectConfig;
-    res.send(JSON.stringify(plans.map(p => `${project}-${p}`)));
+    const { project } = bambooConfig;
+    const auth = new Buffer(
+        `${bambooConfig.login}:${bambooConfig.password}`
+    ).toString("base64");
+
+    request(
+        {
+            url: `${
+                bambooConfig.url
+            }/rest/api/latest/project/${project}.json?os_authType=basic&expand=plans&max-result=1000`,
+            headers: { Authorization: `Basic ${auth}` }
+        },
+        (_err, resp, body) => {
+            if (resp.statusCode === 200) {
+                const plans = JSON.parse(body).plans.plan.map(
+                    ({ name, key }: any) => ({ name, key })
+                );
+                res.send(JSON.stringify(plans));
+            } else {
+            }
+        }
+    );
 });
 
 app.listen(80);

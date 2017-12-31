@@ -1,7 +1,7 @@
 import React from "preact";
 
 type DropDownProps = {
-    options: string[];
+    options: { value: string; name: string }[];
     selected: string;
     label: string;
     onChange: (option: string) => void;
@@ -18,8 +18,8 @@ export const DropDown = ({
     >
         <option value="">{label}</option>
         {options.map(option => (
-            <option value={option} selected={option === selected}>
-                {option}
+            <option value={option.value} selected={option.value === selected}>
+                {option.name}
             </option>
         ))}
     </select>

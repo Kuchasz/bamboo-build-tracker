@@ -11,7 +11,9 @@ import {
     getBambooPlans,
     selectProject,
     selectPlan,
-    connect
+    connect,
+    BambooProject,
+    BambooPlan
 } from "../apis/bamboo";
 import { DropDown } from "./drop-down";
 
@@ -20,8 +22,8 @@ interface Props {}
 interface State {
     networkConfig: NetworkConfig;
     bambooConfig: BambooConfig;
-    projects: string[];
-    plans: string[];
+    projects: BambooProject[];
+    plans: BambooPlan[];
 }
 
 export class BambooConfigComponent extends React.Component<Props, State> {
@@ -62,12 +64,12 @@ export class BambooConfigComponent extends React.Component<Props, State> {
         });
     }
 
-    onSelectProject(project: string) {
-        selectProject(project).then(() => this._getBambooConfig());
+    onSelectProject(projectKey: string) {
+        selectProject(projectKey).then(() => this._getBambooConfig());
     }
 
-    onSelectPlan(plan: string) {
-        selectPlan(plan).then(() => this._getBambooConfig());
+    onSelectPlan(planKey: string) {
+        selectPlan(planKey).then(() => this._getBambooConfig());
     }
 
     updateUrl(url: string) {
@@ -143,6 +145,7 @@ export class BambooConfigComponent extends React.Component<Props, State> {
                 <div className="input-group">
                     <label>Password</label>
                     <input
+                        type="password"
                         onKeyUp={e =>
                             this.updatePassword(
                                 (e.target as HTMLInputElement).value
@@ -161,7 +164,10 @@ export class BambooConfigComponent extends React.Component<Props, State> {
                         {projects && (
                             <DropDown
                                 label="Select project"
-                                options={projects}
+                                options={projects.map(x => ({
+                                    value: x.key,
+                                    name: x.name
+                                }))}
                                 selected={bambooConfig.project}
                                 onChange={project =>
                                     this.onSelectProject(project)
@@ -173,7 +179,10 @@ export class BambooConfigComponent extends React.Component<Props, State> {
                                 <DropDown
                                     onChange={plan => this.onSelectPlan(plan)}
                                     label="Select plan"
-                                    options={plans}
+                                    options={plans.map(x => ({
+                                        value: x.key,
+                                        name: x.name
+                                    }))}
                                     selected={bambooConfig.plan}
                                 />
                             )}

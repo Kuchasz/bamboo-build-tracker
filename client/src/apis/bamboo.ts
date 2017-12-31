@@ -7,6 +7,16 @@ export interface BambooConfig {
     plan: string;
 }
 
+export interface BambooProject {
+    key: string;
+    name: string;
+}
+
+export interface BambooPlan {
+    key: string;
+    name: string;
+}
+
 export const urls = {
     bambooConnect: "/bamboo-connect",
     bambooSelectProject: "/bamboo-select-project",
@@ -16,16 +26,12 @@ export const urls = {
     bambooPlans: "/bamboo-plans"
 };
 
-export const connect = (
-    bambooProjectUrl: string,
-    login: string,
-    password: string
-) =>
+export const connect = (url: string, login: string, password: string) =>
     new Promise((res, rej) => {
         fetch(`${API_HOST}${urls.bambooConnect}`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ bambooProjectUrl, login, password })
+            body: JSON.stringify({ url, login, password })
         })
             .then(response => response.json())
             .then(response => {
@@ -70,13 +76,13 @@ export const getBambooConfig = () =>
     });
 
 export const getBambooProjects = () =>
-    new Promise<string[]>(result => {
+    new Promise<BambooProject[]>(result => {
         fetch(`${API_HOST}${urls.bambooProjects}`).then(res =>
             result(res.json())
         );
     });
 
 export const getBambooPlans = () =>
-    new Promise<string[]>(result => {
+    new Promise<BambooPlan[]>(result => {
         fetch(`${API_HOST}${urls.bambooPlans}`).then(res => result(res.json()));
     });

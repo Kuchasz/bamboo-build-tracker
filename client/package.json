@@ -4,8 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "ts-node index.ts",
-        "remote": "set NODE_ENV=production&& set API_HOST=10.0.0.1&& webpack --watch",
+        "start": "ts-node dev-server.ts",
+        "proxy": "ts-node proxy-server.ts",
+        "remote":
+            "set NODE_ENV=production&& set API_HOST=10.0.0.1&& webpack --watch",
         "build": "set NODE_ENV=production&& webpack --color --watch",
         "watch": "set NODE_ENV=development&& webpack --color --watch"
     },
@@ -23,6 +25,7 @@
     "devDependencies": {
         "@types/body-parser": "^1.16.8",
         "@types/express": "^4.11.0",
+        "@types/http-proxy": "^1.12.2",
         "@types/node": "^8.0.28",
         "@types/request": "^2.0.9",
         "autoprefixer": "^7.1.3",
@@ -32,6 +35,7 @@
         "html-loader": "^0.5.1",
         "html-webpack-inline-source-plugin": "0.0.9",
         "html-webpack-plugin": "^2.30.1",
+        "http-proxy": "^1.16.2",
         "node-sass": "^4.5.3",
         "postcss-loader": "^2.0.6",
         "raw-loader": "^0.5.1",

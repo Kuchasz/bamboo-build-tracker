@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as request from "request";
+import * as http from "http";
 import {
     urls as networkUrls,
     Network,
@@ -44,7 +45,6 @@ const fixedNetworks: ServerSideNetwork[] = fixedSSIDs.map(ssid => ({
 }));
 
 let connectedNetworkSSID: string = "";
-
 const app = express();
 
 app.use(express.static("../server/main/data"));
@@ -182,4 +182,9 @@ app.get(bambooUrls.bambooPlans, (_req, res) => {
     );
 });
 
-app.listen(80);
+const server = app.listen(80);
+
+process.on("SIGINT", () => {
+    server.close();
+    process.exit();
+});

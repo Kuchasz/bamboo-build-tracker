@@ -182,9 +182,4 @@ app.get(bambooUrls.bambooPlans, (_req, res) => {
     );
 });
 
-const server = app.listen(80);
-
-process.on("SIGINT", () => {
-    server.close();
-    process.exit();
-});
+app.listen(80);

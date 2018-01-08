@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f53edfac-15c2-45e6-9279-7a418e4c218b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/apis/bamboo.ts" afterPath="$PROJECT_DIR$/client/src/apis/bamboo.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/apis/common.ts" afterPath="$PROJECT_DIR$/client/src/apis/common.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/bamboo-config.tsx" afterPath="$PROJECT_DIR$/client/src/components/bamboo-config.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/components/network.tsx" afterPath="$PROJECT_DIR$/client/src/components/network.tsx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/style.scss" afterPath="$PROJECT_DIR$/client/src/style.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/tsconfig.json" afterPath="$PROJECT_DIR$/client/tsconfig.json" />
-    </list>
+    <list default="true" id="f53edfac-15c2-45e6-9279-7a418e4c218b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -324,16 +316,15 @@
       <workItem from="1512230337931" duration="23407000" />
       <workItem from="1512340788261" duration="244000" />
       <workItem from="1512840615381" duration="1691000" />
-      <workItem from="1513885853498" duration="3487000" />
+      <workItem from="1513885853498" duration="3543000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40255000" />
+    <option name="totallyTimeSpent" value="40311000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21428572" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

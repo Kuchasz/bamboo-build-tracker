@@ -1,5 +1,14 @@
-import * as httpProxy from "http-proxy";
+var express = require("express");
+var proxy = require("http-proxy-middleware");
 
-const proxy = httpProxy.createProxyServer({ target: "http://pyszstudio.pl" });
+var proxy = proxy({
+    target: "https://bamboo.silvermedia.pl",
+    changeOrigin: true,
+    logLevel: "debug"
+});
 
-proxy.listen(8080);
+var app = express();
+
+app.use(proxy);
+
+app.listen(3000);

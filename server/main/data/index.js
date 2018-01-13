@@ -1144,19 +1144,19 @@ exports.urls = {
 };
 exports.getNetworks = function () {
     return new Promise(function (result) {
-        fetch("" + '' + exports.urls.networks).then(function (res) { return result(res.json()); });
+        fetch("" + 'http://10.0.0.1' + exports.urls.networks).then(function (res) { return result(res.json()); });
     });
 };
 exports.getNetworkConfig = function () {
     return new Promise(function (result) {
-        fetch("" + '' + exports.urls.networkConfig).then(function (res) {
+        fetch("" + 'http://10.0.0.1' + exports.urls.networkConfig).then(function (res) {
             return result(res.json());
         });
     });
 };
 exports.connectToNetwork = function (ssid, password) {
     return new Promise(function (res, rej) {
-        fetch("" + '' + exports.urls.networkConnect, {
+        fetch("" + 'http://10.0.0.1' + exports.urls.networkConnect, {
             method: "POST",
             body: JSON.stringify({ ssid: ssid, password: password }),
             headers: { "Content-Type": "application/json" }
@@ -1172,7 +1172,7 @@ exports.connectToNetwork = function (ssid, password) {
 };
 exports.disconnectFromNetwork = function () {
     return new Promise(function (res, rej) {
-        fetch("" + '' + exports.urls.networkDisconnect, {
+        fetch("" + 'http://10.0.0.1' + exports.urls.networkDisconnect, {
             method: "POST",
             body: JSON.stringify({})
         })
@@ -2157,7 +2157,7 @@ exports.urls = {
 };
 exports.connect = function (url, login, password) {
     return new Promise(function (res, rej) {
-        fetch("" + '' + exports.urls.bambooConnect, {
+        fetch("" + 'http://10.0.0.1' + exports.urls.bambooConnect, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ url: url, login: login, password: password })
@@ -2173,7 +2173,7 @@ exports.connect = function (url, login, password) {
 };
 exports.selectProject = function (project) {
     return new Promise(function (res, rej) {
-        fetch("" + '' + exports.urls.bambooSelectProject, {
+        fetch("" + 'http://10.0.0.1' + exports.urls.bambooSelectProject, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ project: project })
@@ -2189,7 +2189,7 @@ exports.selectProject = function (project) {
 };
 exports.selectPlan = function (plan) {
     return new Promise(function (res, rej) {
-        fetch("" + '' + exports.urls.bambooSelectPlan, {
+        fetch("" + 'http://10.0.0.1' + exports.urls.bambooSelectPlan, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ plan: plan })
@@ -2205,21 +2205,21 @@ exports.selectPlan = function (plan) {
 };
 exports.getBambooConfig = function () {
     return new Promise(function (result) {
-        fetch("" + '' + exports.urls.bambooConfig).then(function (res) {
+        fetch("" + 'http://10.0.0.1' + exports.urls.bambooConfig).then(function (res) {
             return result(res.json());
         });
     });
 };
 exports.getBambooProjects = function () {
     return new Promise(function (result) {
-        fetch("" + '' + exports.urls.bambooProjects).then(function (res) {
+        fetch("" + 'http://10.0.0.1' + exports.urls.bambooProjects).then(function (res) {
             return result(res.json());
         });
     });
 };
 exports.getBambooPlans = function () {
     return new Promise(function (result) {
-        fetch("" + '' + exports.urls.bambooPlans).then(function (res) { return result(res.json()); });
+        fetch("" + 'http://10.0.0.1' + exports.urls.bambooPlans).then(function (res) { return result(res.json()); });
     });
 };
 

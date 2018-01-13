@@ -94,7 +94,6 @@ void setup()
     String responseString;
     response.printTo(responseString);
 
-    // server.sendHeader("Access-Control-Allow-Origin", "*");   
     server.send(200, "text/json", responseString);
   });
 
@@ -113,10 +112,15 @@ void setup()
     String responseString;
     response.printTo(responseString);
 
-    // server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
   });
 
+  server.on("/network-connect", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
   server.on("/network-connect", HTTP_POST, []() {
     Serial.println(server.uri());
 
@@ -144,24 +148,77 @@ void setup()
     String responseString;
     response.printTo(responseString);
 
-    // server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
   });
 
+  server.on("/network-disconnect", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
   server.on("/network-disconnect", HTTP_POST, []() {
     Serial.println(server.uri());
 
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &response = jsonBuffer.createObject();
 
-    WiFi.disconnect();
     response["result"] = 1;
 
     String responseString;
     response.printTo(responseString);
 
-    // server.sendHeader("Access-Control-Allow-Origin", "*");
     server.send(200, "text/json", responseString);
+    if (WiFi.isConnected())
+      WiFi.disconnect();
+  });
+
+  server.on("/bamboo-connect", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
+  server.on("/bamboo-connect", HTTP_POST, []() {
+    Serial.println(server.uri());
+
+    StaticJsonBuffer<200> jsonBuffer;
+    JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
+
+    String url = request["url"];
+    String login = request["login"];
+    String password = request["password"];
+
+    Serial.println(url);
+    Serial.println(login);
+    Serial.println(password);
+
+    // HTTPClient http;
+    String requestUrl = url + "/rest/api/latest/currentUser.json?os_authType=basic";
+    Serial.println(requestUrl);
+    // http.begin("");
+
+    //  request({
+    //     url: `${url}/rest/api/latest/currentUser.json?os_authType=basic`,
+    //     headers: { Authorization: `Basic ${auth}` }
+    // }).on("response", resp => {
+    //     if (resp.statusCode === 200) {
+    //         bambooConfig = {
+    //             ...bambooConfig,
+    //             ...{
+    //                 login,
+    //                 password,
+    //                 url: url
+    //             },
+    //             connected: true
+    //         };
+    //         res.send(JSON.stringify({ result: 1 }));
+    //     } else {
+    //         res.send(JSON.stringify({ result: 0 }));
+    //     }
+    // });
+
+    server.send(200, "text/plain", url);
   });
 
   server.begin();

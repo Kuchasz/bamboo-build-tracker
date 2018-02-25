@@ -5,16 +5,14 @@ const autoprefixer = require("autoprefixer");
 var webpack = require("webpack");
 var path = require("path");
 
-const apiHost = (() => {
-    return process.env.API_HOST !== undefined
+const apiHost = process.env.API_HOST !== undefined
         ? `'http://${process.env.API_HOST}'`
         : `''`;
-})();
 
 module.exports = {
     entry: path.resolve("./src/index.tsx"),
     output: {
-        path: path.resolve("../server/main/data"),
+        path: path.resolve("../server/data"),
         filename: "index.js"
     },
     module: {

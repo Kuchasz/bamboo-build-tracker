@@ -1,7 +1,6 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as request from "request";
-import * as http from "http";
 import {
     urls as networkUrls,
     Network,

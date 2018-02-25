@@ -3,6 +3,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <FS.h>
+#include <rBase64.h>
 
 const char *apSSID = "BambooBuildTracker";
 
@@ -61,6 +62,7 @@ void setup()
 
   WiFi.softAP(apSSID);
   WiFi.softAPConfig(apIP, apGateway, apSubmask);
+
   server.on("/", HTTP_GET, []() {
     Serial.println(server.uri());
     File rootHtml = SPIFFS.open("/index.html", "r");
@@ -197,6 +199,11 @@ void setup()
     Serial.println(requestUrl);
     // http.begin("");
 
+    //const auth = new Buffer(`${login}:${password}`).toString("base64");
+
+    Serial.println(rbase64.encode("Hello There, I am doing Good."));
+    Serial.println(rbase64.decode("SGVsbG8gVGhlcmUsIEkgYW0gZG9pbmcgR29vZC4="));
+
     //  request({
     //     url: `${url}/rest/api/latest/currentUser.json?os_authType=basic`,
     //     headers: { Authorization: `Basic ${auth}` }
@@ -220,11 +227,16 @@ void setup()
     server.send(200, "text/plain", url);
   });
 
+ 
+  Serial.println(rbase64.encode("Hello There, I am doing Good."));
+  Serial.println(rbase64.decode("SGVsbG8gVGhlcmUsIEkgYW0gZG9pbmcgR29vZC4="));
+
   server.begin();
   Serial.println("server-started");
 }
 
 void loop()
 {
+  
   server.handleClient();
 }

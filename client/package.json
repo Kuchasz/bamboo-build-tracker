@@ -7,7 +7,7 @@
         "start": "ts-node dev-server.ts",
         "proxy": "ts-node proxy-server.ts",
         "remote":
-            "set NODE_ENV=production&& set API_HOST=10.0.0.1&& webpack --watch",
+            "set NODE_ENV=production&& set API_HOST=192.168.1.10&& webpack --watch",
         "build": "set NODE_ENV=production&& webpack --color --watch",
         "watch": "set NODE_ENV=development&& webpack --color --watch"
     },

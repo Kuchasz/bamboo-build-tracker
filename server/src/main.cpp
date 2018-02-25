@@ -4,6 +4,8 @@
 #include <ESP8266WebServer.h>
 #include <FS.h>
 #include <rBase64.h>
+#include <ESP8266HTTPClient.h>
+#include "BambooConfig.h"
 
 const char *apSSID = "BambooBuildTracker";
 
@@ -12,6 +14,8 @@ IPAddress apGateway(10, 0, 0, 1);
 IPAddress apSubmask(255, 255, 255, 0);
 
 ESP8266WebServer server(80);
+
+BambooConfig bambooConfig;
 
 //int getOneOrZero() {
 //  return rand() % 2;
@@ -159,8 +163,6 @@ void setup()
     server.send(200, "text/plain", "");
   });
   server.on("/network-disconnect", HTTP_POST, []() {
-    Serial.println(server.uri());
-
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &response = jsonBuffer.createObject();
 
@@ -181,7 +183,6 @@ void setup()
     server.send(200, "text/plain", "");
   });
   server.on("/bamboo-connect", HTTP_POST, []() {
-    Serial.println(server.uri());
 
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
@@ -190,46 +191,63 @@ void setup()
     String login = request["login"];
     String password = request["password"];
 
-    Serial.println(url);
-    Serial.println(login);
-    Serial.println(password);
-
-    // HTTPClient http;
     String requestUrl = url + "/rest/api/latest/currentUser.json?os_authType=basic";
-    Serial.println(requestUrl);
-    // http.begin("");
+    String authHeader = "Basic " + rbase64.encode(login + ":" + password);
 
-    //const auth = new Buffer(`${login}:${password}`).toString("base64");
+    HTTPClient http;
+    http.begin(requestUrl);
+    http.addHeader("Authorization", authHeader);
 
-    Serial.println(rbase64.encode("Hello There, I am doing Good."));
-    Serial.println(rbase64.decode("SGVsbG8gVGhlcmUsIEkgYW0gZG9pbmcgR29vZC4="));
+    int httpCode = http.GET();
 
-    //  request({
-    //     url: `${url}/rest/api/latest/currentUser.json?os_authType=basic`,
-    //     headers: { Authorization: `Basic ${auth}` }
-    // }).on("response", resp => {
-    //     if (resp.statusCode === 200) {
-    //         bambooConfig = {
-    //             ...bambooConfig,
-    //             ...{
-    //                 login,
-    //                 password,
-    //                 url: url
-    //             },
-    //             connected: true
-    //         };
-    //         res.send(JSON.stringify({ result: 1 }));
-    //     } else {
-    //         res.send(JSON.stringify({ result: 0 }));
-    //     }
-    // });
+    JsonObject &response = jsonBuffer.createObject();
 
-    server.send(200, "text/plain", url);
+    if (httpCode == HTTP_CODE_OK)
+    {
+        String payload = http.getString();
+
+        bambooConfig.url = url;
+        bambooConfig.login = login;
+        bambooConfig.password = password;
+        bambooConfig.connected = true;
+
+        response["result"] = 1;
+    }
+    else
+    {
+      response["result"] = 1;
+    }
+
+    String responseString;
+    response.printTo(responseString);
+
+    server.send(200, "text/json", responseString);
+    http.end();
   });
 
- 
-  Serial.println(rbase64.encode("Hello There, I am doing Good."));
-  Serial.println(rbase64.decode("SGVsbG8gVGhlcmUsIEkgYW0gZG9pbmcgR29vZC4="));
+    server.on("/bamboo-config", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
+  server.on("/bamboo-config", HTTP_GET, []() {
+    StaticJsonBuffer<200> jsonBuffer;
+
+    JsonObject &response = jsonBuffer.createObject();
+
+    response["url"] = bambooConfig.url;
+    response["login"] = bambooConfig.login;
+    response["password"] = bambooConfig.password;
+    response["connected"] = bambooConfig.connected;
+    response["project"] = bambooConfig.project;
+    response["plan"] = bambooConfig.plan;
+
+    String responseString;
+    response.printTo(responseString);
+
+    server.send(200, "text/json", responseString);
+  });
 
   server.begin();
   Serial.println("server-started");
@@ -237,6 +255,5 @@ void setup()
 
 void loop()
 {
-  
   server.handleClient();
 }

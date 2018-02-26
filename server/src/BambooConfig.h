@@ -3,7 +3,6 @@
 class BambooConfig {
     private:
     public: 
-        BambooConfig();
         String url;
         String login;
         String password;

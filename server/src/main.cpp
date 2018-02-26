@@ -204,18 +204,18 @@ void setup()
 
     if (httpCode == HTTP_CODE_OK)
     {
-        String payload = http.getString();
+      String payload = http.getString();
 
-        bambooConfig.url = url;
-        bambooConfig.login = login;
-        bambooConfig.password = password;
-        bambooConfig.connected = true;
+      bambooConfig.url = url;
+      bambooConfig.login = login;
+      bambooConfig.password = password;
+      bambooConfig.connected = true;
 
-        response["result"] = 1;
+      response["result"] = 1;
     }
     else
     {
-      response["result"] = 1;
+      response["result"] = 0;
     }
 
     String responseString;
@@ -225,7 +225,60 @@ void setup()
     http.end();
   });
 
-    server.on("/bamboo-config", HTTP_OPTIONS, []() {
+  server.on("/bamboo-projects", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
+  server.on("/bamboo-projects", HTTP_GET, []() {
+    String url = bambooConfig.url;
+    String password = bambooConfig.password;
+    String login = bambooConfig.login;
+
+    String requestUrl = url + "/rest/api/latest/project.json?os_authType=basic&max-result=1000";
+    String authHeader = "Basic " + rbase64.encode(login + ":" + password);
+
+    HTTPClient http;
+    http.begin(requestUrl);
+    http.addHeader("Authorization", authHeader);
+
+    int httpCode = http.GET();
+
+
+    // StaticJsonBuffer<32000> jsonBuffer;
+    DynamicJsonBuffer jsonBuffer(20850);
+
+    // JsonObject &response = jsonBuffer.createObject();
+String payload = "";
+    if (httpCode == HTTP_CODE_OK)
+    {
+      payload = http.getString();
+
+      // Serial.print(payload);
+
+      // JsonObject &root = jsonBuffer.parseObject(payload);
+
+      // if (!root.success())
+      // {
+      //   Serial.println(F("Parsing failed!"));
+      // }
+
+      // response["result"] = 1;
+    }
+    else
+    {
+      // response["result"] = 0;
+    }
+
+    String responseString;
+    // response.printTo(responseString);
+
+    server.send(200, "text/json", payload);
+    http.end();
+  });
+
+  server.on("/bamboo-config", HTTP_OPTIONS, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
     server.sendHeader("Access-Control-Allow-Headers", "Content-Type");

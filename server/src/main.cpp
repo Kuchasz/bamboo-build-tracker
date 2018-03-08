@@ -245,37 +245,36 @@ void setup()
 
     int httpCode = http.GET();
 
-
-    // StaticJsonBuffer<32000> jsonBuffer;
-    DynamicJsonBuffer jsonBuffer(20850);
-
-    // JsonObject &response = jsonBuffer.createObject();
-String payload = "";
+    String responseString;
     if (httpCode == HTTP_CODE_OK)
     {
-      payload = http.getString();
-
-      // Serial.print(payload);
-
-      // JsonObject &root = jsonBuffer.parseObject(payload);
-
-      // if (!root.success())
-      // {
-      //   Serial.println(F("Parsing failed!"));
-      // }
-
-      // response["result"] = 1;
+      responseString = http.getString();
     }
-    else
-    {
-      // response["result"] = 0;
-    }
+
+    server.send(200, "text/json", responseString);
+    http.end();
+  });
+
+  server.on("/bamboo-select-project", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
+  server.on("/bamboo-select-project", HTTP_POST, []() {
+    StaticJsonBuffer<200> jsonBuffer;
+    JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
+
+    String project = request["project"];
+    bambooConfig.project = project;
+
+    JsonObject &response = jsonBuffer.createObject();
+    response["result"] = 1;
 
     String responseString;
-    // response.printTo(responseString);
+    response.printTo(responseString);
 
-    server.send(200, "text/json", payload);
-    http.end();
+    server.send(200, "text/json", responseString);
   });
 
   server.on("/bamboo-config", HTTP_OPTIONS, []() {

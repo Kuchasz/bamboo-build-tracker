@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8"/>
-    <title>bamboo-build-tracker</title>
-</head>
-<body>
-<script type="text/javascript">/******/ (function(modules) { // webpackBootstrap
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -2432,5 +2426,4 @@ exports.DashboardComponent = function () { return preact_1.default.createElement
 
 
 /***/ })
-/******/ ]);</script></body>
-</html>
+/******/ ]);

@@ -12,27 +12,33 @@ export interface BambooProject {
     name: string;
 }
 
-export interface Link {
-    href: string;
-    rel: string;
-}
-
 export interface Project {
     key: string;
     name: string;
-    description: string;
-    link: Link;
 }
 
 export interface Projects {
     project: Project[];
 }
 
-export interface RootObject {
+export interface ProjectsRootObject {
     projects: Projects;
 }
 
+export interface Plan {
+    key: string;
+    name: string;
+}
 
+export interface Plans {
+    size: number;
+    expand: string;
+    plan: Plan[];
+}
+
+export interface PlansRootObject {
+    plans: Plans;
+}
 
 export interface BambooPlan {
     key: string;
@@ -100,7 +106,7 @@ export const getBambooConfig = () =>
 export const getBambooProjects = () =>
     new Promise<BambooProject[]>(result => {
         fetch(`${API_HOST}${urls.bambooProjects}`).then(res => {
-            res.json().then(root => result(root.projects.project.map((p: Project) => ({ ...p })))
+            res.json().then((root: ProjectsRootObject) => result(root.projects.project.map(p => ({ ...p })))
             );
         }
         );
@@ -108,5 +114,8 @@ export const getBambooProjects = () =>
 
 export const getBambooPlans = () =>
     new Promise<BambooPlan[]>(result => {
-        fetch(`${API_HOST}${urls.bambooPlans}`).then(res => result(res.json()));
+        fetch(`${API_HOST}${urls.bambooPlans}`).then(res => {
+            res.json().then((root: PlansRootObject) => result(root.plans.plan.map(p => ({ ...p }))))
+        });
     });
+

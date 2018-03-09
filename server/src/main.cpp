@@ -255,6 +255,36 @@ void setup()
     http.end();
   });
 
+  server.on("/bamboo-plans", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
+  server.on("/bamboo-plans", HTTP_GET, []() {
+    String url = bambooConfig.url;
+    String password = bambooConfig.password;
+    String login = bambooConfig.login;
+
+    String requestUrl = url + "/rest/api/latest/project/" + bambooConfig.project + ".json?os_authType=basic&expand=plans&max-result=1000";
+    String authHeader = "Basic " + rbase64.encode(login + ":" + password);
+
+    HTTPClient http;
+    http.begin(requestUrl);
+    http.addHeader("Authorization", authHeader);
+
+    int httpCode = http.GET();
+
+    String responseString;
+    if (httpCode == HTTP_CODE_OK)
+    {
+      responseString = http.getString();
+    }
+
+    server.send(200, "text/json", responseString);
+    http.end();
+  });
+
   server.on("/bamboo-select-project", HTTP_OPTIONS, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
@@ -267,6 +297,28 @@ void setup()
 
     String project = request["project"];
     bambooConfig.project = project;
+
+    JsonObject &response = jsonBuffer.createObject();
+    response["result"] = 1;
+
+    String responseString;
+    response.printTo(responseString);
+
+    server.send(200, "text/json", responseString);
+  });
+
+  server.on("/bamboo-select-plan", HTTP_OPTIONS, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
+    server.send(200, "text/plain", "");
+  });
+  server.on("/bamboo-select-plan", HTTP_POST, []() {
+    StaticJsonBuffer<200> jsonBuffer;
+    JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
+
+    String plan = request["plan"];
+    bambooConfig.plan = plan;
 
     JsonObject &response = jsonBuffer.createObject();
     response["result"] = 1;

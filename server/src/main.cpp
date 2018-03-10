@@ -6,6 +6,9 @@
 #include <rBase64.h>
 #include <ESP8266HTTPClient.h>
 #include "BambooConfig.h"
+#include <Ticker.h>
+#include <algorithm>
+#include <array>
 
 const char *apSSID = "BambooBuildTracker";
 
@@ -16,6 +19,8 @@ IPAddress apSubmask(255, 255, 255, 0);
 ESP8266WebServer server(80);
 
 BambooConfig bambooConfig;
+
+Ticker buildStateReader;
 
 //int getOneOrZero() {
 //  return rand() % 2;
@@ -59,10 +64,65 @@ BambooConfig bambooConfig;
 //  buttonTriggerState = buttonState;
 //}
 
+int tick = 0;
+
+void fetchBuildState()
+{
+  tick = 0;
+  digitalWrite(D1, HIGH);
+  std::array<unsigned int, 5> restrictions = {
+      bambooConfig.login.length(),
+      bambooConfig.password.length(),
+      bambooConfig.project.length(),
+      bambooConfig.plan.length(),
+      bambooConfig.url.length()};
+
+  if (std::any_of(restrictions.begin(), restrictions.end(), [](int length) { return length == 0; }))
+  {
+    Serial.println("Bamboo configuration missing");
+    digitalWrite(D1, LOW);
+    delay(50);
+    digitalWrite(D1, HIGH);
+    delay(50);
+    digitalWrite(D1, LOW);
+    return;
+  }
+
+  Serial.println("Bamboo configured");
+
+  String requestUrl = bambooConfig.url + "/rest/api/latest/result/" + bambooConfig.plan + ".json?os_authType=basic&includeAllStates=true&max-results=1";
+  String authHeader = "Basic " + rbase64.encode(bambooConfig.login + ":" + bambooConfig.password);
+
+  HTTPClient http;
+  http.begin(requestUrl);
+  http.addHeader("Authorization", authHeader);
+
+  int httpCode = http.GET();
+
+  String responseString;
+  if (httpCode == HTTP_CODE_OK)
+  {
+    responseString = http.getString();
+    Serial.print(responseString);
+  }
+  else
+  {
+    responseString = http.getString();
+    Serial.println(httpCode);
+    Serial.println(responseString);
+    Serial.println("ERR:" + requestUrl);
+  }
+
+  http.end();
+  digitalWrite(D1, LOW);
+}
+
 void setup()
 {
   Serial.begin(115200);
   SPIFFS.begin();
+
+  pinMode(D1, OUTPUT);
 
   WiFi.softAP(apSSID);
   WiFi.softAPConfig(apIP, apGateway, apSubmask);
@@ -355,9 +415,13 @@ void setup()
 
   server.begin();
   Serial.println("server-started");
+
+  buildStateReader.attach(1, []() { tick++; });
 }
 
 void loop()
 {
   server.handleClient();
+  if (tick == 5)
+    fetchBuildState();
 }

@@ -9,4 +9,6 @@ class BambooConfig {
         bool connected;
         String project;
         String plan;
+        String state;
+        String lifeCycleState;
 };

@@ -66,10 +66,32 @@ Ticker buildStateReader;
 
 int tick = 0;
 
+void handleAlarms(){
+  if(bambooConfig.lifeCycleState == "InProgress"){
+    digitalWrite(D6, LOW);
+    digitalWrite(D7, HIGH);
+    digitalWrite(D8, LOW);
+    return;
+  }
+
+  if(bambooConfig.state == "Failed"){
+    digitalWrite(D6, LOW);
+    digitalWrite(D7, LOW);
+    digitalWrite(D8, HIGH);
+    return;
+  }
+
+  if(bambooConfig.state == "Successful"){
+    digitalWrite(D6, HIGH);
+    digitalWrite(D7, LOW);
+    digitalWrite(D8, LOW);
+    return;
+  }
+}
+
 void fetchBuildState()
 {
   tick = 0;
-  digitalWrite(D1, HIGH);
   std::array<unsigned int, 5> restrictions = {
       bambooConfig.login.length(),
       bambooConfig.password.length(),
@@ -80,11 +102,23 @@ void fetchBuildState()
   if (std::any_of(restrictions.begin(), restrictions.end(), [](int length) { return length == 0; }))
   {
     Serial.println("Bamboo configuration missing");
-    digitalWrite(D1, LOW);
-    delay(50);
-    digitalWrite(D1, HIGH);
-    delay(50);
-    digitalWrite(D1, LOW);
+    digitalWrite(D6, HIGH);
+    delay(200);
+    digitalWrite(D7, HIGH);
+    delay(200);
+    digitalWrite(D8, HIGH);
+    delay(200);
+    digitalWrite(D6, LOW);
+    digitalWrite(D7, LOW);
+    digitalWrite(D8, LOW);
+    delay(200);
+    digitalWrite(D6, HIGH);
+    digitalWrite(D7, HIGH);
+    digitalWrite(D8, HIGH);
+    delay(200);
+    digitalWrite(D6, LOW);
+    digitalWrite(D7, LOW);
+    digitalWrite(D8, LOW);
     return;
   }
 
@@ -103,14 +137,21 @@ void fetchBuildState()
   if (httpCode == HTTP_CODE_OK)
   {
     responseString = http.getString();
-    Serial.print(responseString);
+
+    StaticJsonBuffer<2000> jsonBuffer;
+    JsonObject &buildState = jsonBuffer.parseObject(responseString);
+
+    String lifeCycleState = buildState["results"]["result"][0]["lifeCycleState"];
+    bambooConfig.lifeCycleState = lifeCycleState;
+
+    String state = buildState["results"]["result"][0]["state"];
+    bambooConfig.state = state;
+
+    handleAlarms();
   }
   else
   {
     responseString = http.getString();
-    Serial.println(httpCode);
-    Serial.println(responseString);
-    Serial.println("ERR:" + requestUrl);
   }
 
   http.end();
@@ -122,7 +163,9 @@ void setup()
   Serial.begin(115200);
   SPIFFS.begin();
 
-  pinMode(D1, OUTPUT);
+  pinMode(D6, OUTPUT);
+  pinMode(D7, OUTPUT);
+  pinMode(D8, OUTPUT);
 
   WiFi.softAP(apSSID);
   WiFi.softAPConfig(apIP, apGateway, apSubmask);

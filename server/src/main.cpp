@@ -3,12 +3,10 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <FS.h>
-#include <rBase64.h>
+
 #include <ESP8266HTTPClient.h>
 #include "BambooConfig.h"
 #include <Ticker.h>
-#include <algorithm>
-#include <array>
 
 const char *apSSID = "BambooBuildTracker";
 
@@ -66,70 +64,61 @@ Ticker buildStateReader;
 
 int tick = 0;
 
-void handleAlarms(){
-  if(bambooConfig.lifeCycleState == "InProgress"){
+void handleAlarms()
+{
+  if (digitalRead(D6) || digitalRead(D7) || digitalRead(D8))
+  {
+    digitalWrite(D6, LOW);
+    digitalWrite(D7, LOW);
+    digitalWrite(D8, LOW);
+    return;
+  }
+
+  if (bambooConfig.lifeCycleState == "InProgress")
+  {
     digitalWrite(D6, LOW);
     digitalWrite(D7, HIGH);
     digitalWrite(D8, LOW);
     return;
   }
 
-  if(bambooConfig.state == "Failed"){
+  if (bambooConfig.state == "Failed")
+  {
     digitalWrite(D6, LOW);
     digitalWrite(D7, LOW);
     digitalWrite(D8, HIGH);
     return;
   }
 
-  if(bambooConfig.state == "Successful"){
+  if (bambooConfig.state == "Successful")
+  {
     digitalWrite(D6, HIGH);
     digitalWrite(D7, LOW);
     digitalWrite(D8, LOW);
     return;
   }
+
+  digitalWrite(D6, HIGH);
+  digitalWrite(D7, HIGH);
+  digitalWrite(D8, HIGH);
 }
 
 void fetchBuildState()
 {
   tick = 0;
-  std::array<unsigned int, 5> restrictions = {
-      bambooConfig.login.length(),
-      bambooConfig.password.length(),
-      bambooConfig.project.length(),
-      bambooConfig.plan.length(),
-      bambooConfig.url.length()};
 
-  if (std::any_of(restrictions.begin(), restrictions.end(), [](int length) { return length == 0; }))
+  if (!bambooConfig.IsConfigured())
   {
-    Serial.println("Bamboo configuration missing");
-    digitalWrite(D6, HIGH);
-    delay(200);
-    digitalWrite(D7, HIGH);
-    delay(200);
-    digitalWrite(D8, HIGH);
-    delay(200);
-    digitalWrite(D6, LOW);
-    digitalWrite(D7, LOW);
-    digitalWrite(D8, LOW);
-    delay(200);
-    digitalWrite(D6, HIGH);
-    digitalWrite(D7, HIGH);
-    digitalWrite(D8, HIGH);
-    delay(200);
-    digitalWrite(D6, LOW);
-    digitalWrite(D7, LOW);
-    digitalWrite(D8, LOW);
     return;
   }
 
   Serial.println("Bamboo configured");
 
   String requestUrl = bambooConfig.url + "/rest/api/latest/result/" + bambooConfig.plan + ".json?os_authType=basic&includeAllStates=true&max-results=1";
-  String authHeader = "Basic " + rbase64.encode(bambooConfig.login + ":" + bambooConfig.password);
 
   HTTPClient http;
   http.begin(requestUrl);
-  http.addHeader("Authorization", authHeader);
+  http.addHeader("Authorization", bambooConfig.GetAuth());
 
   int httpCode = http.GET();
 
@@ -146,7 +135,6 @@ void fetchBuildState()
 
     String state = buildState["results"]["result"][0]["state"];
     bambooConfig.state = state;
-
     handleAlarms();
   }
   else
@@ -155,7 +143,6 @@ void fetchBuildState()
   }
 
   http.end();
-  digitalWrite(D1, LOW);
 }
 
 void setup()
@@ -295,11 +282,10 @@ void setup()
     String password = request["password"];
 
     String requestUrl = url + "/rest/api/latest/currentUser.json?os_authType=basic";
-    String authHeader = "Basic " + rbase64.encode(login + ":" + password);
 
     HTTPClient http;
     http.begin(requestUrl);
-    http.addHeader("Authorization", authHeader);
+    http.addHeader("Authorization", bambooConfig.GetAuth(login, password));
 
     int httpCode = http.GET();
 
@@ -340,11 +326,10 @@ void setup()
     String login = bambooConfig.login;
 
     String requestUrl = url + "/rest/api/latest/project.json?os_authType=basic&max-result=1000";
-    String authHeader = "Basic " + rbase64.encode(login + ":" + password);
 
     HTTPClient http;
     http.begin(requestUrl);
-    http.addHeader("Authorization", authHeader);
+    http.addHeader("Authorization", bambooConfig.GetAuth());
 
     int httpCode = http.GET();
 
@@ -370,11 +355,10 @@ void setup()
     String login = bambooConfig.login;
 
     String requestUrl = url + "/rest/api/latest/project/" + bambooConfig.project + ".json?os_authType=basic&expand=plans&max-result=1000";
-    String authHeader = "Basic " + rbase64.encode(login + ":" + password);
 
     HTTPClient http;
     http.begin(requestUrl);
-    http.addHeader("Authorization", authHeader);
+    http.addHeader("Authorization", bambooConfig.GetAuth());
 
     int httpCode = http.GET();
 
@@ -459,7 +443,7 @@ void setup()
   server.begin();
   Serial.println("server-started");
 
-  buildStateReader.attach(1, []() { tick++; });
+  buildStateReader.attach(1, []() { tick++; handleAlarms(); });
 }
 
 void loop()

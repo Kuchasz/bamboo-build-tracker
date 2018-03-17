@@ -11,4 +11,7 @@ class BambooConfig {
         String plan;
         String state;
         String lifeCycleState;
+        bool IsConfigured();
+        String GetAuth();
+        String GetAuth(String login, String password);
 };

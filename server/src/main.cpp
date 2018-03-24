@@ -74,6 +74,14 @@ void handleAlarms()
     return;
   }
 
+  if (!bambooConfig.connected)
+  {
+    digitalWrite(D6, HIGH);
+    digitalWrite(D7, HIGH);
+    digitalWrite(D8, HIGH);
+    return;
+  }
+
   if (bambooConfig.lifeCycleState == "InProgress")
   {
     digitalWrite(D6, LOW);
@@ -101,6 +109,8 @@ void handleAlarms()
   digitalWrite(D6, HIGH);
   digitalWrite(D7, HIGH);
   digitalWrite(D8, HIGH);
+
+  //that line should never happen, arduino does not support exceptions
 }
 
 void fetchBuildState()
@@ -135,11 +145,11 @@ void fetchBuildState()
 
     String state = buildState["results"]["result"][0]["state"];
     bambooConfig.state = state;
-    handleAlarms();
   }
   else
   {
     responseString = http.getString();
+    bambooConfig.FetchFailed();
   }
 
   http.end();
@@ -299,6 +309,8 @@ void setup()
       bambooConfig.login = login;
       bambooConfig.password = password;
       bambooConfig.connected = true;
+      bambooConfig.state = "";
+      bambooConfig.lifeCycleState = "";
 
       response["result"] = 1;
     }

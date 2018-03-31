@@ -74,11 +74,10 @@ void handleAlarms()
     return;
   }
 
-  if (!bambooConfig.connected)
-  {
-    digitalWrite(D6, HIGH);
-    digitalWrite(D7, HIGH);
-    digitalWrite(D8, HIGH);
+  if (!bambooConfig.connected || !bambooConfig.IsConfigured()){
+     digitalWrite(D6, HIGH);
+     digitalWrite(D7, HIGH);
+     digitalWrite(D8, HIGH);
     return;
   }
 
@@ -105,10 +104,6 @@ void handleAlarms()
     digitalWrite(D8, LOW);
     return;
   }
-
-  digitalWrite(D6, HIGH);
-  digitalWrite(D7, HIGH);
-  digitalWrite(D8, HIGH);
 
   //that line should never happen, arduino does not support exceptions
 }

@@ -10,7 +10,7 @@ bool BambooConfig::IsConfigured()
         this->plan,
         this->url};
 
-    return std::any_of(restrictions.begin(), restrictions.end(), [](String restriction) { return restriction.length() > 0; });
+    return std::all_of(restrictions.begin(), restrictions.end(), [](String restriction) { return restriction.length() > 0; });
 }
 
 String BambooConfig::GetAuth()

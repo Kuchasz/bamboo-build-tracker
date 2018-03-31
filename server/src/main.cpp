@@ -81,7 +81,7 @@ void handleAlarms()
     return;
   }
 
-  if (bambooConfig.lifeCycleState == "InProgress")
+  if (bambooConfig.GetState() == InProgress)
   {
     digitalWrite(D6, LOW);
     digitalWrite(D7, HIGH);
@@ -89,7 +89,7 @@ void handleAlarms()
     return;
   }
 
-  if (bambooConfig.state == "Failed")
+  if (bambooConfig.GetState() == Failed)
   {
     digitalWrite(D6, LOW);
     digitalWrite(D7, LOW);
@@ -97,7 +97,7 @@ void handleAlarms()
     return;
   }
 
-  if (bambooConfig.state == "Successful")
+  if (bambooConfig.GetState() == Successful)
   {
     digitalWrite(D6, HIGH);
     digitalWrite(D7, LOW);
@@ -119,7 +119,7 @@ void fetchBuildState()
 
   Serial.println("Bamboo configured");
 
-  String requestUrl = bambooConfig.url + "/rest/api/latest/result/" + bambooConfig.plan + ".json?os_authType=basic&includeAllStates=true&max-results=1";
+  String requestUrl = bambooConfig.GetBuildStateUrl();
 
   HTTPClient http;
   http.begin(requestUrl);
@@ -135,11 +135,10 @@ void fetchBuildState()
     StaticJsonBuffer<2000> jsonBuffer;
     JsonObject &buildState = jsonBuffer.parseObject(responseString);
 
-    String lifeCycleState = buildState["results"]["result"][0]["lifeCycleState"];
-    bambooConfig.lifeCycleState = lifeCycleState;
-
     String state = buildState["results"]["result"][0]["state"];
-    bambooConfig.state = state;
+    String lifeCycleState = buildState["results"]["result"][0]["lifeCycleState"];
+    
+    bambooConfig.EditBuildState(state, lifeCycleState);
   }
   else
   {
@@ -300,12 +299,7 @@ void setup()
     {
       String payload = http.getString();
 
-      bambooConfig.url = url;
-      bambooConfig.login = login;
-      bambooConfig.password = password;
-      bambooConfig.connected = true;
-      bambooConfig.state = "";
-      bambooConfig.lifeCycleState = "";
+      bambooConfig.ConfigureConnection(url, login, password);
 
       response["result"] = 1;
     }
@@ -328,11 +322,8 @@ void setup()
     server.send(200, "text/plain", "");
   });
   server.on("/bamboo-projects", HTTP_GET, []() {
-    String url = bambooConfig.url;
-    String password = bambooConfig.password;
-    String login = bambooConfig.login;
 
-    String requestUrl = url + "/rest/api/latest/project.json?os_authType=basic&max-result=1000";
+    String requestUrl = bambooConfig.GetProjectsUrl();
 
     HTTPClient http;
     http.begin(requestUrl);
@@ -357,11 +348,7 @@ void setup()
     server.send(200, "text/plain", "");
   });
   server.on("/bamboo-plans", HTTP_GET, []() {
-    String url = bambooConfig.url;
-    String password = bambooConfig.password;
-    String login = bambooConfig.login;
-
-    String requestUrl = url + "/rest/api/latest/project/" + bambooConfig.project + ".json?os_authType=basic&expand=plans&max-result=1000";
+    String requestUrl = bambooConfig.GetPlansUrl();
 
     HTTPClient http;
     http.begin(requestUrl);
@@ -434,9 +421,9 @@ void setup()
 
     JsonObject &response = jsonBuffer.createObject();
 
-    response["url"] = bambooConfig.url;
-    response["login"] = bambooConfig.login;
-    response["password"] = bambooConfig.password;
+    response["url"] = "";
+    response["login"] = "";
+    response["password"] = "";
     response["connected"] = bambooConfig.connected;
     response["project"] = bambooConfig.project;
     response["plan"] = bambooConfig.plan;

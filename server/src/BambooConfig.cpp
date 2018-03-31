@@ -20,7 +20,8 @@ String BambooConfig::GetAuth()
 
 String BambooConfig::GetAuth(String login, String password)
 {
-    return "Basic " + rbase64.encode(login + ":" + password);
+    rbase64.encode(login + ":" + password);
+    return "Basic " + String(rbase64.result());
 }
 
 void BambooConfig::FetchFailed()
@@ -32,4 +33,42 @@ void BambooConfig::FetchFailed()
         this->lifeCycleState = "";
         this->state = "";
     }
+}
+
+BuildState BambooConfig::GetState()
+{
+    if(this->state == "Successful")
+        return Successful;
+    
+    if(this->state == "Failed")
+        return Failed;
+    
+    if(this->lifeCycleState == "InProgress")
+        return InProgress;
+    
+    return Unspecified;
+}
+
+void BambooConfig::EditBuildState(String state, String lifeCycleState){
+    this->state = state;
+    this->lifeCycleState = lifeCycleState;
+}
+
+void BambooConfig::ConfigureConnection(String url, String login, String password){
+    this->url = url;
+    this->login = login;
+    this->password = password;
+    this->connected = true;
+}
+
+String BambooConfig::GetProjectsUrl(){
+    return this->url + "/rest/api/latest/project.json?os_authType=basic&max-result=1000";
+}
+
+String BambooConfig::GetPlansUrl(){
+    return this->url + "/rest/api/latest/project/" + this->project + ".json?os_authType=basic&expand=plans&max-result=1000";
+}
+
+String BambooConfig::GetBuildStateUrl(){
+    return this->url + "/rest/api/latest/result/" + this->plan + ".json?os_authType=basic&includeAllStates=true&max-results=1";
 }

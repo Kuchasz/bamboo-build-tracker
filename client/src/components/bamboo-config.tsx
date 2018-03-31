@@ -21,7 +21,7 @@ interface Props {}
 
 interface State {
     networkConfig: NetworkConfig;
-    bambooConfig: BambooConfig;
+    bambooConfig: BambooConfig & Partial<{ login: string, password: string, url: string }>;
     projects: BambooProject[];
     plans: BambooPlan[];
 }
@@ -46,11 +46,9 @@ export class BambooConfigComponent extends React.Component<Props, State> {
     _getBambooConfig() {
         getBambooConfig().then(bambooConfig => {
             this.setState({ bambooConfig });
-            (this.bambooServerInput as HTMLInputElement).value =
-                bambooConfig.url;
-            (this.usernameInput as HTMLInputElement).value = bambooConfig.login;
-            (this.passwordInput as HTMLInputElement).value =
-                bambooConfig.password;
+            (this.bambooServerInput as HTMLInputElement).value = "";
+            (this.usernameInput as HTMLInputElement).value = "";
+            (this.passwordInput as HTMLInputElement).value = "";
 
             if (bambooConfig.connected)
                 getBambooProjects().then(projects => {

@@ -91,17 +91,17 @@ void handleAlarms()
 
   if (bambooConfig.GetState() == Failed)
   {
-    digitalWrite(D6, LOW);
+    digitalWrite(D6, HIGH);
     digitalWrite(D7, LOW);
-    digitalWrite(D8, HIGH);
+    digitalWrite(D8, LOW);
     return;
   }
 
   if (bambooConfig.GetState() == Successful)
   {
-    digitalWrite(D6, HIGH);
+    digitalWrite(D6, LOW);
     digitalWrite(D7, LOW);
-    digitalWrite(D8, LOW);
+    digitalWrite(D8, HIGH);
     return;
   }
 
@@ -324,6 +324,8 @@ void setup()
   server.on("/bamboo-projects", HTTP_GET, []() {
 
     String requestUrl = bambooConfig.GetProjectsUrl();
+
+    Serial.println(requestUrl);
 
     HTTPClient http;
     http.begin(requestUrl);

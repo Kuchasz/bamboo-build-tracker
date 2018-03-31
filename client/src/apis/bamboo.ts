@@ -1,7 +1,4 @@
 export interface BambooConfig {
-    url: string;
-    login: string;
-    password: string;
     connected: boolean;
     project: string;
     plan: string;
@@ -54,7 +51,7 @@ export const urls = {
     bambooPlans: "/bamboo-plans"
 };
 
-export const connect = (url: string, login: string, password: string) =>
+export const connect = (url?: string, login?: string, password?: string) =>
     new Promise((res, rej) => {
         fetch(`${API_HOST}${urls.bambooConnect}`, {
             method: "POST",

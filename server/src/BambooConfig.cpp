@@ -15,7 +15,8 @@ bool BambooConfig::IsConfigured()
 
 String BambooConfig::GetAuth()
 {
-    return "Basic " + rbase64.encode(this->login + ":" + this->password);
+    rbase64.encode(this->login + ":" + this->password);
+    return "Basic " + String(rbase64.result());
 }
 
 String BambooConfig::GetAuth(String login, String password)

@@ -2045,11 +2045,9 @@ var BambooConfigComponent = /** @class */ (function (_super) {
         var _this = this;
         bamboo_1.getBambooConfig().then(function (bambooConfig) {
             _this.setState({ bambooConfig: bambooConfig });
-            _this.bambooServerInput.value =
-                bambooConfig.url;
-            _this.usernameInput.value = bambooConfig.login;
-            _this.passwordInput.value =
-                bambooConfig.password;
+            _this.bambooServerInput.value = "";
+            _this.usernameInput.value = "";
+            _this.passwordInput.value = "";
             if (bambooConfig.connected)
                 bamboo_1.getBambooProjects().then(function (projects) {
                     _this.setState({ projects: projects });

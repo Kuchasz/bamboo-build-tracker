@@ -19,50 +19,23 @@ ESP8266WebServer server(80);
 BambooConfig bambooConfig;
 
 Ticker buildStateReader;
+Ticker alarmsTicker;
 
-//int getOneOrZero() {
-//  return rand() % 2;
-//}
-//
-//int* getDiodeToUse(int* arrStates) {
-//  arrStates[0] = getOneOrZero();
-//  arrStates[1] = getOneOrZero();
-//  arrStates[2] = getOneOrZero();
-//  return arrStates;
-//}
-//
-//int getTune() {
-//  int tunes[] = {262, 294, 330, 349, 392, 440, 494, 523};
-//  return tunes[rand() % 8];
-//}
-//
-//int buttonTriggerState = HIGH;
-//
-//void handleButtonState() {
-//  auto buttonState = digitalRead(10);
-//  if (buttonTriggerState != buttonState) {
-//    if (buttonState == LOW) {
-//      int* diodeStates = getDiodeToUse(new int[3]);
-//
-//      Serial.println(diodeStates[0]);
-//      Serial.println(diodeStates[1]);
-//      Serial.println(diodeStates[2]);
-//
-//      digitalWrite(D6, diodeStates[0]);
-//      digitalWrite(D7, diodeStates[1]);
-//      digitalWrite(D8, diodeStates[2]);
-//      tone(D0, getTune());
-//    } else {
-//      digitalWrite(D6, LOW);
-//      digitalWrite(D7, LOW);
-//      digitalWrite(D8, LOW);
-//      noTone(D0);
-//    }
-//  }
-//  buttonTriggerState = buttonState;
-//}
+int getTune()
+{
+  int tunes[] = {262, 294, 330, 349, 392, 440, 494, 523};
+  return tunes[rand() % 8];
+}
 
-int tick = 0;
+void handleButtonState()
+{
+  auto buttonState = digitalRead(D0);
+  Serial.println(buttonState);
+  if (buttonState == HIGH)
+  {
+    bambooConfig.MarkAsAware();
+  }
+}
 
 void handleAlarms()
 {
@@ -74,11 +47,17 @@ void handleAlarms()
     return;
   }
 
-  if (!bambooConfig.connected || !bambooConfig.IsConfigured()){
-     digitalWrite(D6, HIGH);
-     digitalWrite(D7, HIGH);
-     digitalWrite(D8, HIGH);
+  if (!bambooConfig.connected || !bambooConfig.IsConfigured())
+  {
+    digitalWrite(D6, HIGH);
+    digitalWrite(D7, HIGH);
+    digitalWrite(D8, HIGH);
     return;
+  }
+
+  if (!bambooConfig.IsAware())
+  {
+    tone(D2, getTune(), 100);
   }
 
   if (bambooConfig.GetState() == InProgress)
@@ -104,14 +83,10 @@ void handleAlarms()
     digitalWrite(D8, HIGH);
     return;
   }
-
-  //that line should never happen, arduino does not support exceptions
 }
 
 void fetchBuildState()
 {
-  tick = 0;
-
   if (!bambooConfig.IsConfigured())
   {
     return;
@@ -137,7 +112,7 @@ void fetchBuildState()
 
     String state = buildState["results"]["result"][0]["state"];
     String lifeCycleState = buildState["results"]["result"][0]["lifeCycleState"];
-    
+
     bambooConfig.EditBuildState(state, lifeCycleState);
   }
   else
@@ -157,6 +132,9 @@ void setup()
   pinMode(D6, OUTPUT);
   pinMode(D7, OUTPUT);
   pinMode(D8, OUTPUT);
+
+  pinMode(D0, INPUT);
+  pinMode(D2, OUTPUT);
 
   WiFi.softAP(apSSID);
   WiFi.softAPConfig(apIP, apGateway, apSubmask);
@@ -439,12 +417,16 @@ void setup()
   server.begin();
   Serial.println("server-started");
 
-  buildStateReader.attach(1, []() { tick++; handleAlarms(); });
+  alarmsTicker.attach(1, []() {
+    handleAlarms();
+  });
+  buildStateReader.attach(5, []() {
+    fetchBuildState();
+  });
 }
 
 void loop()
 {
   server.handleClient();
-  if (tick == 5)
-    fetchBuildState();
+  handleButtonState();
 }

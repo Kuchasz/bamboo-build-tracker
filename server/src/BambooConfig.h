@@ -9,12 +9,14 @@ class BambooConfig {
         String url;
         String login;
         String password;
+        bool aware;
     public: 
         bool connected = false;
         String project;
         String plan;
         void ConfigureConnection(String url, String login, String password);
         bool IsConfigured();
+        bool IsAware();
         void FetchFailed();
         String GetAuth();
         String GetAuth(String login, String password);
@@ -23,4 +25,5 @@ class BambooConfig {
         String GetProjectsUrl();
         String GetPlansUrl();
         String GetBuildStateUrl();
+        void MarkAsAware();
 };

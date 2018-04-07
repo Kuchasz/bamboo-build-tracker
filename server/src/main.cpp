@@ -30,7 +30,6 @@ int getTune()
 void handleButtonState()
 {
   auto buttonState = digitalRead(D0);
-  Serial.println(buttonState);
   if (buttonState == HIGH)
   {
     bambooConfig.MarkAsAware();
@@ -55,10 +54,10 @@ void handleAlarms()
     return;
   }
 
-  if (!bambooConfig.IsAware())
-  {
-    tone(D2, getTune(), 100);
-  }
+  // if (!bambooConfig.IsAware())
+  // {
+  //   tone(D2, getTune(), 100);
+  // }
 
   if (bambooConfig.GetState() == InProgress)
   {
@@ -91,8 +90,6 @@ void fetchBuildState()
   {
     return;
   }
-
-  Serial.println("Bamboo configured");
 
   String requestUrl = bambooConfig.GetBuildStateUrl();
 
@@ -154,6 +151,10 @@ void setup()
   });
 
   server.on("/networks", HTTP_GET, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     Serial.println(server.uri());
     StaticJsonBuffer<200> jsonBuffer;
     JsonArray &response = jsonBuffer.createArray();
@@ -175,6 +176,10 @@ void setup()
   });
 
   server.on("/network-config", HTTP_GET, []() {
+    server.sendHeader("Access-Control-Max-Age", "10000");
+    server.sendHeader("Access-Control-Allow-Methods", "*");
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     Serial.println(server.uri());
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &response = jsonBuffer.createObject();
@@ -192,13 +197,11 @@ void setup()
     server.send(200, "text/json", responseString);
   });
 
-  server.on("/network-connect", HTTP_OPTIONS, []() {
+  server.on("/network-connect", HTTP_POST, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/network-connect", HTTP_POST, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     Serial.println(server.uri());
 
     StaticJsonBuffer<200> jsonBuffer;
@@ -228,13 +231,11 @@ void setup()
     server.send(200, "text/json", responseString);
   });
 
-  server.on("/network-disconnect", HTTP_OPTIONS, []() {
+  server.on("/network-disconnect", HTTP_POST, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/network-disconnect", HTTP_POST, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &response = jsonBuffer.createObject();
 
@@ -248,13 +249,11 @@ void setup()
       WiFi.disconnect();
   });
 
-  server.on("/bamboo-connect", HTTP_OPTIONS, []() {
+  server.on("/bamboo-connect", HTTP_POST, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/bamboo-connect", HTTP_POST, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
 
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
@@ -293,13 +292,11 @@ void setup()
     http.end();
   });
 
-  server.on("/bamboo-projects", HTTP_OPTIONS, []() {
+  server.on("/bamboo-projects", HTTP_GET, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/bamboo-projects", HTTP_GET, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
 
     String requestUrl = bambooConfig.GetProjectsUrl();
 
@@ -321,13 +318,11 @@ void setup()
     http.end();
   });
 
-  server.on("/bamboo-plans", HTTP_OPTIONS, []() {
+  server.on("/bamboo-plans", HTTP_GET, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/bamboo-plans", HTTP_GET, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     String requestUrl = bambooConfig.GetPlansUrl();
 
     HTTPClient http;
@@ -346,13 +341,11 @@ void setup()
     http.end();
   });
 
-  server.on("/bamboo-select-project", HTTP_OPTIONS, []() {
+  server.on("/bamboo-select-project", HTTP_POST, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/bamboo-select-project", HTTP_POST, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
 
@@ -368,13 +361,11 @@ void setup()
     server.send(200, "text/json", responseString);
   });
 
-  server.on("/bamboo-select-plan", HTTP_OPTIONS, []() {
+  server.on("/bamboo-select-plan", HTTP_POST, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/bamboo-select-plan", HTTP_POST, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     StaticJsonBuffer<200> jsonBuffer;
     JsonObject &request = jsonBuffer.parseObject(server.arg("plain"));
 
@@ -390,13 +381,11 @@ void setup()
     server.send(200, "text/json", responseString);
   });
 
-  server.on("/bamboo-config", HTTP_OPTIONS, []() {
+  server.on("/bamboo-config", HTTP_GET, []() {
     server.sendHeader("Access-Control-Max-Age", "10000");
     server.sendHeader("Access-Control-Allow-Methods", "*");
-    server.sendHeader("Access-Control-Allow-Headers", "Content-Type");
-    server.send(200, "text/plain", "");
-  });
-  server.on("/bamboo-config", HTTP_GET, []() {
+    server.sendHeader("Access-Control-Allow-Headers", "*");
+    server.sendHeader("Access-Control-Allow-Origin", "*");
     StaticJsonBuffer<200> jsonBuffer;
 
     JsonObject &response = jsonBuffer.createObject();
